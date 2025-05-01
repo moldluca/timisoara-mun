@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimișoaraMUN Internal Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0a2a5e; /* Fallback color */
+            background-image: url('/static/10.png');
+            background-size: cover;
+            background-position: right center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;       
+            height: 100vh;
+            padding-left: 80px;       
+        }
+
+        .login-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px 50px;
+            width: 650px;
+            max-width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            max-width: 250px;
+        }
+
+        .login-text {
+            text-align: center;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 25px;
+            background-color: #0a4c91;
+            color: white;
+            font-size: 16px;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .login-button {
+            background-color: #0a4c91;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px;
+            width: 100%;
+            max-width: 200px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 30px auto 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #083b73;
+        }
+
+        .help-text {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                justify-content: center;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .login-card {
+                padding: 20px;
+                width: 100%;
+            }
+
+            h1 {
+                text-align: center;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>TimișoaraMUN Internal Platform</h1>
+            <div class="login-card">
+                <div class="logo">
+                    <img src="/static/Logo_TimișoaraMUN_blue.png" alt="TimișoaraMUN Logo">
+                </div>
+
+                <div class="login-text">
+                    <p>This platform is intended exclusively for staff members.</p>
+                    <p>Please log in using your email address validated by the organizers.</p>
+                </div>
+
+                <form>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+
+                    <button type="submit" class="login-button">Log In</button>
+                </form>
+
+                <div class="help-text">
+                    <p>If you have problems with your login, contact the IT director</p>
+                    <p>erol@timisoara-mun.ro</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
