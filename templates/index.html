@@ -5,1088 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUN Timișoara - Model United Nations</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-    /* ===== RESET & BASE STYLES ===== */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-    
-    :root {
-        --primary: #021859;
-        --primary-dark: #0077b3;
-        --secondary: #00c6ff;
-        --accent: #ff9500;
-        --text-dark: #333;
-        --text-light: #fff;
-        --bg-light: #f8f9fa;
-        --bg-dark: #333;
-        --transition: all 0.3s ease;
-    }
-
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        color: var(--text-dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    img {
-        max-width: 100%;
-    }
-
-    .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .btn {
-        display: inline-block;
-        background-color: var(--primary);
-        color: var(--text-light);
-        padding: 12px 24px;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        text-align: center;
-    }
-
-    .btn:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-outline {
-        background-color: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-    }
-
-    .btn-outline:hover {
-        background-color: var(--primary);
-        color: var(--text-light);
-    }
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-        position: relative;
-        display: inline-block;
-    }
-
-    .section-title h2::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background-color: var(--accent);
-    }
-
-    .section-title p {
-        color: #666;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    section {
-        padding: 5rem 0;
-    }
-
-    /* ===== HEADER STYLES ===== */
-    header {
-        background-color: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: var(--transition);
-    }
-
-    header.scrolled {
-        padding: 5px 0;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-    }
-
-    .logo img {
-        height: 60px;
-        margin-right: 10px;
-    }
-
-    .logo-text {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .logo-text .main {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .logo-text .sub {
-        font-size: 0.9rem;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-    }
-
-    nav ul {
-        display: flex;
-    }
-
-    nav ul li {
-        margin-left: 1.5rem;
-    }
-
-    nav ul li a {
-        color: var(--text-dark);
-        font-weight: 500;
-        transition: var(--transition);
-        position: relative;
-    }
-
-    nav ul li a::after {
-        content: '';
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: var(--transition);
-    }
-
-    nav ul li a:hover {
-        color: var(--primary);
-    }
-
-    nav ul li a:hover::after {
-        width: 100%;
-    }
-
-    .mobile-toggle {
-        display: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/static/b.png');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        color: var(--text-light);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(45deg, rgba(0, 153, 229, 0.7), rgba(0, 198, 255, 0.7));
-        opacity: 0.3;
-    }
-
-    .hero-content {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-        animation: fadeIn 1s ease-out;
-    }
-
-    .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero h2 {
-        font-size: 1.8rem;
-        margin-bottom: 2rem;
-        font-weight: 400;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin-top: 2rem;
-    }
-
-    /* ===== ABOUT SECTION ===== */
-    .about {
-        background-color: var(--bg-light);
-        position: relative;
-    }
-
-    .about-content {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-    }
-
-    .about-text {
-        flex: 1;
-    }
-
-    .about-text h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
-        color: var(--primary);
-    }
-
-    .about-text p {
-        margin-bottom: 1.5rem;
-    }
-
-    .about-image {
-        flex: 1;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        transform: perspective(1000px) rotateY(-5deg);
-        transition: var(--transition);
-    }
-
-    .about-image:hover {
-        transform: perspective(1000px) rotateY(0);
-    }
-
-    .about-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-
-    /* ===== MISSION & VISION SECTION ===== */
-    .mission-vision {
-        background-color: var(--primary);
-        color: var(--text-light);
-        padding: 5rem 0;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .mission-vision::before {
-        content: '';
-        position: absolute;
-        top: -50px;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        background-color: var(--bg-light);
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
-    }
-
-    .mission-vision::after {
-        content: '';
-        position: absolute;
-        bottom: -50px;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        background-color: #fff;
-        clip-path: polygon(0 0, 100% 100%, 0 100%);
-    }
-
-    .mission-vision-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 30px;
-    }
-
-    .mission-box, .vision-box {
-        flex: 1;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        padding: 2rem;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .mission-box:hover, .vision-box:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-    }
-
-    .mission-box::before, .vision-box::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 5px;
-        background: linear-gradient(90deg, var(--accent), var(--secondary));
-    }
-
-    .mission-box h3, .vision-box h3 {
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-    }
-
-    .mission-box h3 i, .vision-box h3 i {
-        margin-right: 15px;
-        font-size: 2.5rem;
-        color: var(--accent);
-    }
-
-    /* ===== SERVICES SECTION ===== */
-    .services {
-        background-color: #fff;
-        position: relative;
-    }
-
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-    }
-
-    .service-card {
-        background-color: #fff;
-        border-radius: 10px;
-        padding: 2rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        transition: var(--transition);
-        border: 1px solid #eee;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 0;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        opacity: 0.1;
-        transition: var(--transition);
-        z-index: -1;
-    }
-
-    .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-card:hover::before {
-        height: 100%;
-    }
-
-    .service-icon {
-        font-size: 3rem;
-        color: var(--primary);
-        margin-bottom: 1.5rem;
-        transition: var(--transition);
-    }
-
-    .service-card:hover .service-icon {
-        transform: scale(1.1);
-        color: var(--accent);
-    }
-
-    .service-card h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--primary);
-    }
-
-    /* ===== STATS SECTION ===== */
-    .stats {
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        color: var(--text-light);
-        padding: 5rem 0;
-        text-align: center;
-    }
-
-    .stats-container {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-
-    .stat-item {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .stat-number {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: var(--accent);
-        display: inline-block;
-    }
-
-    .stat-text {
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
-
-    /* ===== WHY US SECTION ===== */
-    .why-us {
-        background-color: var(--bg-light);
-    }
-
-    .why-us-content {
-        display: flex;
-        align-items: center;
-        gap: 50px;
-    }
-
-    .why-us-text {
-        flex: 1;
-    }
-
-    .why-us-image {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    .why-us-circle {
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        background-color: #fff;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-        position: relative;
-    }
-
-    .why-us-circle::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
-        border-radius: 50%;
-        border: 2px dashed var(--primary);
-        animation: rotate 30s linear infinite;
-    }
-
-    .circle-item {
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background-color: var(--primary);
-        border-radius: 50%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        color: var(--text-light);
-        font-weight: 600;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
-    }
-
-    .circle-item span {
-        display: block;
-        text-align: center;
-        padding: 0 10px;
-        line-height: 1.2;
-    }
-    
-
-    .circle-item:hover {
-        transform: scale(1.1);
-    }
-
-    .circle-item i {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .circle-item:nth-child(1) {
-        top: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #3498db;
-    }
-
-    .circle-item:nth-child(2) {
-        top: 50%;
-        right: -60px;
-        transform: translateY(-50%);
-        background-color: #e74c3c;
-    }
-
-    .circle-item:nth-child(3) {
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #2ecc71;
-    }
-
-    .circle-item:nth-child(4) {
-        top: 50%;
-        left: -60px;
-        transform: translateY(-50%);
-        background-color: #f39c12;
-    }
-
-    .circle-center {
-        text-align: center;
-    }
-
-    .circle-center p {
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--primary);
-    }
-
-    /* ===== TEAM SECTION ===== */
-    .team {
-        background-color: #fff;
-    }
-
-    .team-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 30px;
-    }
-
-    .team-member {
-        background-color: #fff;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        transition: var(--transition);
-        position: relative;
-    }
-
-    .team-member:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .team-member.active {
-        border: 3px solid var(--primary);
-    }
-
-    .member-image {
-        height: 300px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .member-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: var(--transition);
-    }
-
-    .team-member:hover .member-image img {
-        transform: scale(1.05);
-    }
-
-    .member-info {
-        padding: 1.5rem;
-        text-align: center;
-    }
-
-    .member-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        color: var(--primary);
-    }
-
-    .member-info p {
-        color: #666;
-        margin-bottom: 1rem;
-    }
-
-    .member-country {
-        display: inline-block;
-        background-color: var(--bg-light);
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-size: 0.9rem;
-        color: var(--primary);
-        margin-top: 0.5rem;
-    }
-
-    /* ===== EVENTS SECTION ===== */
-    .events {
-        background-color: var(--bg-light);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .events-container {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-    }
-
-    .event-card {
-        background-color: #fff;
-        border-radius: 15px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        display: flex;
-        transition: var(--transition);
-    }
-
-    .event-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .event-image {
-        flex: 1;
-        min-height: 300px;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .event-content {
-        flex: 1;
-        padding: 2rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .event-title {
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
-
-    .event-subtitle {
-        font-size: 1.5rem;
-        color: var(--accent);
-        margin-bottom: 1.5rem;
-    }
-
-    .event-details {
-        margin-bottom: 2rem;
-    }
-
-    .event-detail {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1rem;
-    }
-
-    .event-detail i {
-        font-size: 1.5rem;
-        color: var(--primary);
-        margin-right: 1rem;
-        width: 30px;
-        text-align: center;
-    }
-
-    .event-buttons {
-        display: flex;
-        gap: 15px;
-    }
-
-    /* ===== CONTACT SECTION ===== */
-    .contact {
-        background-color: #fff;
-    }
-
-    .contact-container {
-        display: flex;
-        gap: 50px;
-    }
-
-    .contact-info {
-        flex: 1;
-    }
-
-    .contact-form {
-        flex: 1;
-    }
-
-    .contact-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-item i {
-        font-size: 1.5rem;
-        color: var(--primary);
-        margin-right: 1rem;
-        width: 30px;
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    .form-control {
-        width: 100%;
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 1rem;
-        transition: var(--transition);
-    }
-
-    .form-control:focus {
-        border-color: var(--primary);
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(0, 153, 229, 0.2);
-    }
-
-    textarea.form-control {
-        min-height: 150px;
-        resize: vertical;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-        background-color: var(--primary);
-        color: var(--text-light);
-        padding: 4rem 0 2rem;
-        position: relative;
-    }
-
-    footer::before {
-        content: '';
-        position: absolute;
-        top: -50px;
-        left: 0;
-        width: 100%;
-        height: 100px;
-        background-color: #fff;
-        clip-path: polygon(0 0, 100% 0, 50% 100%);
-    }
-
-    .footer-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 30px;
-        margin-bottom: 3rem;
-    }
-
-    .footer-column {
-        flex: 1;
-        min-width: 200px;
-    }
-
-    .footer-column h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-        position: relative;
-        padding-bottom: 10px;
-    }
-
-    .footer-column h3::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 3px;
-        background-color: var(--accent);
-    }
-
-    .footer-links li {
-        margin-bottom: 10px;
-    }
-
-    .footer-links a {
-        color: rgba(255, 255, 255, 0.8);
-        transition: var(--transition);
-    }
-
-    .footer-links a:hover {
-        color: var(--text-light);
-        padding-left: 5px;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 1rem;
-    }
-
-    .social-links a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        color: var(--text-light);
-        transition: var(--transition);
-    }
-
-    .social-links a:hover {
-        background-color: var(--accent);
-        transform: translateY(-5px);
-    }
-
-    .copyright {
-        text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.8);
-    }
-
-    /* ===== ANIMATIONS ===== */
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-in.active {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .counter {
-        display: inline-block;
-    }
-
-    /* ===== RESPONSIVE STYLES ===== */
-    @media (max-width: 992px) {
-        .about-content, .why-us-content, .contact-container {
-            flex-direction: column;
-        }
-
-        .event-card {
-            flex-direction: column;
-        }
-
-        .event-image {
-            min-height: 200px;
-        }
-
-        .mission-vision-container {
-            flex-direction: column;
-        }
-
-        .why-us-circle {
-            width: 300px;
-            height: 300px;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-
-        .hero h2 {
-            font-size: 1.5rem;
-        }
-
-        .hero-buttons {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .mobile-toggle {
-            display: block;
-        }
-
-        .header-content {
-            justify-content: space-between;
-        }
-
-        nav {
-            position: fixed;
-            top: 90px;
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-            transition: var(--transition);
-            z-index: 999;
-            height: 0;
-            overflow: hidden;
-        }
-
-        nav.active {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-            height: auto;
-        }
-
-        nav ul {
-            flex-direction: column;
-            padding: 1rem 0;
-        }
-
-        nav ul li {
-            margin: 0;
-            text-align: center;
-            padding: 1rem 0;
-        }
-
-        .header-content .btn {
-            display: none;
-        }
-
-        .team-grid {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        }
-    }
-
-    @media (max-width: 576px) {
-        .section-title h2 {
-            font-size: 2rem;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-        }
-
-        .event-title {
-            font-size: 2rem;
-        }
-
-        .event-subtitle {
-            font-size: 1.2rem;
-        }
-
-        .why-us-circle {
-            width: 250px;
-            height: 250px;
-        }
-
-        .circle-item {
-            width: 80px;
-            height: 80px;
-            font-size: 0.8rem;
-        }
-
-        .circle-item i {
-            font-size: 1.5rem;
-        }
-    }
-</style>
+<link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 <!-- Header -->
-<header id="header">
-    <div class="container">
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-img">
-                    <img src="/static/Logo_TimișoaraMUN_blue.png" alt="MUN Timișoara Logo">
-                </div>
-                
-            </div>
-            <div class="mobile-toggle" id="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#home">Acasă</a></li>
-                    <li><a href="#about">Despre</a></li>
-                    <li><a href="#services">Comitete</a></li>
-                    <li><a href="#events">Evenimente</a></li>
-                    <li><a href="#team">Echipa</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <a href="#register" class="btn">Înregistrare</a>
-        </div>
-    </div>
-</header>
+{% include 'components/navbar.html' %}
+
 
 <!-- Hero Section -->
 <section class="hero" id="home">
@@ -1095,8 +19,8 @@
             <h1>Model United Nations Timișoara</h1>
             <h2>Bridging Ideas, Shaping Futures</h2>
             <div class="hero-buttons">
-                <a href="#register" class="btn">Înregistrează-te Acum</a>
-                <a href="#about" class="btn btn-outline">Află Mai Multe</a>
+                <a href="#register" class="btn">Register Now</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
             </div>
         </div>
     </div>
@@ -1106,16 +30,16 @@
 <section class="about" id="about">
     <div class="container">
         <div class="section-title">
-            <h2>Despre Noi</h2>
-            <p>Descoperă ce este MUN Timișoara și cum contribuim la dezvoltarea tinerilor lideri</p>
+            <h2>About Us</h2>
+            <p>Discover what MUN Timișoara is and how we contribute to the development of young leaders</p>
         </div>
         <div class="about-content">
             <div class="about-text fade-in">
-                <h2>Cine Suntem?</h2>
-                <p>MUN Timișoara este o conferință educațională care simulează activitatea Națiunilor Unite, oferind studenților oportunitatea de a înțelege diplomația internațională și relațiile globale.</p>
-                <p>Organizată de studenți pentru studenți, conferința noastră aduce împreună tineri pasionați de afaceri internaționale, politică globală și diplomație, creând un mediu propice pentru dezbateri constructive și networking.</p>
-                <p>Ne angajăm să formăm următoarea generație de lideri globali, oferindu-le participanților instrumentele necesare pentru a aborda provocările complexe ale lumii contemporane.</p>
-                <a href="#services" class="btn">Comitetele Noastre</a>
+                <h2>Who Are We?</h2>
+                <p>MUN Timișoara is an educational conference that simulates the activity of the United Nations, offering students the opportunity to understand international diplomacy and global relations.</p>
+                <p>Organized by students for students, our conference brings together young people passionate about international affairs, global politics, and diplomacy, creating a favorable environment for constructive debates and networking.</p>
+                <p>We are committed to shaping the next generation of global leaders by providing participants with the necessary tools to address the complex challenges of today’s world.</p>
+                <a href="#services" class="btn">Our Committees</a>
             </div>
             <div class="about-image fade-in">
                 <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="MUN Timișoara Conference">
@@ -1124,79 +48,144 @@
     </div>
 </section>
 
+
 <!-- Mission & Vision Section -->
 <section class="mission-vision">
     <div class="container">
         <div class="mission-vision-container">
             <div class="mission-box fade-in">
-                <h3><i class="fas fa-bullseye"></i> Misiunea Noastră</h3>
-                <p>MUN Timișoara se dedică promovării înțelegerii globale și dezvoltării abilităților de leadership prin facilitarea conversațiilor semnificative, oferirea de programe inovatoare de formare și crearea unui mediu care încurajează colaborarea și gândirea critică.</p>
-                <p>Ne propunem să inspirăm și să echipăm tinerii cu instrumentele necesare pentru a deveni lideri vizionari și agenți ai schimbării în comunitățile lor.</p>
+                <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                <p>MUN Timișoara is dedicated to promoting global understanding and developing leadership skills by facilitating meaningful conversations, offering innovative training programs, and creating an environment that encourages collaboration and critical thinking.</p>
+                <p>We aim to inspire and equip young people with the tools they need to become visionary leaders and agents of change in their communities.</p>
             </div>
             <div class="vision-box fade-in">
-                <h3><i class="fas fa-eye"></i> Viziunea Noastră</h3>
-                <p>Ne imaginăm o lume în care dialogul incluziv și leadership-ul transformator generează soluții echitabile la provocările globale, promovând pacea, progresul și prosperitatea pentru toți.</p>
-                <p>Aspirăm să devenim cea mai prestigioasă conferință Model United Nations din România, recunoscută pentru excelența academică și impactul pozitiv asupra participanților.</p>
+                <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                <p>We envision a world where inclusive dialogue and transformative leadership generate fair solutions to global challenges, promoting peace, progress, and prosperity for all.</p>
+                <p>We aspire to become the most prestigious Model United Nations conference in Romania, recognized for academic excellence and the positive impact on participants.</p>
+            </div>
+            <div class="vision-box fade-in">
+                <h3><i class="fas fa-eye"></i> What We Are Doing</h3>
+                <p>We envision a world where inclusive dialogue and transformative leadership generate fair solutions to global challenges, promoting peace, progress, and prosperity for all.</p>
+                <p>We aspire to become the most prestigious Model United Nations conference in Romania, recognized for academic excellence and the positive impact on participants.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CE FACEM --------============================= DE FACUT -->
 
-<!-- Services/Committees Section -->
-<section class="services" id="services">
+<!-- CE FACEM --------============================= DE FACUT am facut -->
+
+
+
+
+ <!-- Services/Committees Section -->
+ <section class="services" id="services">
     <div class="container">
         <div class="section-title">
-            <h2>Comitetele Noastre</h2>
-            <p>Explorează comitetele disponibile la MUN Timișoara și alege-l pe cel care te interesează</p>
+            <h2>Our Committees</h2>
+            <p>Explore the committees available at MUN Timișoara and choose the one that interests you</p>
         </div>
         <div class="services-grid">
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
-                <h3>Consiliul de Securitate</h3>
-                <p>Abordează probleme de securitate internațională și propune soluții pentru conflictele globale actuale. Acest comitet este potrivit pentru delegații cu experiență.</p>
+                <h3>Security Council</h3>
+                <p>Addresses international security issues and proposes solutions for current global conflicts. This committee is suitable for experienced delegates.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3>Adunarea Generală</h3>
-                <p>Discută probleme globale diverse, de la dezvoltare durabilă la drepturile omului și dezarmare. Ideal pentru delegații începători și intermediari.</p>
+                <h3>General Assembly</h3>
+                <p>Discusses a variety of global issues, from sustainable development to human rights and disarmament. Ideal for beginner and intermediate delegates.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-chart-line"></i>
                 </div>
-                <h3>Consiliul Economic și Social</h3>
-                <p>Abordează provocări economice, sociale și de mediu la nivel global și propune politici de dezvoltare durabilă.</p>
+                <h3>Economic and Social Council</h3>
+                <p>Addresses economic, social, and environmental challenges at the global level and proposes sustainable development policies.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-balance-scale"></i>
                 </div>
-                <h3>Consiliul pentru Drepturile Omului</h3>
-                <p>Promovează și protejează drepturile omului la nivel global, abordând încălcări și propunând mecanisme de protecție.</p>
+                <h3>Human Rights Council</h3>
+                <p>Promotes and protects human rights globally, addressing violations and proposing protection mechanisms.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-globe-europe"></i>
                 </div>
-                <h3>Comitetul de Criză</h3>
-                <p>Simulează situații de criză internațională care necesită răspunsuri rapide și strategice. Pentru delegați avansați.</p>
+                <h3>Crisis Committee</h3>
+                <p>Simulates international crisis situations requiring rapid and strategic responses. For advanced delegates.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
                     <i class="fas fa-leaf"></i>
                 </div>
-                <h3>Programul ONU pentru Mediu</h3>
-                <p>Abordează provocările de mediu, schimbările climatice și dezvoltarea de politici pentru un viitor sustenabil.</p>
+                <h3>UN Environment Programme</h3>
+                <p>Addresses environmental challenges, climate change, and the development of policies for a sustainable future.</p>
             </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h3>International Court of Justice</h3>
+                <p>Simulates international legal cases and delivers rulings based on international law. For students interested in international law.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-hand-holding-medical"></i>
+                </div>
+                <h3>World Health Organization</h3>
+                <p>Addresses global public health challenges and develops strategies to improve health systems worldwide.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-child"></i>
+                </div>
+                <h3>UNICEF</h3>
+                <p>Focuses on the rights and well-being of children worldwide, addressing issues such as education, health, and protection.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-atom"></i>
+                </div>
+                <h3>Disarmament Committee</h3>
+                <p>Discusses issues related to weapons of mass destruction, nuclear disarmament, and global arms control.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3>Legal Committee</h3>
+                <p>Analyzes legal aspects of international relations and contributes to the development and codification of international law.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>UNESCO</h3>
+                <p>Promotes international cooperation in education, science, culture, and communication to build global peace.</p>
+            </div>
+            <div class="service-card fade-in hidden-committee">
+                <div class="service-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <h3>FAO</h3>
+                <p>Addresses issues related to food security, sustainable agriculture, and combating global hunger.</p>
+            </div>
+        </div>
+        <div class="show-more-container">
+            <button id="show-more-committees" class="btn">Show more committees</button>
         </div>
     </div>
 </section>
+
+
+
 
 <!-- Stats Section -->
 <section class="stats">
@@ -1352,7 +341,6 @@
             
 </section>
 
-<!-- DE SCOS WORKSHOP PREGATITOR -->
 
 <!-- Contact Section -->
 <section class="contact" id="contact">
@@ -1483,403 +471,421 @@
 </section>
 
 <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>MUN Timișoara</h3>
-                <p>Bridging Ideas, Shaping Futures</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-column">
-                <h3>Link-uri Rapide</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Acasă</a></li>
-                    <li><a href="#about">Despre</a></li>
-                    <li><a href="#services">Comitete</a></li>
-                    <li><a href="#events">Evenimente</a></li>
-                    <li><a href="#team">Echipa</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Resurse</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Ghid pentru Delegați</a></li>
-                    <li><a href="#">Reguli de Procedură</a></li>
-                    <li><a href="#">Position Paper Template</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h3>Contact</h3>
-                <ul class="footer-links">
-                    <li><i class="fas fa-envelope"></i> contact@timisoara-mun.ro</li>
-                    <li><i class="fas fa-phone"></i> +40 123 456 789</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Timișoara, România</li>
-                </ul>
-            </div>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2025 MUN Timișoara. Toate drepturile rezervate.</p>
-        </div>
-    </div>
-</footer>
+{% include 'components/footer.html'%}
 
 <script>// Mobile Navigation Toggle
-    const mobileToggle = document.getElementById("mobile-toggle")
-    const nav = document.getElementById("nav")
+const mobileToggle = document.getElementById("mobile-toggle")
+const nav = document.getElementById("nav")
+
+mobileToggle.addEventListener("click", () => {
+  nav.classList.toggle("active")
+  mobileToggle.classList.toggle("active")
+})
+
+// Dropdown Toggle
+const dropdownToggles = document.querySelectorAll('.dropdown-toggle')
+
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault()
     
-    mobileToggle.addEventListener("click", () => {
-      nav.classList.toggle("active")
-      mobileToggle.classList.toggle("active")
-    })
-    
-    // Sticky Header
-    const header = document.getElementById("header")
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        header.classList.add("scrolled")
-      } else {
-        header.classList.remove("scrolled")
+    // Close all other dropdowns
+    const allDropdownParents = document.querySelectorAll('nav ul li')
+    allDropdownParents.forEach(item => {
+      if (item !== this.parentElement) {
+        item.classList.remove('dropdown-active')
       }
     })
     
-    // Fade In Animation
-    const fadeElements = document.querySelectorAll(".fade-in")
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active")
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    
-    fadeElements.forEach((element) => {
-      observer.observe(element)
+    // Toggle current dropdown
+    this.parentElement.classList.toggle('dropdown-active')
+  })
+})
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('nav ul li')) {
+    document.querySelectorAll('nav ul li').forEach(item => {
+      item.classList.remove('dropdown-active')
     })
-    
-    // Counter Animation
-    function animateCounter(el) {
-      const target = Number.parseInt(el.getAttribute("data-count"))
-      const duration = 2000
-      const stepTime = 50
-      const steps = duration / stepTime
-      const increment = target / steps
-      let current = 0
-    
-      const timer = setInterval(() => {
-        current += increment
-        if (current >= target) {
-          current = target
-          clearInterval(timer)
-        }
-        el.textContent = Math.round(current)
-      }, stepTime)
-    }
-    
-    // Start counter animation when stats section is visible
-    const statNumbers = document.querySelectorAll(".stat-number")
-    const statsObserver = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          statNumbers.forEach((counter) => {
-            animateCounter(counter)
-          })
-          statsObserver.unobserve(entries[0].target)
-        }
-      },
-      { threshold: 0.5 },
-    )
-    
-    const statsSection = document.querySelector(".stats")
-    if (statsSection) {
-      statsObserver.observe(statsSection)
-    }
-    
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault()
-    
-        const targetId = this.getAttribute("href")
-        if (targetId === "#") return
-    
-        const targetElement = document.querySelector(targetId)
-        if (targetElement) {
-          // Close mobile menu if open
-          if (nav.classList.contains("active")) {
-            nav.classList.remove("active")
-            mobileToggle.classList.remove("active")
-          }
-    
-          window.scrollTo({
-            top: targetElement.offsetTop - header.offsetHeight,
-            behavior: "smooth",
-          })
-        }
-      })
+  }
+})
+
+// Sticky Header
+const header = document.getElementById("header")
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 100) {
+    header.classList.add("scrolled")
+  } else {
+    header.classList.remove("scrolled")
+  }
+})
+
+// Fade In Animation
+const fadeElements = document.querySelectorAll(".fade-in")
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active")
+      }
     })
-    
-    // Form submission handling
-    const contactForm = document.getElementById("contactForm")
-    if (contactForm) {
-      contactForm.addEventListener("submit", function (e) {
-        e.preventDefault()
-    
-        // Get form data
-        const formData = new FormData(this)
-        const formValues = Object.fromEntries(formData.entries())
-    
-        // Show submission feedback (you would normally send this data to a server)
-        alert("Mesajul tău a fost trimis! Te vom contacta în curând.")
-        this.reset()
+  },
+  { threshold: 0.1 },
+)
+
+fadeElements.forEach((element) => {
+  observer.observe(element)
+})
+
+// Counter Animation
+function animateCounter(el) {
+  const target = Number.parseInt(el.getAttribute("data-count"))
+  const duration = 2000
+  const stepTime = 50
+  const steps = duration / stepTime
+  const increment = target / steps
+  let current = 0
+
+  const timer = setInterval(() => {
+    current += increment
+    if (current >= target) {
+      current = target
+      clearInterval(timer)
+    }
+    el.textContent = Math.round(current)
+  }, stepTime)
+}
+
+// Start counter animation when stats section is visible
+const statNumbers = document.querySelectorAll(".stat-number")
+const statsObserver = new IntersectionObserver(
+  (entries) => {
+    if (entries[0].isIntersecting) {
+      statNumbers.forEach((counter) => {
+        animateCounter(counter)
+      })
+      statsObserver.unobserve(entries[0].target)
+    }
+  },
+  { threshold: 0.5 },
+)
+
+const statsSection = document.querySelector(".stats")
+if (statsSection) {
+  statsObserver.observe(statsSection)
+}
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+
+    const targetId = this.getAttribute("href")
+    if (targetId === "#") return
+
+    const targetElement = document.querySelector(targetId)
+    if (targetElement) {
+      // Close mobile menu if open
+      if (nav.classList.contains("active")) {
+        nav.classList.remove("active")
+        mobileToggle.classList.remove("active")
+      }
+
+      window.scrollTo({
+        top: targetElement.offsetTop - header.offsetHeight,
+        behavior: "smooth",
       })
     }
-    
-    const registerForm = document.getElementById("registerForm")
-    if (registerForm) {
-      registerForm.addEventListener("submit", function (e) {
-        e.preventDefault()
-    
-        // Get form data
-        const formData = new FormData(this)
-        const formValues = Object.fromEntries(formData.entries())
-    
-        // Show submission feedback (you would normally send this data to a server)
-        alert("Înregistrarea ta a fost primită! Vei primi un email de confirmare în curând.")
-        this.reset()
-      })
+  })
+})
+
+// Form submission handling
+const contactForm = document.getElementById("contactForm")
+if (contactForm) {
+  contactForm.addEventListener("submit", function (e) {
+    e.preventDefault()
+
+    // Get form data
+    const formData = new FormData(this)
+    const formValues = Object.fromEntries(formData.entries())
+
+    // Show submission feedback (you would normally send this data to a server)
+    alert("Mesajul tău a fost trimis! Te vom contacta în curând.")
+    this.reset()
+  })
+}
+
+const registerForm = document.getElementById("registerForm")
+if (registerForm) {
+  registerForm.addEventListener("submit", function (e) {
+    e.preventDefault()
+
+    // Get form data
+    const formData = new FormData(this)
+    const formValues = Object.fromEntries(formData.entries())
+
+    // Show submission feedback (you would normally send this data to a server)
+    alert("Înregistrarea ta a fost primită! Vei primi un email de confirmare în curând.")
+    this.reset()
+  })
+}
+
+// Active navigation highlighting
+function highlightCurrentSection() {
+  const sections = document.querySelectorAll("section")
+  const navLinks = document.querySelectorAll("nav ul li a")
+
+  let currentSection = ""
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - header.offsetHeight - 100
+    const sectionHeight = section.offsetHeight
+    const sectionId = section.getAttribute("id")
+
+    if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+      currentSection = sectionId
     }
-    
-    // Active navigation highlighting
-    function highlightCurrentSection() {
-      const sections = document.querySelectorAll("section")
-      const navLinks = document.querySelectorAll("nav ul li a")
-    
-      let currentSection = ""
-    
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop - header.offsetHeight - 100
-        const sectionHeight = section.offsetHeight
-        const sectionId = section.getAttribute("id")
-    
-        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-          currentSection = sectionId
-        }
-      })
-    
-      navLinks.forEach((link) => {
-        link.classList.remove("active")
-        if (link.getAttribute("href") === `#${currentSection}`) {
-          link.classList.add("active")
-        }
-      })
+  })
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active")
+    if (link.getAttribute("href") === `#${currentSection}`) {
+      link.classList.add("active")
     }
-    
-    window.addEventListener("scroll", highlightCurrentSection)
-    window.addEventListener("load", highlightCurrentSection)
-    
-    // Add CSS for active nav links
-    const style = document.createElement("style")
-    style.textContent = `
-        nav ul li a.active {
-            color: var(--primary);
-        }
-        nav ul li a.active::after {
-            width: 100%;
-        }
-    `
-    document.head.appendChild(style)
-    
-    // Testimonial carousel (if you want to add testimonials later)
-    class Carousel {
-      constructor(element) {
-        this.element = element
-        this.items = element.querySelectorAll(".carousel-item")
-        this.totalItems = this.items.length
-        this.currentIndex = 0
-    
-        // Create navigation dots
-        this.createDots()
-    
-        // Set initial active item
+  })
+}
+
+window.addEventListener("scroll", highlightCurrentSection)
+window.addEventListener("load", highlightCurrentSection)
+
+// Add CSS for active nav links
+const style = document.createElement("style")
+style.textContent = `
+    nav ul li a.active {
+        color: var(--primary);
+    }
+    nav ul li a.active::after {
+        width: 100%;
+    }
+`
+document.head.appendChild(style)
+
+// Testimonial carousel (if you want to add testimonials later)
+class Carousel {
+  constructor(element) {
+    this.element = element
+    this.items = element.querySelectorAll(".carousel-item")
+    this.totalItems = this.items.length
+    this.currentIndex = 0
+
+    // Create navigation dots
+    this.createDots()
+
+    // Set initial active item
+    this.setActiveItem()
+
+    // Create navigation buttons
+    this.createNavButtons()
+  }
+
+  createDots() {
+    const dotsContainer = document.createElement("div")
+    dotsContainer.className = "carousel-dots"
+
+    for (let i = 0; i < this.totalItems; i++) {
+      const dot = document.createElement("span")
+      dot.className = "carousel-dot"
+      dot.addEventListener("click", () => {
+        this.currentIndex = i
         this.setActiveItem()
-    
-        // Create navigation buttons
-        this.createNavButtons()
+      })
+      dotsContainer.appendChild(dot)
+    }
+
+    this.element.appendChild(dotsContainer)
+    this.dots = dotsContainer.querySelectorAll(".carousel-dot")
+  }
+
+  createNavButtons() {
+    const prevButton = document.createElement("button")
+    prevButton.className = "carousel-nav carousel-prev"
+    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>'
+    prevButton.addEventListener("click", () => this.prev())
+
+    const nextButton = document.createElement("button")
+    nextButton.className = "carousel-nav carousel-next"
+    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>'
+    nextButton.addEventListener("click", () => this.next())
+
+    this.element.appendChild(prevButton)
+    this.element.appendChild(nextButton)
+  }
+
+  setActiveItem() {
+    // Update items
+    this.items.forEach((item, index) => {
+      item.classList.remove("active")
+      if (index === this.currentIndex) {
+        item.classList.add("active")
       }
-    
-      createDots() {
-        const dotsContainer = document.createElement("div")
-        dotsContainer.className = "carousel-dots"
-    
-        for (let i = 0; i < this.totalItems; i++) {
-          const dot = document.createElement("span")
-          dot.className = "carousel-dot"
-          dot.addEventListener("click", () => {
-            this.currentIndex = i
-            this.setActiveItem()
-          })
-          dotsContainer.appendChild(dot)
-        }
-    
-        this.element.appendChild(dotsContainer)
-        this.dots = dotsContainer.querySelectorAll(".carousel-dot")
+    })
+
+    // Update dots
+    this.dots.forEach((dot, index) => {
+      dot.classList.remove("active")
+      if (index === this.currentIndex) {
+        dot.classList.add("active")
       }
-    
-      createNavButtons() {
-        const prevButton = document.createElement("button")
-        prevButton.className = "carousel-nav carousel-prev"
-        prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>'
-        prevButton.addEventListener("click", () => this.prev())
-    
-        const nextButton = document.createElement("button")
-        nextButton.className = "carousel-nav carousel-next"
-        nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>'
-        nextButton.addEventListener("click", () => this.next())
-    
-        this.element.appendChild(prevButton)
-        this.element.appendChild(nextButton)
-      }
-    
-      setActiveItem() {
-        // Update items
-        this.items.forEach((item, index) => {
-          item.classList.remove("active")
-          if (index === this.currentIndex) {
-            item.classList.add("active")
-          }
-        })
-    
-        // Update dots
-        this.dots.forEach((dot, index) => {
-          dot.classList.remove("active")
-          if (index === this.currentIndex) {
-            dot.classList.add("active")
-          }
-        })
-      }
-    
-      next() {
-        this.currentIndex = (this.currentIndex + 1) % this.totalItems
-        this.setActiveItem()
-      }
-    
-      prev() {
-        this.currentIndex = (this.currentIndex - 1 + this.totalItems) % this.totalItems
-        this.setActiveItem()
-      }
+    })
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.totalItems
+    this.setActiveItem()
+  }
+
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.totalItems) % this.totalItems
+    this.setActiveItem()
+  }
+}
+
+// Initialize carousels if they exist
+document.querySelectorAll(".carousel").forEach((carouselElement) => {
+  new Carousel(carouselElement)
+})
+
+// Add CSS for carousel
+const carouselStyle = document.createElement("style")
+carouselStyle.textContent = `
+    .carousel {
+        position: relative;
+        overflow: hidden;
     }
     
-    // Initialize carousels if they exist
-    document.querySelectorAll(".carousel").forEach((carouselElement) => {
-      new Carousel(carouselElement)
-    })
-    
-    // Add CSS for carousel
-    const carouselStyle = document.createElement("style")
-    carouselStyle.textContent = `
-        .carousel {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .carousel-item {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .carousel-item.active {
-            display: block;
-        }
-        
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #ddd;
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        
-        .carousel-dot.active {
-            background-color: var(--primary);
-        }
-        
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-nav:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .carousel-prev {
-            left: 10px;
-        }
-        
-        .carousel-next {
-            right: 10px;
-        }
-    `
-    document.head.appendChild(carouselStyle)
-    
-    // Add animation for page load
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded")
-    })
-    
-    // Add CSS for page load animation
-    const loadStyle = document.createElement("style")
-    loadStyle.textContent = `
-        body {
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-    `
-    document.head.appendChild(loadStyle)
-    
-    // Add year to copyright automatically
-    const copyrightYear = document.querySelector(".copyright p")
-    if (copyrightYear) {
-      const currentYear = new Date().getFullYear()
-      copyrightYear.textContent = copyrightYear.textContent.replace("2025", currentYear)
+    .carousel-item {
+        display: none;
+        animation: fadeIn 0.5s ease;
     }
-    </script>
+    
+    .carousel-item.active {
+        display: block;
+    }
+    
+    .carousel-dots {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    
+    .carousel-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ddd;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+    .carousel-dot.active {
+        background-color: var(--primary);
+    }
+    
+    .carousel-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.8);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+    
+    .carousel-nav:hover {
+        background-color: var(--primary);
+        color: white;
+    }
+    
+    .carousel-prev {
+        left: 10px;
+    }
+    
+    .carousel-next {
+        right: 10px;
+    }
+`
+document.head.appendChild(carouselStyle)
+
+// Add animation for page load
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded")
+})
+
+// Add CSS for page load animation
+const loadStyle = document.createElement("style")
+loadStyle.textContent = `
+    body {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+    
+    body.loaded {
+        opacity: 1;
+    }
+`
+document.head.appendChild(loadStyle)
+
+// Add year to copyright automatically
+const copyrightYear = document.querySelector(".copyright p")
+if (copyrightYear) {
+  const currentYear = new Date().getFullYear()
+  copyrightYear.textContent = copyrightYear.textContent.replace("2025", currentYear)
+}
+
+const showMoreButton = document.getElementById('show-more-committees')
+const hiddenCommittees = document.querySelectorAll('.hidden-committee')
+
+if (showMoreButton) {
+  showMoreButton.addEventListener('click', function() {
+    // Toggle visibility of hidden committees
+    hiddenCommittees.forEach(committee => {
+      committee.classList.toggle('hidden-committee')
+    })
+    
+    // Change button text based on current state
+    if (this.textContent === 'Show more committees') {
+      this.textContent = 'Show fewer committees'
+    } else {
+      this.textContent = 'Show more committees'
+      
+      // Scroll back to committees section when hiding
+      const committeesSection = document.getElementById('services')
+      if (committeesSection) {
+        window.scrollTo({
+          top: committeesSection.offsetTop - header.offsetHeight,
+          behavior: 'smooth'
+        })
+      }
+      
+      // Re-hide the committees
+      hiddenCommittees.forEach(committee => {
+        committee.classList.add('hidden-committee')
+      })
+    }
+  })
+}
+
+
+</script>
 </body>
 </html>

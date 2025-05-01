@@ -11,7 +11,13 @@ def home():
 
 @app.route('/home')
 def test():
-    return render_template('altapagina.html')
+    return render_template('zaltapagina.html')
+
+
+@app.route("/comitete")
+def comitete():
+    return render_template("comitete.html")
+
 
 @app.route('/loginstaffmuntm')
 def loginstaff():
