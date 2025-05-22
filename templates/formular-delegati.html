@@ -705,54 +705,52 @@
                         </div>
                     </div>
 
-                    <form id="registrationForm">
-                        <!-- Personal Information Section -->
+                    <form id="registrationForm" method="POST" action="/send_mail">
+                          <!-- Personal Information Section -->
                         <div class="form-section">
                             <h3>Personal Information</h3>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName" class="required">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" required>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName" class="required">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" required>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="email" class="required">Email Address</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="required">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="dateOfBirth" class="required">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dateOfBirth" required>
+                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nationality" class="required">Nationality</label>
-                                    <input type="text" class="form-control" id="nationality" required>
+                                    <input type="text" class="form-control" id="nationality" name="nationality" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <textarea class="form-control" id="address" rows="3"></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
                             </div>
                         </div>
-
                         
-
                         <!-- Additional Information Section -->
                         <div class="form-section">
                             <h3>Additional Information</h3>
                             <div class="form-group">
                                 <label for="hearAbout">How did you hear about MUN Timișoara?</label>
-                                <select class="form-control" id="hearAbout">
+                                <select class="form-control" id="hearAbout" name="hearAbout">
                                     <option value="">Select Option</option>
                                     <option value="social">Social Media</option>
                                     <option value="friend">Friend/Colleague</option>
@@ -764,23 +762,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="motivation">Why do you want to participate in MUN Timișoara? (optional)</label>
-                                <textarea class="form-control" id="motivation" rows="3"></textarea>
+                                <textarea class="form-control" id="motivation" name="motivation" rows="3"></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="termsConditions" required>
+                                    <input type="checkbox" id="termsConditions" name="termsConditions" required>
                                     <label for="termsConditions" class="required">I have read and agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a></label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="photoConsent">
+                                    <input type="checkbox" id="photoConsent" name="photoConsent">
                                     <label for="photoConsent">I consent to the use of photographs and videos taken during the conference for promotional purposes</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="newsletter">
+                                    <input type="checkbox" id="newsletter" name="newsletter">
                                     <label for="newsletter">I would like to receive updates about future MUN events and opportunities</label>
                                 </div>
                             </div>
@@ -790,6 +788,7 @@
                             <button type="submit" class="btn">Submit Registration</button>
                         </div>
                     </form>
+
                 </div>
 
                 <div class="registration-sidebar">
@@ -925,17 +924,7 @@
                 }
             });
             
-            if (isValid) {
-                // Here you would normally submit the form or process the data
-                alert('Registration submitted successfully! You will receive a confirmation email shortly.');
-                // registrationForm.submit();
-            } else {
-                // Scroll to the first error
-                const firstError = registrationForm.querySelector('.is-invalid');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
+            
         });
         
         // Clear validation errors when field is changed
