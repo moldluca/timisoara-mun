@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - TimișoaraMUN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static/faq.css">
+</head>
+<body>
+    <!-- Header/Navbar -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Hero Section -->
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>FAQ – Timișoara Model United Nations 2025</h2>
+                <p>Frequently Asked Questions – Inaugural Edition</p>
+            </div>
+
+            <div class="faq-categories">
+                <button class="category-btn active" data-category="general">About the Conference</button>
+                <button class="category-btn" data-category="registration">Participation</button>
+                <button class="category-btn" data-category="conference">General</button>
+                <button class="category-btn" data-category="preparation">Contact</button>
+            </div>
+
+            <div class="faq-container">
+                <!-- General Information -->
+                <div class="faq-category active" id="general">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What is Timișoara MUN?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Timișoara Model United Nations is an academic simulation of the United Nations organized in Timișoara by a highly trained team of young people passionate about education, diplomacy, and civic engagement. The event aims to provide a realistic, formative, and inclusive experience for high school and university students.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>When and where will the conference take place?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The conference will be held in Timișoara from August 18 to 20, 2025, across several representative venues in the city. Exact locations will be communicated to the selected participants..</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is accommodation and transport provided??</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p> No. Participants must arrange their own accommodation and transport. Organizers will provide logistical information and recommendations after confirmation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are meals provided?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. All selected participants will receive meals provided by the organizers during the conference.</p>
+                            <!-- <ul>
+                                <li>Dezvoltarea abilităților de dezbatere și negociere</li>
+                                <li>Îmbunătățirea cunoștințelor despre afaceri internaționale și diplomație</li>
+                                <li>Networking cu studenți și profesioniști din întreaga lume</li>
+                                <li>Dezvoltarea gândirii critice și a abilităților de rezolvare a problemelor</li>
+                                <li>Obținerea unui certificat de participare recunoscut internațional</li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Registration -->
+                <div class="faq-category" id="registration">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What roles are available at the conference?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <ul>
+                                <li>Delegate – representing the position of a state within a UN committee.</li>
+                                <li>Chairperson – moderates debates, guides delegates, and ensures smooth committee sessions.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Registration and Selection</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <!-- <p>Taxa de participare pentru TimișoaraMUN este de 150 RON și include:</p> -->
+                            <ul>
+                                <li>Chairperson applications: available starting June 6, 2025</li>
+                                <li>Delegate applications: available starting June 28, 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>What are the deadlines?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                           <ul>
+                                <li>Chairpersons: June 30, 2025</li>
+                                <li>Delegates: July 25, 2025</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>How is the selection process conducted?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>All applications will be carefully reviewed by the organizing team.
+ ➡️ Only selected candidates will receive an official confirmation email, including the conference agenda.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Conference -->
+                <div class="faq-category" id="conference">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Fees and Scholarships</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Is there a participation fee? Yes. Participation as a delegate requires an administrative fee, which will be announced soon.➡️ Chairpersons do NOT pay any participation fee.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are scholarships available?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. The General Secretariat will launch a call for 20 scholarships aimed at covering the participation fee for delegates. Scholarships will be awarded based on motivation, academic merit, and/or financial need. Details on the application process will be announced shortly.</p>
+                            <!-- <ul>
+                                <li><strong>Ziua 1:</strong> Ceremonia de deschidere, prima sesiune de comitet</li>
+                                <li><strong>Ziua 2:</strong> Sesiuni de comitet, eveniment social</li>
+                                <li><strong>Ziua 3:</strong> Sesiuni finale de comitet, ceremonia de închidere și premierea</li>
+                            </ul>
+                            <p>Un program detaliat va fi trimis tuturor participanților înregistrați cu două săptămâni înainte de conferință.</p> -->
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Is accommodation and transport provided?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>No. Participants must arrange their own accommodation and transport. Organizers will provide logistical information and recommendations after confirmation.p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Are meals provided?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. All selected participants will receive meals provided by the organizers during the conference.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>When will we receive the full program?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The detailed agenda will be sent to all selected participants after the selection period ends.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Will preparation materials be provided?</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes. Preparation materials such as procedural guides, committee descriptions, and research recommendations will be made available according to the participant’s role (delegate or chairperson).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preparation -->
+                <div class="faq-category" id="preparation">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Questions about delegate applications:</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <!-- <p>Pentru a vă pregăti pentru TimișoaraMUN, vă recomandăm:</p> -->
+                            <ul>
+                                <li>delegate.registration@timisoara-mun.ro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Questions about chairperson applications:</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <!-- <p>Pentru a vă pregăti pentru TimișoaraMUN, vă recomandăm:</p> -->
+                            <ul>
+                                <li>chairperson.registration@timisoara-mun.ro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <h3>Technical questions (forms, accessibility):</h3>
+                            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                        </div>
+                        <div class="faq-answer">
+                            <!-- <p>Pentru a vă pregăti pentru TimișoaraMUN, vă recomandăm:</p> -->
+                            <ul>
+                                <li>erol@timisoara-mun.ro</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with FAQ-specific message -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Any other questions?</h2>
+                <!-- <p>Nu ai găsit răspunsul la întrebarea ta? Contactează-ne și îți vom răspunde cât mai curând posibil.</p> -->
+            </div>
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>contact@timisoara-mun.ro</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefon</h3>
+                            <p>+40 123 456 789</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Adresă</h3>
+                            <p>Universitatea de Vest, Bd. Vasile Pârvan 4, Timișoara, România</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Question" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+    <script>
+        // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade in animation for elements
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        },
+        { threshold: 0.1 }
+    );
+
+    fadeElements.forEach((element) => {
+        observer.observe(element);
+    });
+
+    // FAQ Category Tabs
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const faqCategories = document.querySelectorAll('.faq-category');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Hide all FAQ categories
+            faqCategories.forEach(category => category.classList.remove('active'));
+            
+            // Show the selected category
+            const categoryId = button.getAttribute('data-category');
+            document.getElementById(categoryId).classList.add('active');
+        });
+    });
+
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Toggle active class on clicked item
+            item.classList.toggle('active');
+            
+            // Optional: Close other items when one is opened
+            // Uncomment the following code if you want only one FAQ item open at a time
+            /*
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            */
+        });
+    });
+
+    // Form submission handling
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const formValues = Object.fromEntries(formData.entries());
+            
+            // Show submission feedback (you would normally send this data to a server)
+            alert("Întrebarea ta a fost trimisă! Te vom contacta în curând cu un răspuns.");
+            this.reset();
+        });
+    }
+});
+    </script>
+    <!-- <script src="scripts.js"></script> -->
+    <!-- <script src="faq.js"></script> -->
+</body>
+</html>

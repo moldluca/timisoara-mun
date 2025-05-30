@@ -63,6 +63,7 @@
     text-align: center;
   }
   
+  
   .btn:hover {
     background-color: var(--primary-dark);
     transform: translateY(-3px);
@@ -533,8 +534,9 @@
   
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
+    justify-content: center;
   }
   
   .team-member {
@@ -561,7 +563,14 @@
     position: relative;
   }
   
+  .logo-centered {
+   object-fit: contain;
+   object-position: center;
+   padding: 15px; /* ajustează după cum vrei */
+  } 
+
   .member-image img {
+    
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -598,6 +607,8 @@
     margin-top: 0.5rem;
   }
   
+
+
   /* ===== EVENTS SECTION ===== */
   .events {
     background-color: var(--bg-light);

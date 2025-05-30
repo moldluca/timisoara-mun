@@ -276,11 +276,11 @@
                 <div class="footer-column">
                     <h3>Link-uri Rapide</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Acasă</a></li>
-                        <li><a href="#about">Despre</a></li>
-                        <li><a href="#services">Comitete</a></li>
-                        <li><a href="#events">Evenimente</a></li>
-                        <li><a href="#team">Echipa</a></li>
+                        <li><a href="{{url_for('home')}}">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Committees</a></li>
+                        <!-- <li><a href="#events">Evenimente</a></li> -->
+                        <li><a href="#team">Team</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -290,7 +290,7 @@
                         <li><a href="#">Ghid pentru Delegați</a></li>
                         <li><a href="#">Reguli de Procedură</a></li>
                         <li><a href="#">Position Paper Template</a></li>
-                        <li><a href="#">FAQ</a></li>
+                        <li><a href="{{url_for('faq')}}">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -303,7 +303,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 MUN Timișoara. Toate drepturile rezervate.</p>
+                <p>&copy; 2025 Timisoara</p>
             </div>
         </div>
     </footer>

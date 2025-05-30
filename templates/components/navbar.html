@@ -272,22 +272,24 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
+                  <a href="{{url_for('home')}}">
                     <div class="logo-img">
-                        <img src="/static/img/Logo_TimișoaraMUN_blue.png" alt="MUN Timișoara Logo">
+                        <img src="/static/img/logoV.png" alt="MUN Timișoara Logo">
                     </div>
+                  </a>
                 </div>
                 <div class="mobile-toggle" id="mobile-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
                 <nav id="nav">
                     <ul>
-                        <li><a href="">Home</a></li>
+                        <li><a href="{{url_for('home')}}">Home</a></li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">About Us</a>
                             <ul class="dropdown">
                                 <li><a href="">TimișoaraMUN Observers</a></li>
                                 <li><a href="">History</a></li>
-                                <li><a href="">Who We</a></li>
+                                <li><a href="">Who Are We</a></li>
                             </ul>
                         </li>
                         <li>
@@ -296,23 +298,22 @@
                                 <li><a href="">Conference</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Blog</a></li>
+                        <li><a href="{{url_for('faq')}}">FAQ</a></li>
                         <li><a href="">Rules of Procedure</a></li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Committees</a>
                             <ul class="dropdown">
-                                <li><a href="">ICJ</a></li>
-                                <li><a href="">UNSC</a></li>
-                                <li><a href="">UNECO</a></li>
-                                <li><a href="">UNHRC</a></li>
-                                <li><a href="">ECOFIN</a></li>
-                                <li><a href="">UNHCR</a></li>
-                                <!-- <li><a href="">Committee 14</a></li> -->
-                            </ul>
+                              <li><a href="/committees/ICJ">ICJ</a></li>
+                              <li><a href="/committees/UNSC">UNSC</a></li>
+                              <li><a href="/committees/UNHRC">UNHRC</a></li>
+                              <li><a href="/committees/ECOFIN">ECOFIN</a></li>
+                              <li><a href="/committees/SOCHUM">SOCHUM</a></li>
+                              <li><a href="/committees/WHO">WHO</a></li>
+                          </ul>
                         </li>
                     </ul>
                 </nav>
-                <a href="#register" class="btn">Register Now</a>
+                <a href="{{url_for('chairmen')}}" class="btn">Register now as a chairman</a>
             </div>
         </div>
     </header>

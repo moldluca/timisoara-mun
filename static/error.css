@@ -1,0 +1,419 @@
+/* Error Page Specific Styles */
+.error-section {
+    background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%);
+    min-height: 100vh;
+    margin-top: 95px;
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.error-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 4rem;
+}
+
+.error-visual {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.error-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.error-number .four {
+    animation: bounce 2s infinite;
+}
+
+.error-number .zero {
+    color: var(--accent);
+    animation: spin 3s linear infinite;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-number .zero i {
+    font-size: 4rem;
+}
+
+.error-animation {
+    position: relative;
+    height: 200px;
+}
+
+.floating-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.floating-icon {
+    position: absolute;
+    font-size: 2rem;
+    color: var(--secondary);
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
+}
+
+.floating-icon:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.floating-icon:nth-child(2) {
+    top: 60%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.floating-icon:nth-child(3) {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: 2s;
+}
+
+.floating-icon:nth-child(4) {
+    top: 10%;
+    right: 30%;
+    animation-delay: 3s;
+}
+
+.error-text {
+    flex: 1;
+}
+
+.error-text h1 {
+    font-size: 3rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.error-message {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.error-suggestions {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid var(--accent);
+}
+
+.error-suggestions h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.error-suggestions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.error-suggestions ul li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.error-suggestions ul li i {
+    color: var(--accent);
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+/* Search Section */
+.error-search {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.error-search h3 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.search-container {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+}
+
+.search-btn {
+    background-color: var(--primary);
+    color: var(--text-light);
+    border: none;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Quick Links */
+.quick-links {
+    margin-bottom: 3rem;
+}
+
+.quick-links h3 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.quick-link-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+    border: 2px solid transparent;
+}
+
+.quick-link-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.link-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    transition: var(--transition);
+}
+
+.quick-link-card:hover .link-icon {
+    background-color: var(--accent);
+    transform: scale(1.1);
+}
+
+.link-icon i {
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.quick-link-card h4 {
+    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.quick-link-card p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Help Section */
+.error-help {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.help-content {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    gap: 30px;
+}
+
+.help-text {
+    flex: 1;
+}
+
+.help-text h3 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.help-text p {
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.help-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+}
+
+.contact-item i {
+    margin-right: 10px;
+    width: 20px;
+}
+
+.help-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+    .error-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .error-number {
+        font-size: 6rem;
+    }
+    
+    .error-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .help-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .help-actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .error-number {
+        font-size: 4rem;
+    }
+    
+    .error-text h1 {
+        font-size: 2rem;
+    }
+    
+    .error-message {
+        font-size: 1rem;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .help-actions {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    
+    .search-input {
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .search-btn {
+        border-radius: 0 0 10px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .error-section {
+        padding: 1rem 0;
+    }
+    
+    .error-number {
+        font-size: 3rem;
+    }
+    
+    .error-number .zero i {
+        font-size: 2rem;
+    }
+    
+    .floating-icon {
+        font-size: 1.5rem;
+    }
+}

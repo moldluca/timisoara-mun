@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delegate Registration - MUN Timișoara</title>
+    <title>Chairmen Registration - MUN Timișoara</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/error.css">
+
     <style>
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -690,7 +692,7 @@
     <!-- Registration Hero Section -->
     <section class="registration-hero">
         <div class="registration-hero-content">
-            <h1>Delegate Registration</h1>
+            <h1>Chairmen Registration</h1>
             <p>Join us at MUN Timișoara 2025 and be part of an unforgettable experience</p>
         </div>
     </section>
@@ -799,7 +801,7 @@
                                 <i class="fas fa-calendar-alt"></i>
                                 <div>
                                     <strong>Registration Deadline:</strong>
-                                    <p>February 15, 2025</p>
+                                    <p>June 30, 2025</p>
                                 </div>
                             </li>
                             
@@ -807,11 +809,11 @@
                                 <i class="fas fa-user-graduate"></i>
                                 <div>
                                     <strong>Eligibility:</strong>
-                                    <p>University students and high school students (minimum age 16)</p>
+                                    <p>University students, high school and middle school students (minimum age 14)</p>
                                 </div>
                             </li>
                         </ul>
-                        <a href="faq.html" class="btn btn-outline" style="width: 100%;">Frequently Asked Questions</a>
+                        <a href="{{url_for('faq')}}" class="btn btn-outline" style="width: 100%;">Frequently Asked Questions</a>
                     </div>
 
                     <div class="info-card">
@@ -897,35 +899,7 @@
         // Form Validation
         const registrationForm = document.getElementById('registrationForm');
         
-        registrationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Basic validation
-            let isValid = true;
-            const requiredFields = registrationForm.querySelectorAll('[required]');
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('is-invalid');
-                    isValid = false;
-                    
-                    // If there isn't already an error message
-                    if (!field.nextElementSibling || !field.nextElementSibling.classList.contains('invalid-feedback')) {
-                        const errorMessage = document.createElement('div');
-                        errorMessage.className = 'invalid-feedback';
-                        errorMessage.textContent = 'This field is required';
-                        field.parentNode.insertBefore(errorMessage, field.nextSibling);
-                    }
-                } else {
-                    field.classList.remove('is-invalid');
-                    if (field.nextElementSibling && field.nextElementSibling.classList.contains('invalid-feedback')) {
-                        field.nextElementSibling.remove();
-                    }
-                }
-            });
-            
-            
-        });
+        
         
         // Clear validation errors when field is changed
         registrationForm.querySelectorAll('.form-control').forEach(field => {

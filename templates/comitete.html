@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Committee Name - MUN Timișoara</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="static/error.css">
+
     <style>
         /* ===== RESET & BASE STYLES ===== */
         * {
@@ -633,67 +635,17 @@
     {% include 'components/navbar.html' %}
 
     <!-- Committee Hero Section -->
-    {% if comitet == "ICJ" %}
+    
     <section class="committee-hero">
         <div class="committee-hero-content">
             <div class="committee-logo">
                 <img src="static/img/1.png" alt="Committee Logo">
             </div>
-            <h1>Court of Justice</h1>
-            <p>{{ comitet }}</p>
+            <h1>{{comitet_name}}</h1>
+            <!-- <p>{{ comitet }}</p> -->
         </div>
     </section>
-    {% elif comitet == "UNSC" %}
-    <section class="committee-hero">
-        <div class="committee-hero-content">
-            <div class="committee-logo">
-                <img src="static/img/2.png" alt="Committee Logo">
-            </div>
-            <h1>United Nations Security Council</h1>
-            <p>{{ comitet }}</p>
-        </div>
-    </section>
-    {% elif comitet == "UNHRC" %}
-    <section class="committee-hero">
-        <div class="committee-hero-content">
-            <div class="committee-logo">
-                <img src="static/img/3.png" alt="Committee Logo">
-            </div>
-            <h1>United Nations Human Rights Council</h1>
-            <p>{{ comitet }}</p>
-        </div>
-    </section>
-    {% elif comitet == "ECOFIN" %}
-    <section class="committee-hero">
-        <div class="committee-hero-content">
-            <div class="committee-logo">
-                <img src="static/img/4.png" alt="Committee Logo">
-            </div>
-            <h1>Economic and Financial Committee</h1>
-            <p>{{ comitet }}</p>
-        </div>
-    </section>
-    {% elif comitet == "SOCHUM" %}
-    <section class="committee-hero">
-        <div class="committee-hero-content">
-            <div class="committee-logo">
-                <img src="static/img/5.png" alt="Committee Logo">
-            </div>
-            <h1>Social, Humanitarian and Cultural Committee</h1>
-            <p>{{ comitet }}</p>
-        </div>
-    </section>
-    {% elif comitet == "WHO" %}
-    <section class="committee-hero">
-        <div class="committee-hero-content">
-            <div class="committee-logo">
-                <img src="static/img/6.png" alt="Committee Logo">
-            </div>
-            <h1>World Health Organization</h1>
-            <p>{{ comitet }}</p>
-        </div>
-    </section>
-    {%endif%}
+    
 
     <!-- Committee Overview Section -->
     <section class="committee-overview">
@@ -702,19 +654,15 @@
                 <div class="committee-main">
                     <div class="committee-description">
                         <h2>About Committee</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
-                        <p>Suspendisse in orci enim. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p>
+                        <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor.</p> -->
+                        <p>{{textcomitet}}</p>
                     </div>
 
                     <div class="committee-topics">
-                        <h2>Topics for Discussion</h2>
+                        <h2>Important</h2>
                         <div class="topic-card">
-                            <h3>Topic 1: Example Topic Title</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.</p>
-                        </div>
-                        <div class="topic-card">
-                            <h3>Topic 2: Example Topic Title</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.</p>
+                            <!-- <h3>Topic 1: Example Topic Title</h3> -->
+                            <p>Dear Delegates, Thank you for your interest in the TimișoaraMUN conference! We would like to inform you that the debate topics for the committee have not yet been finalized, the selection process is ongoing within the General Secretariat.</p>
                         </div>
                     </div>
                 </div>
