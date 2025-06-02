@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organizing Team & Chairpersons - TimișoaraMUN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .main-content {
+            margin-top: 120px; /* Space from navbar */
+            padding-bottom: 3rem;
+        }
+        
+        .team-section {
+            margin-bottom: 5rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            justify-items: center;
+        }
+        
+        .team-member-card {
+            text-align: center;
+            transition: var(--transition);
+            width: 100%;
+            max-width: 200px;
+        }
+        
+        .team-member-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo-frame {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border: 3px solid #fff;
+            transition: var(--transition);
+        }
+        
+        .team-member-card:hover .member-photo-frame {
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .member-photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0 0 0.5rem;
+        }
+        
+        .member-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .section-description {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #444;
+            background-color: #fff;
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-description p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-description p:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .member-photo-frame {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .section-description {
+                padding: 2rem 1.5rem;
+                text-align: left;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .member-photo-frame {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .member-name {
+                font-size: 1rem;
+            }
+            
+            .member-role {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Include -->
+    {% include 'components/navbar.html' %}
+
+    <div class="main-content">
+        <div class="container">
+          
+
+            <!-- Chairpersons Section -->
+            <section class="team-section">
+                <div class="section-title">
+                    <h2>Chairpersons</h2>
+                </div>
+                
+                <div class="team-grid">
+                    <!-- Chairpersons -->
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                    
+                    <div class="team-member-card">
+                        <div class="member-photo-frame">
+                            <img src="/placeholder.svg?height=180&width=180" alt="Chairperson">
+                        </div>
+                        <h3 class="member-name">nume</h3>
+                    </div>
+                </div>
+                
+                <div class="section-description">
+                    <p>Chairpersons are the cornerstone of each committee at TimișoaraMUN, playing a vital role in facilitating high-quality academic debates, fostering constructive dialogue, and maintaining an environment rooted in respect, cooperation, and professionalism. They ensure that parliamentary procedure is followed, moderate discussions, and guarantee that every delegate has the opportunity to express their position clearly, coherently, and persuasively.</p>
+                    <p>Beyond their procedural responsibilities, Chairpersons also serve as mentors, providing guidance, feedback, and support throughout the conference. With thorough preparation in their committee topics and a deep understanding of global dynamics, they create a space where critical thinking, collaboration, and diplomacy flourish.</p>
+                    <p>Empathetic, organized, and dedicated, Chairpersons actively contribute to the success of each working session and to the overall meaningful experience of all participants. Through their professionalism and passion for debate, they inspire, challenge, and help shape the next generation of global leaders.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Footer Include -->
+    {% include 'components/footer.html' %}
+
+    <script>
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe team member cards for fade-in effect
+        document.querySelectorAll('.team-member-card').forEach(card => {
+            card.classList.add('fade-in');
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -31,6 +31,9 @@ def home():
 
 # ---------------------------------------- MAIL INSCRIERI ----------------------------------------
 
+import requests
+import os
+
 @app.route('/send_mail', methods=['POST'])
 def send_mail():
     print(">>> AM INTRAT ÎN FUNCTIA /send_mail <<<")
@@ -48,7 +51,7 @@ def send_mail():
 
     subject = "Confirmation of receipt of application – Timișoara MUN 2025 (Chairperson)"
 
-    logo_url = "https://i.imgur.com/u6P2Tk7.png"  # ← aici pui linkul tău direct către imagine
+    logo_url = "https://i.imgur.com/u6P2Tk7.png"
 
     html_body = f"""
     <p>Dear {first_name},</p>
@@ -76,20 +79,40 @@ def send_mail():
     <p><img src="{logo_url}" alt="TimisoaraMUN Logo" style="max-width:200px;"></p>
     """
 
-    msg = Message(
-        subject=subject,
-        recipients=[email],
-        html=html_body
-    )
+    # Trimitem email-ul prin MailerSend
+    MAILERSEND_API_KEY = os.getenv('MAILERSEND_API_KEY')  # sau direct cheia aici pt test
+    test = "mlsn.b526d831333db80088c8d61a049e2249def3d83da981c12099f84031d8a65782"
 
-    try:
-        mail.send(msg)
+    headers = {
+        "Authorization": f"Bearer {test}",
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "from": {
+            "email": "noreply@timisoara-mun.ro",
+            "name": "TimisoaraMUN"
+        },
+        "to": [
+            {
+                "email": email,
+                "name": f"{first_name} {last_name}"
+            }
+        ],
+        "subject": subject,
+        "html": html_body
+    }
+
+    response = requests.post("https://api.mailersend.com/v1/email", json=data, headers=headers)
+
+    if response.status_code == 202:
         flash('Application received! A confirmation email has been sent.', 'success')
-        return redirect(url_for('chairmen'))
-    except Exception as e:
-        print(f"Error: {e}")
+    else:
+        print(f"MailerSend Error: {response.text}")
         flash('There was an error with your registration. Please try again later.', 'error')
-        return redirect(url_for('chairmen'))
+
+    return redirect(url_for('chairperson'))
+
 
 
 
@@ -97,11 +120,24 @@ def send_mail():
 
 
 # ---------------------------------------- PAGINI ----------------------------------------
-# 
+ 
+@app.route("/staff")
+def staff():
+    return render_template('staff.html')
+
+@app.route("/organizing-team")
+def org():
+    return render_template('org.html')
+
+@app.route('/parteners')
+def parteneri():
+    return render_template('parteneri.html')
+
 
 @app.route("/committees/<comitet>")
 def comitete(comitet):
     if comitet == "ICJ":
+        poza = url_for('static', filename='img/icj.png')
         comitet_name = "ICJ"
         textcomitet = """The International Court of Justice (ICJ), also known as the World Court, is the principal judicial
 organ of the United Nations. Established in 1945 by the UN Charter and seated in The Hague,
@@ -124,7 +160,7 @@ precedent. Delegates are expected to research thoroughly, collaborate constructi
 deliver judgments that reflect the principles of justice, neutrality, and the rule of law."""
 
     elif comitet == "UNSC":
-
+        poza = url_for('static', filename='img/unsc.png')
         comitet_name = "UNSC"
         textcomitet = """The United Nations Security Council (UNSC) is the principal organ of the UN responsible for
 maintaining international peace and security. Composed of 15 member states – 5 permanent
@@ -143,6 +179,7 @@ exercised by permanent members. It is a framework that encourages active diploma
 decision-making, and in-depth understanding of international relations."""
 
     elif comitet == "UNHRC":
+        poza = url_for('static', filename='img/unhrc.png')
         comitet_name = "UNHRC"
         textcomitet = """The United Nations Human Rights Council (UNHRC) is an intergovernmental body responsible
 for promoting and protecting fundamental human rights worldwide. Created in 2006, the
@@ -161,6 +198,7 @@ must thoroughly research the international legal framework, propose equitable re
 promote solutions based on dialogue, cooperation and mutual respect."""
 
     elif comitet == "ECOFIN":
+        poza = url_for('static', filename='img/ecofin.png')
         comitet_name = "ECOFIN"
         textcomitet = """The Economic and Financial Affairs Committee (ECOFIN) is the second main committee of the
 United Nations General Assembly and its main objective is to analyse and debate global
@@ -179,6 +217,7 @@ policies. Delegates must combine economic analysis with diplomacy to develop bal
 feasible solutions."""
 
     elif comitet == "SOCHUM":
+        poza = url_for('static', filename='img/sochum.png')
         comitet_name = "SOCHUM"
         textcomitet = """The Social, Humanitarian and Cultural Committee (SOCHUM) is the third main committee of the
 United Nations General Assembly and aims to promote fundamental human rights, civil
@@ -197,6 +236,7 @@ realistic solutions to complex humanitarian problems while maintaining a diploma
 socially sensitive approach."""
 
     elif comitet == "WHO":
+        poza = url_for('static', filename='img/who.png')
         comitet_name = "WHO"
         textcomitet = """The World Health Organization (WHO) is the specialized agency of the United Nations
 responsible for coordinating international efforts in the field of public health. Established in
@@ -217,12 +257,15 @@ health goals, taking into account the balance between resources, ethics, and hum
 
     
 
-    return render_template("comitete.html", comitet=comitet, comitet_name = comitet_name, textcomitet = textcomitet)
+    return render_template("comitete.html", comitet=comitet, comitet_name = comitet_name, textcomitet = textcomitet, poza=poza)
 
 
-@app.route("/chairmen-registration")
-def chairmen():
+@app.route("/chairperson-registration")
+def chairperson():
     return render_template("chairmen.html")
+@app.route("/delegates-registration")
+def delegates():
+    return render_template("delegates-registration.html")
 
 @app.route("/FAQ")
 def faq():
@@ -240,6 +283,13 @@ def error():
 def page_not_found(e):
     return render_template('error.html'), 404
 
+@app.route('/whoarewe')
+def we():
+    return render_template('whowe.html')
+
+@app.route('/chairpersons')
+def chair():
+    return render_template('totichair.html')
 # ---------------------------------------- PAGINI END ----------------------------------------
 
 

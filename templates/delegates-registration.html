@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chairperson Registration - MUN Timișoara</title>
+    <title>Delegate Registration - MUN Timișoara</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/error.css">
+    <link rel="stylesheet" href="static/styles.css">
 
     <style>
         /* ===== RESET & BASE STYLES ===== */
@@ -28,6 +28,7 @@
             --transition: all 0.3s ease;
             --error: #e74c3c;
             --success: #2ecc71;
+            --warning: #f39c12;
         }
 
         html {
@@ -35,7 +36,7 @@
         }
 
         body {
-            color: var(--text_dark);
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
             background-color: var(--bg-light);
@@ -77,6 +78,12 @@
             background-color: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
         }
 
         .btn-outline {
@@ -124,145 +131,17 @@
             margin: 0 auto;
         }
 
-        /* ===== HEADER STYLES ===== */
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        header.scrolled {
-            padding: 5px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 60px;
-            margin-right: 10px;
-        }
-
-        nav ul {
-            display: flex;
-            position: relative;
-        }
-
-        nav ul li {
-            position: relative;
-            margin-left: 1.5rem;
-        }
-
-        nav ul li a {
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        nav ul li a::after {
-            content: "";
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--primary);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover {
-            color: var(--primary);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ===== DROPDOWN STYLES ===== */
-        nav ul li ul.dropdown {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            min-width: 180px;
-            max-height: 60vh;
-            overflow-y: auto;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            padding: 0.5rem 0;
-            z-index: 1000;
-        }
-
-        nav ul li.dropdown-active ul.dropdown {
-            display: block;
-        }
-
-        nav ul li ul.dropdown li {
-            margin: 0;
-        }
-
-        nav ul li ul.dropdown li a {
-            padding: 0.5rem 1rem;
-            display: block;
-            color: var(--text-dark);
-            white-space: nowrap;
-        }
-
-        nav ul li ul.dropdown li a:hover {
-            background-color: var(--bg-light);
-        }
-
-        /* Mobile dropdown styles */
-        @media (max-width: 768px) {
-            nav ul li ul.dropdown {
-                position: static;
-                width: 100%;
-                max-height: none;
-                overflow-y: visible;
-                box-shadow: none;
-                background-color: rgba(0, 0, 0, 0.03);
-                border-left: 3px solid var(--primary);
-                margin-top: 0.5rem;
-            }
-
-            nav ul li ul.dropdown li a {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-            }
-        }
-
         /* ===== REGISTRATION PAGE STYLES ===== */
         .registration-hero {
-            background-color: #003366; /* Institutional blue color */
-            height: 40vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--text-light);
-            margin-top: 90px;
-        }
+    background-color: #003366; /* Institutional blue color */
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 90px;
+}
 
         .registration-hero-content {
             max-width: 800px;
@@ -296,12 +175,38 @@
             border-radius: 10px;
             padding: 3rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .registration-form.disabled {
+            opacity: 0.7;
+            pointer-events: none;
         }
 
         .registration-sidebar {
             flex: 1;
             position: sticky;
             top: 120px;
+        }
+
+        .notice-banner {
+            background: linear-gradient(135deg, var(--warning), #e67e22);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .notice-banner h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .notice-banner p {
+            margin: 0;
+            font-size: 1rem;
         }
 
         .form-section {
@@ -429,161 +334,37 @@
             margin-top: 3px;
         }
 
-        .progress-container {
-            margin-bottom: 2rem;
-        }
-
-        .progress-steps {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-        }
-
-        .step::after {
-            content: "";
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            width: 100%;
-            height: 2px;
-            background-color: #ddd;
-            z-index: -1;
-        }
-
-        .step:last-child::after {
-            display: none;
-        }
-
-        .step-circle {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 10px;
-            color: white;
-            font-weight: bold;
-            transition: var(--transition);
-        }
-
-        .step.active .step-circle {
-            background-color: var(--primary);
-        }
-
-        .step.completed .step-circle {
-            background-color: var(--success);
-        }
-
-        .step-label {
-            font-size: 0.85rem;
-            color: #666;
-        }
-
-        .step.active .step-label {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* ===== FOOTER STYLES ===== */
-        footer {
-            background-color: var(--primary);
-            color: var(--text-light);
-            padding: 4rem 0 2rem;
-            position: relative;
-        }
-
-        footer::before {
-            content: "";
-            position: absolute;
-            top: -50px;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background-color: #fff;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 30px;
-            margin-bottom: 3rem;
-        }
-
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-column h3::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.8);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--text-light);
-            padding-left: 5px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
         }
 
-        .social-links a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var(--text-light);
+        .committee-card {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid transparent;
             transition: var(--transition);
         }
 
-        .social-links a:hover {
-            background-color: var(--accent);
-            transform: translateY(-5px);
+        .committee-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
         }
 
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+        .committee-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .committee-card p {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
         }
 
         /* ===== RESPONSIVE STYLES ===== */
@@ -601,120 +382,60 @@
         }
 
         @media (max-width: 768px) {
-            .registration-hero {
-                margin-top: 90px; /* Ensure consistent margin on mobile */
-                height: auto; /* Allow height to adjust based on content */
-                padding: 3rem 1rem; /* Add padding instead of fixed height */
-            }
-            
-            .registration-hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .registration-hero p {
-                font-size: 1rem;
-            }
+    .registration-hero {
+        margin-top: 90px; /* Ensure consistent margin on mobile */
+        height: auto; /* Allow height to adjust based on content */
+        padding: 3rem 1rem; /* Add padding instead of fixed height */
+    }
+    
+    .registration-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .registration-hero p {
+        font-size: 1rem;
+    }
 
-            .mobile-toggle {
-                display: block;
-            }
+    .registration-form {
+        padding: 2rem;
+    }
 
-            .header-content {
-                justify-content: space-between;
-            }
+    .form-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
 
-            nav {
-                position: fixed;
-                top: 90px;
-                left: 0;
-                width: 100%;
-                background-color: #fff;
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                transition: var(--transition);
-                z-index: 999;
-                height: 0;
-                overflow: hidden;
-            }
+    .form-buttons .btn {
+        width: 100%;
+    }
 
-            nav.active {
-                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-                height: auto;
-                max-height: 80vh;
-                overflow-y: auto;
-            }
-
-            nav ul {
-                flex-direction: column;
-                padding: 1rem 0;
-            }
-
-            nav ul li {
-                margin: 0;
-                text-align: center;
-                padding: 1rem 0;
-            }
-
-            .header-content .btn {
-                display: none;
-            }
-
-            .registration-form {
-                padding: 2rem;
-            }
-
-            .form-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .form-buttons .btn {
-                width: 100%;
-            }
-        }
+    .committee-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
         @media (max-width: 576px) {
-            .registration-hero {
-                padding: 2.5rem 1rem;
-                margin-top: 80px; /* Slightly reduced margin for smaller screens */
-            }
+    .registration-hero {
+        padding: 2.5rem 1rem;
+        margin-top: 80px; /* Slightly reduced margin for smaller screens */
+    }
 
-            .registration-hero h1 {
-                font-size: 1.8rem;
-            }
+    .registration-hero h1 {
+        font-size: 1.8rem;
+    }
 
-            .section-title h2 {
-                font-size: 2rem;
-            }
+    .section-title h2 {
+        font-size: 2rem;
+    }
 
-            .form-section h3 {
-                font-size: 1.3rem;
-            }
+    .form-section h3 {
+        font-size: 1.3rem;
+    }
 
-            .registration-form {
-                padding: 1.5rem;
-            }
-        }
-
-        .notice-banner {
-            background: linear-gradient(135deg, var(--warning), #e67e22);
-           
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
-        }
-
-        .notice-banner h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .notice-banner p {
-            margin: 0;
-            font-size: 1rem;
-        }
+    .registration-form {
+        padding: 1.5rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -725,8 +446,8 @@
     <!-- Registration Hero Section -->
     <section class="registration-hero">
         <div class="registration-hero-content">
-            <h1>Chairperson Registration</h1>
-            <p>Join us at MUN Timișoara 2025 and be part of an unforgettable experience</p>
+            <h1>Delegate Registration</h1>
+            <p>Join us at MUN Timișoara 2025 and be part of an unforgettable diplomatic experience</p>
         </div>
     </section>
 
@@ -734,53 +455,92 @@
     <section class="registration-form-section">
         <div class="container">
             <div class="registration-container">
-                <div class="registration-form">
-                    <div class="progress-container">
-                        <div class="progress-steps">
-                        </div>
-                    </div>
+                <div class="registration-form disabled">
                     <div class="notice-banner">
                         <h3><i class="fas fa-info-circle"></i> Registration Not Yet Open</h3>
                         <p>Delegate applications are not currently open. Please check back soon for updates on the application process.</p>
                     </div>
 
-                    <form id="registrationForm" method="POST" action="/send_mail">
-                          <!-- Personal Information Section -->
+                    <form id="registrationForm" method="POST" action="#" disabled>
+                        <!-- Personal Information Section -->
                         <div class="form-section">
                             <h3>Personal Information</h3>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="firstName" class="required">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="lastName" class="required">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required disabled>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="email" class="required">Email Address</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control" id="email" name="email" required disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="required">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required disabled>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="dateOfBirth" class="required">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                                    <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="nationality" class="required">Nationality</label>
-                                    <input type="text" class="form-control" id="nationality" name="nationality" required>
+                                    <input type="text" class="form-control" id="nationality" name="nationality" required disabled>
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="institution" class="required">School/University</label>
+                                <input type="text" class="form-control" id="institution" name="institution" required disabled>
+                            </div>
+                            <div class="form-group">
                                 <label for="address">Address</label>
-                                <textarea class="form-control" id="address" name="address" rows="3"></textarea>
+                                <textarea class="form-control" id="address" name="address" rows="3" disabled></textarea>
+                            </div>
+                        </div>
+
+                        <!-- MUN Experience Section -->
+                        <div class="form-section">
+                            <h3>MUN Experience</h3>
+                            <div class="form-group">
+                                <label for="munExperience" class="required">Previous MUN Experience</label>
+                                <select class="form-control" id="munExperience" name="munExperience" required disabled>
+                                    <option value="">Select your experience level</option>
+                                    <option value="beginner">Beginner (0-2 conferences)</option>
+                                    <option value="intermediate">Intermediate (3-5 conferences)</option>
+                                    <option value="advanced">Advanced (6+ conferences)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="previousConferences">Previous Conferences Attended (optional)</label>
+                                <textarea class="form-control" id="previousConferences" name="previousConferences" rows="3" disabled></textarea>
+                                <div class="form-note">Please list any MUN conferences you have previously attended</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="preferredCommittee">Preferred Committee (1st Choice)</label>
+                                <select class="form-control" id="preferredCommittee" name="preferredCommittee" disabled>
+                                    <option value="">Select your preferred committee</option>
+                                    <option value="unsc">United Nations Security Council</option>
+                                    <option value="unga">United Nations General Assembly</option>
+                                    <option value="ecosoc">Economic and Social Council</option>
+                                    <option value="who">World Health Organization</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="secondChoice">Preferred Committee (2nd Choice)</label>
+                                <select class="form-control" id="secondChoice" name="secondChoice" disabled>
+                                    <option value="">Select your second choice</option>
+                                    <option value="unsc">United Nations Security Council</option>
+                                    <option value="unga">United Nations General Assembly</option>
+                                    <option value="ecosoc">Economic and Social Council</option>
+                                    <option value="who">World Health Organization</option>
+                                </select>
                             </div>
                         </div>
                         
@@ -789,7 +549,7 @@
                             <h3>Additional Information</h3>
                             <div class="form-group">
                                 <label for="hearAbout">How did you hear about MUN Timișoara?</label>
-                                <select class="form-control" id="hearAbout" name="hearAbout">
+                                <select class="form-control" id="hearAbout" name="hearAbout" disabled>
                                     <option value="">Select Option</option>
                                     <option value="social">Social Media</option>
                                     <option value="friend">Friend/Colleague</option>
@@ -801,30 +561,34 @@
                             </div>
                             <div class="form-group">
                                 <label for="motivation">Why do you want to participate in MUN Timișoara? (optional)</label>
-                                <textarea class="form-control" id="motivation" name="motivation" rows="3"></textarea>
+                                <textarea class="form-control" id="motivation" name="motivation" rows="3" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="specialRequirements">Special Requirements or Dietary Restrictions</label>
+                                <textarea class="form-control" id="specialRequirements" name="specialRequirements" rows="2" disabled></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="termsConditions" name="termsConditions" required>
+                                    <input type="checkbox" id="termsConditions" name="termsConditions" required disabled>
                                     <label for="termsConditions" class="required">I have read and agree to the <a href="terms.html" target="_blank">Terms and Conditions</a> and <a href="privacy.html" target="_blank">Privacy Policy</a></label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="photoConsent" name="photoConsent">
+                                    <input type="checkbox" id="photoConsent" name="photoConsent" disabled>
                                     <label for="photoConsent">I consent to the use of photographs and videos taken during the conference for promotional purposes</label>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-check">
-                                    <input type="checkbox" id="newsletter" name="newsletter">
+                                    <input type="checkbox" id="newsletter" name="newsletter" disabled>
                                     <label for="newsletter">I would like to receive updates about future MUN events and opportunities</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-buttons">
-                            <button type="submit" class="btn">Submit Registration</button>
+                            <button type="submit" class="btn" disabled>Submit Registration</button>
                         </div>
                     </form>
 
@@ -832,20 +596,20 @@
 
                 <div class="registration-sidebar">
                     <div class="info-card">
-                        <h3>Registration Information</h3>
+                        <h3>Conference Information</h3>
                         <ul class="info-list">
                             <li>
                                 <i class="fas fa-calendar-alt"></i>
                                 <div>
                                     <strong>Registration Deadline:</strong>
-                                    <p>June 30, 2025</p>
+                                    <p>July 25, 2025</p>
                                 </div>
                             </li>
                             <li>
                                 <i class="fas fa-user-graduate"></i>
                                 <div>
                                     <strong>Eligibility:</strong>
-                                    <p>University students, high school school students (minimum age 16)</p>
+                                    <p>High school and university students (minimum age 16)</p>
                                 </div>
                             </li>
                             <li>
@@ -856,7 +620,28 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="{{url_for('faq')}}" class="btn btn-outline" style="width: 100%;">Frequently Asked Questions</a>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Available Committees</h3>
+                        <div class="committee-grid">
+                            <div class="committee-card">
+                                <h4>UNSC</h4>
+                                <p>Security Council</p>
+                            </div>
+                            <div class="committee-card">
+                                <h4>UNGA</h4>
+                                <p>General Assembly</p>
+                            </div>
+                            <div class="committee-card">
+                                <h4>ECOSOC</h4>
+                                <p>Economic & Social Council</p>
+                            </div>
+                            <div class="committee-card">
+                                <h4>WHO</h4>
+                                <p>World Health Organization</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="info-card">
@@ -868,7 +653,7 @@
                                 <i class="fas fa-envelope"></i>
                                 <div>
                                     <strong>Email:</strong>
-                                    <p>registration@timisoara-mun.ro</p>
+                                    <p>delegates@timisoara-mun.ro</p>
                                 </div>
                             </li>
                             <li>
@@ -887,18 +672,18 @@
 
     <!-- Footer -->
     {% include 'components/footer.html' %}
-    
-
 
     <script>
         // Mobile Navigation Toggle
         const mobileToggle = document.getElementById("mobile-toggle");
         const nav = document.getElementById("nav");
 
-        mobileToggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-            mobileToggle.classList.toggle("active");
-        });
+        if (mobileToggle && nav) {
+            mobileToggle.addEventListener("click", () => {
+                nav.classList.toggle("active");
+                mobileToggle.classList.toggle("active");
+            });
+        }
 
         // Dropdown Toggle
         const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
@@ -931,28 +716,18 @@
 
         // Sticky Header
         const header = document.getElementById("header");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 100) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
-        });
-
-        // Form Validation
-        const registrationForm = document.getElementById('registrationForm');
-        
-        
-        
-        // Clear validation errors when field is changed
-        registrationForm.querySelectorAll('.form-control').forEach(field => {
-            field.addEventListener('input', function() {
-                this.classList.remove('is-invalid');
-                if (this.nextElementSibling && this.nextElementSibling.classList.contains('invalid-feedback')) {
-                    this.nextElementSibling.remove();
+        if (header) {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 100) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
                 }
             });
-        });
+        }
+
+        // Form is disabled, so no validation needed
+        console.log('Delegate registration form is currently disabled - applications not yet open');
     </script>
 </body>
 </html>

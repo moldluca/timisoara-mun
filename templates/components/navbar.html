@@ -4,279 +4,387 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>* {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-      
-      :root {
-        --primary: #021859;
-        --primary-dark: #0077b3;
-        --secondary: #00c6ff;
-        --accent: #ff9500;
-        --text-dark: #333;
-        --text-light: #fff;
-        --bg-light: #f8f9fa;
-        --bg-dark: #333;
-        --transition: all 0.3s ease;
-      }
-      
-      html {
-        scroll-behavior: smooth;
-      }
-      
-      body {
-        color: var(--text-dark);
-        line-height: 1.6;
-        overflow-x: hidden;
-      }
-      
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-      
-      ul {
-        list-style: none;
-      }
-      
-      img {
-        max-width: 100%;
-      }
-      
-      .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      
-      .btn {
-        display: inline-block;
-        background-color: var(--primary);
-        color: var(--text-light);
-        padding: 12px 24px;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: var(--transition);
-        border: none;
-        cursor: pointer;
-        text-align: center;
-      }
-      
-      .btn:hover {
-        background-color: var(--primary-dark);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      }
-      
-      .btn-outline {
-        background-color: transparent;
-        border: 2px solid var(--primary);
-        color: var(--primary);
-      }
-      
-      .btn-outline:hover {
-        background-color: var(--primary);
-        color: var(--text-light);
-      }
-      
-      .section-title {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-      
-      .section-title h2 {
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-        position: relative;
-        display: inline-block;
-      }
-      
-      .section-title h2::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background-color: var(--accent);
-      }
-      
-      .section-title p {
-        color: #666;
-        max-width: 700px;
-        margin: 0 auto;
-      }
-      
-      section {
-        padding: 5rem 0;
-      }
-      
-      /* PARTICULARITATI  =============================== */
-      
-      /* ===== HEADER STYLES ===== */
-      header {
-        background-color: #fff;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: var(--transition);
-      }
-      
-      header.scrolled {
-        padding: 5px 0;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-      }
-      
-      .header-content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-      }
-      
-      .logo {
-        display: flex;
-        align-items: center;
-      }
-      
-      .logo img {
-        height: 60px;
-        margin-right: 10px;
-      }
-      
-      .logo-text {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .logo-text .main {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--text-dark);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-      
-      .logo-text .sub {
-        font-size: 0.9rem;
-        color: var(--primary);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-      
-      nav ul {
-        display: flex;
-        position: relative;
-      }
-      
-      nav ul li {
-        position: relative;
-        margin-left: 1.5rem;
-      }
-      
-      nav ul li a {
-        color: var(--text-dark);
-        font-weight: 500;
-        transition: var(--transition);
-        position: relative;
-      }
-      
-      nav ul li a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background-color: var(--primary);
-        transition: var(--transition);
-      }
-      
-      nav ul li a:hover {
-        color: var(--primary);
-      }
-      
-      nav ul li a:hover::after {
-        width: 100%;
-      }
-      
-      .mobile-toggle {
-        display: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-      
-      /* ===== DROPDOWN STYLES ===== */
-      nav ul li ul.dropdown {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: #fff;
-        min-width: 180px;
-        max-height: 60vh;
-        overflow-y: auto;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        padding: 0.5rem 0;
-        z-index: 1000;
-      }
-      
-      nav ul li.dropdown-active ul.dropdown {
-        display: block;
-      }
-      
-      nav ul li ul.dropdown li {
-        margin: 0;
-      }
-      
-      nav ul li ul.dropdown li a {
-        padding: 0.5rem 1rem;
-        display: block;
-        color: var(--text-dark);
-        white-space: nowrap;
-      }
-      
-      nav ul li ul.dropdown li a:hover {
-        background-color: var(--bg-light);
-      }
-      
-      /* Mobile dropdown styles */
-      @media (max-width: 768px) {
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #021859;
+            --primary-dark: #0077b3;
+            --secondary: #00c6ff;
+            --accent: #ff9500;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f8f9fa;
+            --bg-dark: #333;
+            --transition: all 0.3s ease;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        /* ===== HEADER STYLES ===== */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-text .main {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-text .sub {
+            font-size: 0.9rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        nav ul {
+            display: flex;
+            position: relative;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        /* ===== DROPDOWN STYLES ===== */
         nav ul li ul.dropdown {
-          position: static;
-          width: 100%;
-          max-height: none;
-          overflow-y: visible;
-          box-shadow: none;
-          background-color: rgba(0, 0, 0, 0.03);
-          border-left: 3px solid var(--primary);
-          margin-top: 0.5rem;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            min-width: 180px;
+            max-height: 60vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            z-index: 1000;
+            border-radius: 5px;
         }
-      
+        
+        nav ul li.dropdown-active ul.dropdown {
+            display: block;
+        }
+        
+        nav ul li ul.dropdown li {
+            margin: 0;
+        }
+        
         nav ul li ul.dropdown li a {
-          padding: 0.5rem 1rem;
-          font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            display: block;
+            color: var(--text-dark);
+            white-space: nowrap;
         }
-      }</style>
+        
+        nav ul li ul.dropdown li a:hover {
+            background-color: var(--bg-light);
+        }
+        
+        nav ul li ul.dropdown li a::after {
+            display: none;
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 1024px) {
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .header-content > .btn {
+                display: none;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                margin-top: 0; /* Eliminăm spațiul dintre navbar și meniu */
+            }
+            
+            nav.active {
+                max-height: 500px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 0; /* Eliminăm padding-ul care crea spațiu */
+                margin: 0;
+            }
+            
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid #eee;
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 1rem 2rem;
+                border-bottom: none;
+            }
+            
+            nav ul li a::after {
+                display: none;
+            }
+            
+            nav ul li a:hover {
+                background-color: var(--bg-light);
+            }
+            
+            /* Mobile dropdown styles */
+            nav ul li ul.dropdown {
+                position: static;
+                width: 100%;
+                max-height: none;
+                overflow-y: visible;
+                box-shadow: none;
+                background-color: var(--bg-light);
+                border-radius: 0;
+                margin-top: 0;
+                padding: 0; /* Eliminăm padding-ul care crea spațiu */
+            }
+            
+            nav ul li ul.dropdown li {
+                border-bottom: 1px solid #ddd;
+            }
+            
+            nav ul li ul.dropdown li:last-child {
+                border-bottom: none;
+            }
+            
+            nav ul li ul.dropdown li a {
+                padding: 0.75rem 3rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo img {
+                height: 50px;
+            }
+            
+            .header-content {
+                padding: 10px 0;
+            }
+            
+            nav ul li a {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            nav ul li ul.dropdown li a {
+                padding: 0.75rem 2.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+            
+            .logo img {
+                height: 45px;
+            }
+            
+            nav ul li a {
+                padding: 0.75rem 1rem;
+            }
+            
+            nav ul li ul.dropdown li a {
+                padding: 0.5rem 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <header id="header">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                  <a href="{{url_for('home')}}">
-                    <div class="logo-img">
-                        <img src="/static/img/logoV.png" alt="MUN Timișoara Logo">
-                    </div>
-                  </a>
+                    <a href="{{url_for('home')}}">
+                        <div class="logo-img">
+                            <img src="/static/img/logoV.png" alt="MUN Timișoara Logo">
+                        </div>
+                    </a>
                 </div>
                 <div class="mobile-toggle" id="mobile-toggle">
                     <i class="fas fa-bars"></i>
@@ -287,9 +395,10 @@
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">About Us</a>
                             <ul class="dropdown">
-                                <li><a href="">TimișoaraMUN Observers</a></li>
-                                <li><a href="">History</a></li>
-                                <li><a href="">Who Are We</a></li>
+                              <li><a href="{{url_for('we')}}">Who Are We</a></li>
+                              <li><a href="{{url_for('org')}}">Organizing Team</a></li>
+                              <li><a href="{{url_for('chair')}}">Chairpersons</a></li>
+                              <li><a href="#">Advisors</a></li>
                             </ul>
                         </li>
                         <li>
@@ -303,19 +412,40 @@
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Committees</a>
                             <ul class="dropdown">
-                              <li><a href="/committees/ICJ">ICJ</a></li>
-                              <li><a href="/committees/UNSC">UNSC</a></li>
-                              <li><a href="/committees/UNHRC">UNHRC</a></li>
-                              <li><a href="/committees/ECOFIN">ECOFIN</a></li>
-                              <li><a href="/committees/SOCHUM">SOCHUM</a></li>
-                              <li><a href="/committees/WHO">WHO</a></li>
-                          </ul>
+                                <li><a href="/committees/ICJ">ICJ</a></li>
+                                <li><a href="/committees/UNSC">UNSC</a></li>
+                                <li><a href="/committees/UNHRC">UNHRC</a></li>
+                                <li><a href="/committees/ECOFIN">ECOFIN</a></li>
+                                <li><a href="/committees/SOCHUM">SOCHUM</a></li>
+                                <li><a href="/committees/WHO">WHO</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
-                <a href="{{url_for('chairmen')}}" class="btn">Register now as a chairman</a>
+                <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
             </div>
         </div>
     </header>
+
+    <script>
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle')
+
+dropdownToggles.forEach(toggle => {
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault()
+    
+    // Close all other dropdowns
+    const allDropdownParents = document.querySelectorAll('nav ul li')
+    allDropdownParents.forEach(item => {
+      if (item !== this.parentElement) {
+        item.classList.remove('dropdown-active')
+      }
+    })
+    
+    // Toggle current dropdown
+    this.parentElement.classList.toggle('dropdown-active')
+  })
+})
+    </script>
 </body> 
 </html>

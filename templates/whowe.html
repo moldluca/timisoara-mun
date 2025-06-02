@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who Are We - TimișoaraMUN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+
+    <style>
+        /* ===== RESET & BASE STYLES ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #021859;
+            --primary-dark: #0077b3;
+            --secondary: #00c6ff;
+            --accent: #ff9500;
+            --text-dark: #333;
+            --text-light: #fff;
+            --bg-light: #f0f4f8;
+            --bg-dark: #333;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0.5rem;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--text-light);
+        }
+
+        .btn-accent {
+            background-color: var(--accent);
+        }
+
+        .btn-accent:hover {
+            background-color: #e67e22;
+        }
+
+        section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text-light);
+            padding: 8rem 0 6rem;
+            margin-top: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== CONTENT SECTIONS ===== */
+        .content-section {
+            padding: 4rem 0;
+            background-color: white;
+        }
+
+        .content-section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        .content-block {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .content-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .content-block.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .content-block h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .content-block h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background-color: var(--accent);
+            transition: width 0.8s ease 0.3s;
+        }
+
+        .content-block.animate h2::after {
+            width: 80px;
+        }
+
+        .content-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        /* ===== CITY SECTION ===== */
+        .city-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--text-light);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .city-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .city-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .city-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .city-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .city-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .city-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .city-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 50px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .city-link::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .city-link:hover::before {
+            left: 100%;
+        }
+
+        .city-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ===== MISSION SECTION ===== */
+        .mission-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .mission-content.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mission-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .mission-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .mission-highlight {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+            max-width: 700px;
+        }
+
+        .mission-highlight::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .mission-highlight p {
+            position: relative;
+            z-index: 2;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 4rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .content-block h2 {
+                font-size: 1.8rem;
+            }
+
+            .city-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .mission-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .city-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .city-link {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-block h2 {
+                font-size: 1.6rem;
+            }
+
+            .city-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .mission-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .mission-highlight p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    {% include 'components/navbar.html' %}
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Who Are We?</h1>
+                <p>TimișoaraMUN is more than just a conference — it's an educational and cultural experience built by youth, for youth.</p>
+                <div class="hero-buttons">
+                    <a href="#mission" class="btn">Our Mission</a>
+                    <a href="#city" class="btn btn-outline">Discover Timișoara</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Built by Youth, for Youth</h2>
+                <p>Organized for the first time by a dedicated team of high school students, our mission is to empower young voices through diplomacy, debate, and international cooperation.</p>
+                <p>TimișoaraMUN is designed to provide a realistic simulation of the United Nations, where high school and university students from Romania and abroad come together to discuss global issues, negotiate resolutions, and develop essential skills.</p>
+                <a href="/organizing-team.html" class="btn">Meet Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Essential Skills Development</h2>
+                <p>Through our conference, participants develop essential skills like public speaking, critical thinking, teamwork, and leadership. These skills are not just valuable for academic success, but for life.</p>
+                <p>Our delegates learn to think critically about global issues, articulate their thoughts clearly, and work collaboratively to find solutions to complex problems.</p>
+                <a href="/delegate-registration.html" class="btn btn-accent">Join as Delegate</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Section -->
+    <section class="city-section" id="city">
+        <div class="container">
+            <div class="city-content">
+                <h2>Timișoara: The Perfect Host City</h2>
+                <p>The conference takes place in Timișoara, a multicultural and historic city in western Romania. As the European Capital of Culture in 2023, Timișoara is a vibrant hub of creativity and dialogue, making it the perfect place to host an international MUN conference.</p>
+                <p>This dynamic city offers the ideal backdrop for international diplomacy, with its rich history, diverse culture, and forward-thinking spirit inspiring meaningful dialogue and collaboration.</p>
+                <div class="city-links">
+                    <a href="https://timisoara2023.eu" target="_blank" class="city-link">
+                        <i class="fas fa-crown"></i>
+                        European Capital of Culture 2023
+                    </a>
+                    <a href="https://www.timisoara.ro/en" target="_blank" class="city-link">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Visit Timișoara
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section" id="mission">
+        <div class="container">
+            <div class="mission-content">
+                <h2>Our Mission & Vision</h2>
+                <p>At TimișoaraMUN, we believe that young people are not only the leaders of tomorrow — they are the changemakers of today. Through diplomacy, education, and connection, we aim to build a platform where ideas matter, voices are heard, and international collaboration begins.</p>
+                
+                <div class="mission-highlight">
+                    <p>"Through diplomacy, education, and connection, we aim to build a platform where ideas matter, voices are heard, and international collaboration begins."</p>
+                </div>
+
+                <p>We are committed to creating an environment where young minds can engage with global challenges, develop critical thinking skills, and build lasting connections that transcend borders and cultures.</p>
+                
+                <a href="/registration.html" class="btn">Join Our Mission</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    {% include 'components/footer.html' %}
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.content-block, .city-content, .mission-content').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                const rate = scrolled * -0.3;
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -13,7 +13,7 @@
     --primary: #021859;
     --primary-dark: #0077b3;
     --secondary: #00c6ff;
-    --accent: #ff9500;
+    --accent: #2F033F !important;
     --text-dark: #333;
     --text-light: #fff;
     --bg-light: #f8f9fa;
@@ -376,7 +376,7 @@
   /* ===== STATS SECTION ===== */
   .stats {
     background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+      url("/static/img/patrat.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -514,7 +514,7 @@
     top: 50%;
     left: -60px;
     transform: translateY(-50%);
-    background-color: #f39c12;
+    background-color: #2F033F;
   }
   
   .circle-center {
