@@ -70,7 +70,7 @@ def send_mail():
 
     subject = "Confirmation of receipt of application – Timișoara MUN 2025 (Chairperson)"
 
-    logo_url = "https://i.imgur.com/u6P2Tk7.png"
+    logo_url = "https://i.imgur.com/5w8IKVn.png"
 
     html_body = f"""
     <p>Dear {first_name},</p>
