@@ -221,7 +221,7 @@ def parteneri():
 @app.route("/committees/<comitet>")
 def comitete(comitet):
     if comitet == "ICJ":
-        size = "Size: 35 delegates"
+        size = "Size: 19 delegates"
         poza = url_for('static', filename='img/icj.png')
         comitet_name = "ICJ"
         textcomitet = """The International Court of Justice (ICJ), also known as the World Court, is the principal judicial
@@ -344,7 +344,7 @@ policies. Delegates will negotiate policies that meet both immediate needs and l
 health goals, taking into account the balance between resources, ethics, and human rights."""
     elif comitet == "DISEC":
             poza = url_for('static', filename='img/who.png')
-            size = "Size: 19 delegates"
+            size = "Size: 35 delegates"
             comitet_name = "DISEC"
             textcomitet = """The Disarmament and International Security Committee (DISEC) is the First Committee of the
 United Nations General Assembly and is tasked with addressing issues related to global peace,
