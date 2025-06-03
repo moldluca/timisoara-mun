@@ -1,8 +1,21 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_mail import Mail, Message
 import os
 from dotenv import load_dotenv
 from models import db, Registration
+from functools import wraps
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+users = {
+    "dragos@timisoara-mun.ro": "dragosSecretariatMunIntern",
+    "cristiana@timisoara-mun.ro": "cristianaSecretariatMunIntern",
+    "erol@timisoara-mun.ro": "erolSecretariatMunIntern",
+    "secretariat@timisoara-mun.ro": "secretariatSecretariatMunIntern",
+    "luca.vasiu@timisoara-mun.ro": "lucaSecretariatMunIntern",
+    "delegate.registration@timisoara-mun.ro": "delegateSecretariatMunIntern"
+}
 
 
 app = Flask(__name__)
@@ -23,7 +36,13 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 db.init_app(app) 
 
 
-
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user' not in session:
+            return redirect(url_for('loginstaff'))
+        return f(*args, **kwargs)
+    return decorated_function
 
 @app.route('/')
 def home():
@@ -84,7 +103,7 @@ def send_mail():
     test = "mlsn.b526d831333db80088c8d61a049e2249def3d83da981c12099f84031d8a65782"
 
     headers = {
-        "Authorization": f"Bearer {test}",
+        "Authorization": f"Bearer {MAILERSEND_API_KEY}",
         "Content-Type": "application/json"
     }
 
@@ -114,13 +133,78 @@ def send_mail():
     return redirect(url_for('chairperson'))
 
 
+ 
+@app.route("/contact")
+def contact():
+    return render_template('contact.html')
+
+@app.route('/send_contact_mail', methods=['POST'])
+def send_contact_mail():
+    print(">>> AM INTRAT ÎN FUNCTIA /send_contact_mail <<<")
+    
+    name = request.form.get('name')
+    email = request.form.get('email')
+    subject = request.form.get('subject')
+    message = request.form.get('message')
+
+    print(f"Received data: {name}, {email}, {subject}, {message}")
+
+    subject_final = f"[Contact Form] {subject if subject else 'No Subject'}"
+    
+    html_body = f"""
+    <p>New message received from contact form:</p>
+    <p><strong>Name:</strong> {name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Subject:</strong> {subject}</p>
+    <p><strong>Message:</strong><br>{message}</p>
+    """
+
+    MAILERSEND_API_KEY = os.getenv('MAILERSEND_API_KEY')  # sau cheia ta direct pt test
+
+    headers = {
+        "Authorization": f"Bearer {MAILERSEND_API_KEY}",
+        "Content-Type": "application/json"
+    }
+
+    data = {
+        "from": {
+            "email": "noreply@timisoara-mun.ro",
+            "name": "TimisoaraMUN Contact Form"
+        },
+        "to": [
+            {
+                "email": "timis.mun@gmail.com",
+                "name": "TimisoaraMUN Team"
+            }
+        ],
+        "subject": subject_final,
+        "html": html_body
+    }
+
+    response = requests.post("https://api.mailersend.com/v1/email", json=data, headers=headers)
+
+    print(response.status_code)
+    print(response.text)
+
+    if response.status_code == 202:
+        flash('Your message has been successfully sent!', 'success')
+        print('merge')
+    else:
+        flash('There was an error sending your message. Please try again later.', 'error')
+
+    return redirect(url_for('contact'))
+
+
+
+
 
 
 # ---------------------------------------- MAIL INSCRIERI ----------------------------------------
 
 
 # ---------------------------------------- PAGINI ----------------------------------------
- 
+
+
 @app.route("/staff")
 def staff():
     return render_template('staff.html')
@@ -137,6 +221,7 @@ def parteneri():
 @app.route("/committees/<comitet>")
 def comitete(comitet):
     if comitet == "ICJ":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/icj.png')
         comitet_name = "ICJ"
         textcomitet = """The International Court of Justice (ICJ), also known as the World Court, is the principal judicial
@@ -160,6 +245,7 @@ precedent. Delegates are expected to research thoroughly, collaborate constructi
 deliver judgments that reflect the principles of justice, neutrality, and the rule of law."""
 
     elif comitet == "UNSC":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/unsc.png')
         comitet_name = "UNSC"
         textcomitet = """The United Nations Security Council (UNSC) is the principal organ of the UN responsible for
@@ -179,6 +265,7 @@ exercised by permanent members. It is a framework that encourages active diploma
 decision-making, and in-depth understanding of international relations."""
 
     elif comitet == "UNHRC":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/unhrc.png')
         comitet_name = "UNHRC"
         textcomitet = """The United Nations Human Rights Council (UNHRC) is an intergovernmental body responsible
@@ -198,6 +285,7 @@ must thoroughly research the international legal framework, propose equitable re
 promote solutions based on dialogue, cooperation and mutual respect."""
 
     elif comitet == "ECOFIN":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/ecofin.png')
         comitet_name = "ECOFIN"
         textcomitet = """The Economic and Financial Affairs Committee (ECOFIN) is the second main committee of the
@@ -217,6 +305,7 @@ policies. Delegates must combine economic analysis with diplomacy to develop bal
 feasible solutions."""
 
     elif comitet == "SOCHUM":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/sochum.png')
         comitet_name = "SOCHUM"
         textcomitet = """The Social, Humanitarian and Cultural Committee (SOCHUM) is the third main committee of the
@@ -236,6 +325,7 @@ realistic solutions to complex humanitarian problems while maintaining a diploma
 socially sensitive approach."""
 
     elif comitet == "WHO":
+        size = "Size: 35 delegates"
         poza = url_for('static', filename='img/who.png')
         comitet_name = "WHO"
         textcomitet = """The World Health Organization (WHO) is the specialized agency of the United Nations
@@ -252,12 +342,40 @@ Participants in a WHO simulation must propose effective and sustainable solution
 health challenges, based on scientific research, international collaboration, and inclusive
 policies. Delegates will negotiate policies that meet both immediate needs and long-term
 health goals, taking into account the balance between resources, ethics, and human rights."""
+    elif comitet == "DISEC":
+            poza = url_for('static', filename='img/who.png')
+            size = "Size: 19 delegates"
+            comitet_name = "DISEC"
+            textcomitet = """The Disarmament and International Security Committee (DISEC) is the First Committee of the
+United Nations General Assembly and is tasked with addressing issues related to global peace,
+international security, and disarmament. DISEC provides a platform for member states to
+debate and develop solutions to some of the most pressing threats to global stability, ranging
+from nuclear proliferation to the illicit arms trade and regional conflicts.
+
+As a beginner/intermediate committee, DISEC at TimișoaraMUN is designed to welcome both
+newcomers and delegates with some MUN experience. It offers a dynamic yet approachable
+environment where participants can:
+
+    Learn and practice formal UN procedures
+
+    Develop public speaking and negotiation skills
+
+    Engage in diplomatic dialogue and strategic alliances
+
+    Collaborate on realistic and impactful resolutions
+
+Chairs will guide delegates throughout the sessions, ensuring procedural clarity and
+encouraging inclusive, productive debate.
+
+Whether you're just stepping into the world of Model UN or building upon previous experience,
+DISEC is the ideal space to sharpen your diplomatic instincts and contribute to global peace
+efforts."""
     else:
         return redirect(url_for('error'))
 
     
 
-    return render_template("comitete.html", comitet=comitet, comitet_name = comitet_name, textcomitet = textcomitet, poza=poza)
+    return render_template("comitete.html", comitet=comitet, comitet_name = comitet_name, textcomitet = textcomitet, poza=poza, size=size)
 
 
 @app.route("/chairperson-registration")
@@ -290,19 +408,34 @@ def we():
 @app.route('/chairpersons')
 def chair():
     return render_template('totichair.html')
+
+@app.route('/advisors')
+def advisors():
+
+    return render_template('advisors.html')
+
+@app.route('/events')
+def events():
+
+    return render_template('events.html')
+
+@app.route('/privacy-terms.html')
+def policies():
+    return render_template('privacy-terms.html')
 # ---------------------------------------- PAGINI END ----------------------------------------
 
 
 # ---------------------------------------- ADMIN PANEL ----------------------------------------
 
 @app.route('/adminboard')
+@login_required
 def adminboard():
     registrations = Registration.query.order_by(Registration.data.desc()).all()
 
     total = len(registrations)
     confirmati = len([r for r in registrations if r.status.lower() == 'confirmat'])
     in_asteptare = len([r for r in registrations if r.status.lower() == 'în așteptare'])
-    comitete = len(set([r.comitet for r in registrations]))
+    comitete = 7
 
     return render_template(
         'admin/adminboard.html',
@@ -313,8 +446,25 @@ def adminboard():
         comitete=comitete
     )
 
-@app.route('/loginstaffmuntm')
+@app.route('/logout')
+@login_required
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('loginstaff'))
+
+@app.route('/loginstaffmuntm', methods=['GET', 'POST'])
 def loginstaff():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+
+        if email in users and users[email] == password:
+            session['user'] = email
+            return redirect(url_for('adminboard'))
+        else:
+            flash('Invalid email or password', 'error')
+            return redirect(url_for('loginstaff'))
+
     return render_template("login.html")
 
 @app.route('/add-delegate', methods=['POST'])

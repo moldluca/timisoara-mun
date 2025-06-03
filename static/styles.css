@@ -202,7 +202,7 @@
     flex: 1;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
     transform: perspective(1000px) rotateY(-5deg);
     transition: var(--transition);
   }
@@ -345,17 +345,22 @@
     height: 100%;
   }
   
-  .service-icon {
-    font-size: 3rem;
-    color: var(--primary);
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
-  }
-  
-  .service-card:hover .service-icon {
-    transform: scale(1.1);
-    color: var(--accent);
-  }
+.service-icon {
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+}
+
+.service-icon img {
+  height: 3rem;
+  width: auto;
+  object-fit: contain;
+  transition: var(--transition);
+}
+
+.service-card:hover .service-icon img {
+  transform: scale(1.1);
+  filter: brightness(1.2); /* This gives a similar effect to the color change */
+}
   
   .service-card h3 {
     font-size: 1.5rem;
@@ -401,7 +406,7 @@
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--accent);
+    color: white;
     display: inline-block;
   }
   

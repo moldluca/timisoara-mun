@@ -488,13 +488,16 @@
     <!-- Sidebar -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <h2>MUN Timișoara</h2>
+            <a href="{{url_for('home')}}" style="text-decoration: none; color: white;">
+                <h2>MUN Timișoara</h2>
+            </a>
             <p>Admin Dashboard</p>
         </div>
         <ul class="sidebar-menu">
             <li><a href="#" class="menu-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            
             <!-- <li><a href="#" class="menu-item" data-page="delegates"><i class="fas fa-users"></i> Chairpersons</a></li> -->
-            <li><a href="#" class="menu-item" data-page="committees"><i class="fas fa-sitemap"></i> Comitete</a></li>
+            <!-- <li><a href="#" class="menu-item" data-page="committees"><i class="fas fa-sitemap"></i> Comitete</a></li> -->
             
         </ul>
     </div>
@@ -510,10 +513,13 @@
                 <h1 id="pageTitle">Dashboard</h1>
             </div>
             <div class="header-right">
-                <div class="user-info">
-                    <div class="user-avatar">AD</div>
-                    <span>Admin</span>
-                </div>
+                <a href="https://docs.google.com/spreadsheets/d/1wkYWD2WfQhzC8w4VXid0VDHehZEnlaF6y0nr_eXlk_Q/edit?usp=drivesdk ">
+
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Drive
+                    </button>
+                </a>
+                
             </div>
         </div>
 
@@ -550,6 +556,7 @@
                         <button class="btn btn-primary" onclick="openModal('addDelegateModal')">
                             <i class="fas fa-plus"></i> Adaugă Delegat
                         </button>
+                        
                     </div>
                     <table>
                         <thead>
@@ -579,7 +586,7 @@
                                 </td>
                                 <td>{{ reg.data.strftime('%Y-%m-%d %H:%M') }}</td>
                                 <td>
-                                    <button class="btn btn-sm btn-warning">Editează</button>
+                                    <!-- <button class="btn btn-sm btn-warning">Editează</button> -->
                                     <form method="POST" action="/delete/{{ reg.id }}" style="display:inline;">
                                         <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Sigur vrei să ștergi acest delegat?')">
                                             Șterge

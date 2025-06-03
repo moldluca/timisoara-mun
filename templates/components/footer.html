@@ -267,29 +267,31 @@
                     <h3>MUN Timișoara</h3>
                     <p>Bridging Ideas, Shaping Futures</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/share/15j5GPSTX5/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/timisoara.mun/"><i class="fab fa-instagram"></i></a>
                         <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- <a href="#"><i class="fab fa-linkedin-in"></i></a> -->
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Link-uri Rapide</h3>
                     <ul class="footer-links">
                         <li><a href="{{url_for('home')}}">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Committees</a></li>
+                        <li><a href="{{url_for('we')}}">About</a></li>
+                        <!-- <li><a href="#services">Committees</a></li> -->
                         <!-- <li><a href="#events">Evenimente</a></li> -->
-                        <li><a href="#team">Team</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="{{url_for('org')}}">Team</a></li>
+                        <li><a href="{{url_for('loginstaff')}}">Internal Platform</a></li>
+
+                        <!-- <li><a href="#contact">Contact</a></li> -->
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Resurse</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Ghid pentru Delegați</a></li>
-                        <li><a href="#">Reguli de Procedură</a></li>
-                        <li><a href="#">Position Paper Template</a></li>
+                        <li><a href="#">Delegates Handbook</a></li>
+                        <li><a href="#">Rules of Procedure </a></li>
+                        <li><a href="{{url_for('policies')}}">Privacy Policy (GDPR)</a></li>
                         <li><a href="{{url_for('faq')}}">FAQ</a></li>
                     </ul>
                 </div>
@@ -297,7 +299,7 @@
                     <h3>Contact</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-envelope"></i> contact@timisoara-mun.ro</li>
-                        <li><i class="fas fa-phone"></i> +40 123 456 789</li>
+                        <li><i class="fas fa-phone"></i> +40 787 591 204</li>
                         <li><i class="fas fa-map-marker-alt"></i> Timișoara, România</li>
                     </ul>
                 </div>

@@ -21,7 +21,7 @@
             <h1>Model United Nations Timișoara</h1>
             <h2>Bridging Ideas, Shaping Futures</h2>
             <div class="hero-buttons">
-                <a href="" class="btn">Register now as a chairperson</a>
+                <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairperson</a>
                 <a href="#about" class="btn btn-outline">Learn More</a>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <a href="#services" class="btn">Our Committees</a>
             </div>
             <div class="about-image fade-in">
-                <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="MUN Timișoara Conference">
+                <img src="static/img/logoh.png" alt="TimișoaraMUN Conference">
             </div>
         </div>
     </div>
@@ -77,6 +77,51 @@
 
 <!-- CE FACEM --------============================= DE FACUT am facut -->
 
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-title">
+            <h2>GENERAL SECRETARIAT TimișoaraMUN</h2>
+            <p>Meet the team members which make TimișoaraMUN possible</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member active fade-in">
+                <div class="member-image">
+                    <img src="/static/img/dragos.jpg" alt="Dragoș Bârlădianu">
+                </div>
+                <div class="member-info">
+                    <h3>Dragoș Bârlădianu</h3>
+                    <p>Secretary General TimișoaraMUN</p>
+                    <p>dragos@timisoara-mun.ro</p>
+                    <span class="member-country">Founder</span>
+                </div>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-image poza-normala">
+                    <img src="static/img/pozacristiana.jpg" alt="Cristiana Rebecca Oancea" >
+                </div>
+                <div class="member-info">
+                    <h3>Cristiana Rebecca Oancea</h3>
+                    <p>Deputy Secretary General TimisoaraMUN</p>
+                    <p>cristiana@timisoara-mun.ro</p>
+                    <span class="member-country">Co-Founder</span>
+                </div>
+            </div>
+            <div class="team-member fade-in">
+                <div class="member-image">
+                    <img src="static/img/luca.png" alt="Vacancy">
+                </div>
+                <div class="member-info">
+                    <h3>Luca Vasiu</h3>
+                    <p>President of the General Assembly TimisoaraMUN</p>
+                    <p>luca.vasiu@timisoara-mun.ro</p>
+                    <!-- <span class="member-country">România</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
  <!-- Services/Committees Section -->
  <section class="services" id="services">
     <div class="container">
@@ -87,7 +132,7 @@
         <div class="services-grid">
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
+                    <img src="static/img/1.png" alt="International Court of Justice">
                 </div>
                 <h3>International Court of Justice</h3>
                 <p>The International Court of Justice (ICJ), also known as the World Court, is the principal judicial
@@ -97,7 +142,7 @@ questions referred to it by authorized UN organs and specialized agencies.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-users"></i>
+                    <img src="static/img/2.png" alt="United Nations Security Council">
                 </div>
                 <h3>United Nations Security Council</h3>
                 <p>The United Nations Security Council (UNSC) is the principal organ of the UN responsible for
@@ -108,7 +153,7 @@ authorize peacekeeping operations or military interventions.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-chart-line"></i>
+                    <img src="static/img/3.png" alt="United Nations Human Rights Council">
                 </div>
                 <h3>United Nations Human Rights Council</h3>
                 <p>The United Nations Human Rights Council (UNHRC) is an intergovernmental body responsible
@@ -118,7 +163,7 @@ headquartered in Geneva, Switzerland.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-balance-scale"></i>
+                    <img src="static/img/4.png" alt="Economic and Financial Committee">
                 </div>
                 <h3>Economic and Financial Committee</h3>
                 <p>The Economic and Financial Affairs Committee (ECOFIN) is the second main committee of the
@@ -129,7 +174,7 @@ development, poverty eradication, external debt and international economic coope
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-globe-europe"></i>
+                    <img src="static/img/5.png" alt="Social, Humanitarian and Cultural Committee">
                 </div>
                 <h3>Social, Humanitarian and Cultural Committee</h3>
                 <p>The Social, Humanitarian and Cultural Committee (SOCHUM) is the third main committee of the
@@ -140,7 +185,7 @@ expression, and the impact of conflict on civilians.</p>
             </div>
             <div class="service-card fade-in">
                 <div class="service-icon">
-                    <i class="fas fa-leaf"></i>
+                    <img src="static/img/6.png" alt="World Health Organization">
                 </div>
                 <h3>World Health Organization</h3>
                 <p>The World Health Organization (WHO) is the specialized agency of the United Nations
@@ -151,21 +196,21 @@ health services.</p>
             </div>
             <div class="service-card fade-in hidden-committee">
                 <div class="service-icon">
-                    <i class="fas fa-gavel"></i>
+                    <img src="static/img/icj.png" alt="International Court of Justice">
                 </div>
                 <h3>International Court of Justice</h3>
                 <p>Simulates international legal cases and delivers rulings based on international law. For students interested in international law.</p>
             </div>
             <div class="service-card fade-in hidden-committee">
                 <div class="service-icon">
-                    <i class="fas fa-hand-holding-medical"></i>
+                    <img src="static/img/who.png" alt="World Health Organization">
                 </div>
                 <h3>World Health Organization</h3>
                 <p>Addresses global public health challenges and develops strategies to improve health systems worldwide.</p>
             </div>
             <div class="service-card fade-in hidden-committee">
                 <div class="service-icon">
-                    <i class="fas fa-child"></i>
+                    <img src="static/img/unicef.png" alt="UNICEF">
                 </div>
                 <h3>UNICEF</h3>
                 <p>Focuses on the rights and well-being of children worldwide, addressing issues such as education, health, and protection.</p>
@@ -239,85 +284,8 @@ health services.</p>
 </section>
 
 <!-- Team Section -->
-<section class="team" id="team">
-    <div class="container">
-        <div class="section-title">
-            <h2>GENERAL SECRETARIAT TimișoaraMUN</h2>
-            <p>Meet the team members which make TimișoaraMUN possible</p>
-        </div>
-        <div class="team-grid">
-            <div class="team-member active fade-in">
-                <div class="member-image">
-                    <img src="/static/img/dragos2.jpg" alt="Dragoș Bârlădianu">
-                </div>
-                <div class="member-info">
-                    <h3>Dragoș Bârlădianu</h3>
-                    <p>Secretary General TimișoaraMUN</p>
-                    <p>dragos@timisoara-mun.ro</p>
-                    <span class="member-country">Founder</span>
-                </div>
-            </div>
-            <div class="team-member fade-in">
-                <div class="member-image poza-normala">
-                    <img src="static/img/pozacristiana.jpg" alt="Cristiana Rebecca Oancea" >
-                </div>
-                <div class="member-info">
-                    <h3>Cristiana Rebecca Oancea</h3>
-                    <p>Deputy Secretary General TimisoaraMUN</p>
-                    <p>cristiana@timisoara-mun.ro</p>
-                    <span class="member-country">Co-Founder</span>
-                </div>
-            </div>
-            <div class="team-member fade-in">
-                <div class="member-image">
-                    <img src="static/img/logoH.png" alt="Vacancy" class="logo-centered">
-                </div>
-                <div class="member-info">
-                    <h3>Luca Vasiu</h3>
-                    <p>President of the General Assembly TimisoaraMUN</p>
-                    <p>luca.vasiu@timisoara-mun.ro</p>
-                    <!-- <span class="member-country">România</span> -->
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Events Section -->
-<!-- <section class="events" id="events">
-    <div class="container">
-        <div class="section-title">
-            <h2>Evenimentele Noastre</h2>
-            <p>Descoperă evenimentele viitoare organizate de MUN Timișoara</p>
-        </div>
-        <div class="events-container">
-            <div class="event-card fade-in">
-                <div class="event-image" style="background-image: url('https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80')"></div>
-                <div class="event-content">
-                    <h3 class="event-title">MUN Timișoara 2025</h3>
-                    <p class="event-subtitle">Conferința Principală</p>
-                    <div class="event-details">
-                        <div class="event-detail">
-                            <i class="far fa-calendar-alt"></i>
-                            <span>15-17 Martie, 2025</span>
-                        </div>
-                        <div class="event-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Universitatea de Vest, Timișoara</span>
-                        </div>
-                        <div class="event-detail">
-                            <i class="far fa-clock"></i>
-                            <span>Termen limită înscriere: 15 Februarie, 2025</span>
-                        </div>
-                    </div>
-                    <div class="event-buttons">
-                        <a href="#register" class="btn">Înregistrează-te</a>
-                        <a href="#" class="btn btn-outline">Detalii</a>
-                    </div>
-                </div>
-            </div>
-            
-</section> -->
+
 
 
 <!-- Contact Section -->
@@ -325,49 +293,8 @@ health services.</p>
 
 <!-- Registration Section -->
 <!-- Contact Section with FAQ-specific message -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Any other questions?</h2>
-                <!-- <p>Nu ai găsit răspunsul la întrebarea ta? Contactează-ne și îți vom răspunde cât mai curând posibil.</p> -->
-            </div>
-            <div class="contact-container">
-                <div class="contact-info fade-in">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contact@timisoara-mun.ro</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Telefon</h3>
-                            <p>+40 787 591 204</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form fade-in">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Question" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<br>
+<br><br><br>
 
 <!-- Footer -->
 {% include 'components/footer.html'%}
@@ -696,13 +623,6 @@ loadStyle.textContent = `
     }
 `
 document.head.appendChild(loadStyle)
-
-// Add year to copyright automatically
-const copyrightYear = document.querySelector(".copyright p")
-if (copyrightYear) {
-  const currentYear = new Date().getFullYear()
-  copyrightYear.textContent = copyrightYear.textContent.replace("2025", currentYear)
-}
 
 const showMoreButton = document.getElementById('show-more-committees')
 const hiddenCommittees = document.querySelectorAll('.hidden-committee')
