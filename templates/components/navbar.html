@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimișoaraMUNt</title>
+    <title>TimișoaraMUN</title>
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
             --primary: #021859;
             --primary-dark: #0077b3;
             --secondary: #00c6ff;
-            --accent: #ff9500;
+            --accent: #2F033F !important;
             --text-dark: #333;
             --text-light: #fff;
             --bg-light: #f8f9fa;
@@ -48,8 +48,8 @@
         }
         
         .container {
-            width: 90%;
-            max-width: 1200px;
+            width: 95%;
+            max-width: 1400px; /* Increased from 1200px */
             margin: 0 auto;
         }
         
@@ -57,19 +57,33 @@
             display: inline-block;
             background-color: var(--primary);
             color: var(--text-light);
-            padding: 12px 24px;
-            border-radius: 30px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-weight: 600;
             transition: var(--transition);
             border: none;
             cursor: pointer;
             text-align: center;
+            font-size: 0.9rem;
         }
         
         .btn:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-admin {
+            background-color: var(--primary);
+            color: var(--text-light);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+            border-radius: 20px;
+        }
+        
+        .btn-admin:hover {
+            background-color:var(--accent);
         }
         
         .btn-outline {
@@ -81,36 +95,6 @@
         .btn-outline:hover {
             background-color: var(--primary);
             color: var(--text-light);
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
         }
         
         section {
@@ -137,16 +121,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 12px 0;
         }
         
         .logo {
             display: flex;
             align-items: center;
+            flex-shrink: 0;
         }
         
         .logo img {
-            height: 60px;
+            height: 55px;
             margin-right: 10px;
         }
         
@@ -156,7 +141,7 @@
         }
         
         .logo-text .main {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-dark);
             text-transform: uppercase;
@@ -164,20 +149,28 @@
         }
         
         .logo-text .sub {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
         
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin: 0 2rem;
+        }
+        
         nav ul {
             display: flex;
             position: relative;
+            align-items: center;
         }
         
         nav ul li {
             position: relative;
-            margin-left: 1.5rem;
+            margin: 0 0.8rem;
         }
         
         nav ul li a {
@@ -186,6 +179,8 @@
             transition: var(--transition);
             position: relative;
             padding: 0.5rem 0;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
         
         nav ul li a::after {
@@ -214,6 +209,13 @@
             padding: 0.5rem;
         }
         
+        .header-buttons {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: 0.5rem;
+        }
+        
         /* ===== DROPDOWN STYLES ===== */
         nav ul li ul.dropdown {
             display: none;
@@ -224,10 +226,11 @@
             min-width: 180px;
             max-height: 60vh;
             overflow-y: auto;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             padding: 0.5rem 0;
             z-index: 1000;
-            border-radius: 5px;
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
         
         nav ul li.dropdown-active ul.dropdown {
@@ -239,14 +242,16 @@
         }
         
         nav ul li ul.dropdown li a {
-            padding: 0.5rem 1rem;
+            padding: 0.75rem 1rem;
             display: block;
             color: var(--text-dark);
             white-space: nowrap;
+            font-size: 0.9rem;
         }
         
         nav ul li ul.dropdown li a:hover {
             background-color: var(--bg-light);
+            color: var(--primary);
         }
         
         nav ul li ul.dropdown li a::after {
@@ -254,12 +259,42 @@
         }
 
         /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 1300px) {
+            nav ul li {
+                margin: 0 0.6rem;
+            }
+            
+            nav ul li a {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 1150px) {
+            nav ul li {
+                margin: 0 0.4rem;
+            }
+            
+            nav ul li a {
+                font-size: 0.8rem;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+            
+            .btn-admin {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
         @media (max-width: 1024px) {
             .mobile-toggle {
                 display: block;
             }
             
-            .header-content > .btn {
+            .header-buttons {
                 display: none;
             }
             
@@ -273,22 +308,25 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: max-height 0.3s ease;
-                margin-top: 0; /* Eliminăm spațiul dintre navbar și meniu */
+                margin: 0;
+                justify-content: flex-start;
             }
             
             nav.active {
-                max-height: 500px;
+                max-height: 600px;
             }
             
             nav ul {
                 flex-direction: column;
-                padding: 0; /* Eliminăm padding-ul care crea spațiu */
+                padding: 0;
                 margin: 0;
+                width: 100%;
             }
             
             nav ul li {
                 margin: 0;
                 border-bottom: 1px solid #eee;
+                width: 100%;
             }
             
             nav ul li:last-child {
@@ -299,6 +337,8 @@
                 display: block;
                 padding: 1rem 2rem;
                 border-bottom: none;
+                font-size: 1rem;
+                width: 100%;
             }
             
             nav ul li a::after {
@@ -318,8 +358,9 @@
                 box-shadow: none;
                 background-color: var(--bg-light);
                 border-radius: 0;
+                border: none;
                 margin-top: 0;
-                padding: 0; /* Eliminăm padding-ul care crea spațiu */
+                padding: 0;
             }
             
             nav ul li ul.dropdown li {
@@ -333,6 +374,28 @@
             nav ul li ul.dropdown li a {
                 padding: 0.75rem 3rem;
                 font-size: 0.9rem;
+            }
+            
+            /* Mobile buttons at bottom */
+            .mobile-buttons {
+                display: block;
+                padding: 1rem 2rem;
+                border-top: 2px solid #eee;
+                background-color: #f9f9f9;
+            }
+            
+            .mobile-buttons .btn,
+            .mobile-buttons .btn-admin {
+                display: block;
+                width: 100%;
+                margin-bottom: 0.5rem;
+                text-align: center;
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            .mobile-buttons .btn-admin {
+                margin-left: 0;
             }
         }
 
@@ -373,6 +436,11 @@
                 padding: 0.5rem 2rem;
             }
         }
+
+        /* Hide mobile buttons on desktop */
+        .mobile-buttons {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -386,9 +454,11 @@
                         </div>
                     </a>
                 </div>
+                
                 <div class="mobile-toggle" id="mobile-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
+                
                 <nav id="nav">
                     <ul>
                         <li><a href="{{url_for('home')}}">Home</a></li>
@@ -408,15 +478,20 @@
                             </ul>
                         </li>
                         <li><a href="{{url_for('faq')}}">FAQ</a></li>
-
-                            <li>
+                        <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Resources</a>
                             <ul class="dropdown">
                               <li><a href="">Rules of Procedure</a></li>
                               <li><a href="">Delegate Handbook</a></li>
                               <li><a href="{{url_for('policies')}}">Privacy Policy (GDPR)</a></li>
                             </ul>
-
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="dropdown-toggle">Sponsors</a>
+                            <ul class="dropdown">
+                                <li><a href="{{url_for('parteneri')}}">Partners</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Committees</a>
                             <ul class="dropdown">
@@ -431,8 +506,18 @@
                         </li>
                         <li><a href="{{url_for('contact')}}">Contact</a></li>
                     </ul>
+                    
+                    <!-- Mobile buttons -->
+                    <div class="mobile-buttons">
+                        <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
+                        <a href="{{url_for('loginstaff')}}" class="btn-admin">Internal Platform</a>
+                    </div>
                 </nav>
-                <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
+                
+                <div class="header-buttons">
+                    <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
+                    <a href="{{url_for('loginstaff')}}" class="btn-admin">Internal Platform</a>
+                </div>
             </div>
         </div>
     </header>
