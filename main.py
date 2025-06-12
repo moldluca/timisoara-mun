@@ -84,12 +84,14 @@ def send_mail():
 
     <p>Please note that only selected candidates will receive an email confirming their selection, along with all the necessary information regarding participation in the event. All details regarding the event and program will be announced soon.</p>
 
-    <p>The event will take place in Timișoara, between 18–20 August 2025, in several representative locations in the city.</p>
+    <p>The event will take place in Timișoara, between 18–20 October 2025, in several representative locations in the city.</p>
 
     <p>For questions related to the selection process or the responsibilities of the Chairperson role, please write to us at: <a href="mailto:chairperson.registration@timisoara-mun.ro">chairperson.registration@timisoara-mun.ro</a></p>
 
     <p>For technical assistance or problems related to the form: <a href="mailto:erol@timisoara-mun.ro">erol@timisoara-mun.ro</a></p>
 
+    
+    <p>Keep in touch!</p>
     <p>Thank you for your interest and involvement!</p>
 
     <p>Best regards,<br>
