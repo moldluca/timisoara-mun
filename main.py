@@ -223,7 +223,7 @@ def parteneri():
 @app.route("/committees/<comitet>")
 def comitete(comitet):
     if comitet == "ICJ":
-        size = "Size: 19 delegates"
+        size = "Size: 20 delegates"
         poza = url_for('static', filename='img/icj.png')
         comitet_name = "ICJ"
         textcomitet = """The International Court of Justice (ICJ), also known as the World Court, is the principal judicial
@@ -247,7 +247,7 @@ precedent. Delegates are expected to research thoroughly, collaborate constructi
 deliver judgments that reflect the principles of justice, neutrality, and the rule of law."""
 
     elif comitet == "UNSC":
-        size = "Size: 35 delegates"
+        size = "Size: 25 delegates"
         poza = url_for('static', filename='img/unsc.png')
         comitet_name = "UNSC"
         textcomitet = """The United Nations Security Council (UNSC) is the principal organ of the UN responsible for
@@ -287,7 +287,7 @@ must thoroughly research the international legal framework, propose equitable re
 promote solutions based on dialogue, cooperation and mutual respect."""
 
     elif comitet == "ECOFIN":
-        size = "Size: 35 delegates"
+        size = "Size: 30 delegates"
         poza = url_for('static', filename='img/ecofin.png')
         comitet_name = "ECOFIN"
         textcomitet = """The Economic and Financial Affairs Committee (ECOFIN) is the second main committee of the
@@ -307,7 +307,7 @@ policies. Delegates must combine economic analysis with diplomacy to develop bal
 feasible solutions."""
 
     elif comitet == "SOCHUM":
-        size = "Size: 35 delegates"
+        size = "Size: 30 delegates"
         poza = url_for('static', filename='img/sochum.png')
         comitet_name = "SOCHUM"
         textcomitet = """The Social, Humanitarian and Cultural Committee (SOCHUM) is the third main committee of the
@@ -326,8 +326,38 @@ geopolitical and cultural interests of the state they represent. Delegates are c
 realistic solutions to complex humanitarian problems while maintaining a diplomatic and
 socially sensitive approach."""
 
+    elif comitet == "CRISIS":
+        size = "Size: 20 delegates"
+        poza = url_for('static', filename='img/sochum.png')
+        comitet_name = "CRISIS"
+        textcomitet = """-"""
+    
+    elif comitet == "C-24":
+        size = "Size: 25 delegates"
+        poza = url_for('static', filename='img/sochum.png')
+        comitet_name = "C-24"
+        textcomitet = """-"""
+    
+    elif comitet == "Military court":
+        size = "Size: 20 delegates"
+        poza = url_for('static', filename='img/sochum.png')
+        comitet_name = "Military court"
+        textcomitet = """-"""
+
+    elif comitet == "UNODC":
+        size = "Size: 25 delegates"
+        poza = url_for('static', filename='img/sochum.png')
+        comitet_name = "UNODC"
+        textcomitet = """-"""
+
+    elif comitet == "OHCHR":
+        size = "Size: 25 delegates"
+        poza = url_for('static', filename='img/sochum.png')
+        comitet_name = "OHCHR"
+        textcomitet = """-"""
+
     elif comitet == "WHO":
-        size = "Size: 35 delegates"
+        size = "Size: 30 delegates"
         poza = url_for('static', filename='img/who.png')
         comitet_name = "WHO"
         textcomitet = """The World Health Organization (WHO) is the specialized agency of the United Nations
@@ -346,7 +376,7 @@ policies. Delegates will negotiate policies that meet both immediate needs and l
 health goals, taking into account the balance between resources, ethics, and human rights."""
     elif comitet == "DISEC":
             poza = url_for('static', filename='img/who.png')
-            size = "Size: 35 delegates"
+            size = "Size: 25 delegates"
             comitet_name = "DISEC"
             textcomitet = """The Disarmament and International Security Committee (DISEC) is the First Committee of the
 United Nations General Assembly and is tasked with addressing issues related to global peace,
