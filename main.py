@@ -328,34 +328,34 @@ socially sensitive approach."""
 
     elif comitet == "CRISIS":
         size = "Size: 20 delegates"
-        poza = url_for('static', filename='img/sochum.png')
+        poza = url_for('static', filename='img/CRISIS.png')
         comitet_name = "CRISIS"
         textcomitet = """The CRISIS Committee is a fast paced body, envisioned to be a high stakes political simulation, based on a historical scenario. Unlike traditional committees, CRISIS operates in real time, allowing delegates to respond to rapidly evolving situations, through directives and personal actions. Delegates take the roles of individuals, such as heads of states, generals, or advisors, and aim to achieve their individual goals, sometimes through unorthodox ways.
 """
     
     elif comitet == "C-24":
         size = "Size: 25 delegates"
-        poza = url_for('static', filename='img/sochum.png')
+        poza = url_for('static', filename='img/C24.png')
         comitet_name = "C-24"
         textcomitet = """The Special Committee on Decolonization, also known as C-24, was established in 1961 by the UN General Assembly to monitor the implementation of the 1960 Declaration on the Granting of Independence to Colonial Countries and Peoples. It is responsible for supporting the self-determination and independence of Non-Self-Governing Territories (NSGTs). C-24 examines political, social, and economic developments in these territories, encourages dialogue with administering powers, and promotes decolonization in accordance with international law.
 """
     
     elif comitet == "Military Tribunal":
         size = "Size: 20 delegates"
-        poza = url_for('static', filename='img/sochum.png')
+        poza = url_for('static', filename='img/MC.png')
         comitet_name = "Military court"
         textcomitet = """The Military Tribunal on the Dakota Trials is a specialized judicial body simulating the aftermath of the United States-Dakota War of 1862, focusing on the controversial military commission that sentenced over 300 Dakota men to death, most being later pardoned by President Abraham Lincoln. This tribunal explores topics such as ethics in war, indigenous rights and accountability. Delegates, simulating judges, prosecutors and generals in this war tribunal will analyze evidence, cross examine witnesses, and apply the law of that time. This committee provides an important perspective on the justice and moral conflict of this case."""
 
     elif comitet == "UNODC":
         size = "Size: 25 delegates"
-        poza = url_for('static', filename='img/sochum.png')
+        poza = url_for('static', filename='img/UNODC.png')
         comitet_name = "UNODC"
         textcomitet = """United Nations Office on Drugs and Crime (UNODC)
 The United Nations Office on Drugs and Crime is a specialized UN agency that leads international efforts to combat illicit drugs, organized crime, terrorism, and corruption. Established in 1997 and headquartered in Vienna, Austria, UNODC works with member states to strengthen legal frameworks, support criminal justice systems, and promote international cooperation. It provides research, policy guidance, and technical assistance in areas such as drug prevention, trafficking, human rights, and anti-corruption."""
 
     elif comitet == "OHCHR":
         size = "Size: 25 delegates"
-        poza = url_for('static', filename='img/sochum.png')
+        poza = url_for('static', filename='img/OHCHR.png')
         comitet_name = "OHCHR"
         textcomitet = """-"""
 
