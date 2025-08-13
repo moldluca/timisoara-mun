@@ -28,7 +28,7 @@
     </div>
 </section>
 
-<!-- <section class="announcement-banner">
+<section class="announcement-banner">
   <div class="container">
     <div class="announcement-content">
       <div class="announcement-icon">
@@ -39,11 +39,28 @@
         <p>Join our team of chairs and help shape the TimișoaraMUN experience. Applications are open!</p>
       </div>
       <div class="announcement-action">
-        <a href="{{url_for('chairperson')}}" class="btn btn-accent">Apply Now</a>
+        <a href="{{ url_for('chairperson') }}" class="btn btn-accent">Apply Now</a>
       </div>
     </div>
   </div>
-</section> -->
+</section>
+
+<section class="announcement-banner">
+  <div class="container">
+    <div class="announcement-content">
+      <div class="announcement-icon">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+      <div class="announcement-text">
+        <h3>Delegate Applications Now Open!</h3>
+        <p>Be part of the debate and represent a country at TimișoaraMUN 2025. Applications are open!</p>
+      </div>
+      <div class="announcement-action">
+        <a href="{{ url_for('delegates') }}" class="btn btn-accent">Apply Now</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 
 

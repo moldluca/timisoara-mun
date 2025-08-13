@@ -75,29 +75,25 @@ def send_mail():
     html_body = f"""
     <p>Dear {first_name},</p>
 
-    <p>Thank you for completing the application form on our website and for your interest in the position of Chairperson within Timișoara Model United Nations – First Edition.</p>
+<p>Thank you for your interest in the Timișoara Model United Nations – First Edition.</p>
 
-    <p>This email confirms that we have received your application. In order for your registration to be complete, you must also complete the final registration form, available at the link: 
-    <a href="https://tally.so/r/nWB2lL" target="_blank">https://tally.so/r/nWB2lL</a></p>
+<p>We appreciate your support and enthusiasm for our event. You can find more information about TimișoaraMUN 2025, including updates and official announcements, on our MyMUN page:</p>
 
-    <p>Only candidates who have completed both forms, the one on the website and the registration form, will be considered for selection.</p>
+<p><a href="https://mymun.com/conferences/timisoaramun-2025" target="_blank">https://mymun.com/conferences/timisoaramun-2025</a></p>
 
-    <p>Please note that only selected candidates will receive an email confirming their selection, along with all the necessary information regarding participation in the event. All details regarding the event and program will be announced soon.</p>
+<p>We look forward to seeing you in Timișoara!</p>
 
-    <p>The event will take place in Timișoara, between 18–20 October 2025, in several representative locations in the city.</p>
+<p>With respect,<br>
+Dragoș Bârlădianu<br>
+Secretary General – TimișoaraMUN<br>
+<a href="mailto:dragos@timisoara-mun.ro">dragos@timisoara-mun.ro</a><br>
++40&nbsp;724&nbsp;994&nbsp;673</p>
 
-    <p>For questions related to the selection process or the responsibilities of the Chairperson role, please write to us at: <a href="mailto:chairperson.registration@timisoara-mun.ro">chairperson.registration@timisoara-mun.ro</a></p>
+<p><img src="{logo_url}" alt="TimisoaraMUN Logo" style="max-width:200px;"></p>
 
-    <p>For technical assistance or problems related to the form: <a href="mailto:erol@timisoara-mun.ro">erol@timisoara-mun.ro</a></p>
+`
 
-    
-    <p>Keep in touch!</p>
-    <p>Thank you for your interest and involvement!</p>
 
-    <p>Best regards,<br>
-    TimișoaraMUN 2025 Registration Team</p>
-
-    <p><img src="{logo_url}" alt="TimisoaraMUN Logo" style="max-width:200px;"></p>
     """
 
     # Trimitem email-ul prin MailerSend
@@ -135,10 +131,6 @@ def send_mail():
     return redirect(url_for('chairperson'))
 
 
- 
-@app.route("/contact")
-def contact():
-    return render_template('contact.html')
 
 @app.route('/send_contact_mail', methods=['POST'])
 def send_contact_mail():
@@ -175,7 +167,7 @@ def send_contact_mail():
         },
         "to": [
             {
-                "email": "timis.mun@gmail.com",
+                "email": "chairperson.registration@timisoara-mun.ro@gmail.com",
                 "name": "TimisoaraMUN Team"
             }
         ],
@@ -199,6 +191,10 @@ def send_contact_mail():
 
 
 
+ 
+@app.route("/contact")
+def contact():
+    return render_template('contact.html')
 
 
 # ---------------------------------------- MAIL INSCRIERI ----------------------------------------
