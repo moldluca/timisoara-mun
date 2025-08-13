@@ -77,7 +77,7 @@ def send_mail():
 
 <p>Thank you for your interest in the Timișoara Model United Nations – First Edition.</p>
 
-<p>We appreciate your support and enthusiasm for our event. You can find more information about TimișoaraMUN 2025, including updates and official announcements, on our MyMUN page:</p>
+<p>We appreciate your support and enthusiasm for our event. Registration will be done on our MyMUN page:</p>
 
 <p><a href="https://mymun.com/conferences/timisoaramun-2025" target="_blank">https://mymun.com/conferences/timisoaramun-2025</a></p>
 
