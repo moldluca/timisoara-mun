@@ -339,7 +339,7 @@ socially sensitive approach."""
     elif comitet == "Military Tribunal":
         size = "Size: 20 delegates"
         poza = url_for('static', filename='img/MC.png')
-        comitet_name = "Military court"
+        comitet_name = "Military Tribunal"
         textcomitet = """The Military Tribunal on the Dakota Trials is a specialized judicial body simulating the aftermath of the United States-Dakota War of 1862, focusing on the controversial military commission that sentenced over 300 Dakota men to death, most being later pardoned by President Abraham Lincoln. This tribunal explores topics such as ethics in war, indigenous rights and accountability. Delegates, simulating judges, prosecutors and generals in this war tribunal will analyze evidence, cross examine witnesses, and apply the law of that time. This committee provides an important perspective on the justice and moral conflict of this case."""
 
     elif comitet == "UNODC":
@@ -353,7 +353,7 @@ The United Nations Office on Drugs and Crime is a specialized UN agency that lea
         size = "Size: 25 delegates"
         poza = url_for('static', filename='img/OHCHR.png')
         comitet_name = "OHCHR"
-        textcomitet = """-"""
+        textcomitet = """The Office of the High Commissioner for Human Rights (OHCHR) is the principal United Nations entity responsible for promoting and protecting human rights globally. Established in 1993 following the Vienna World Conference on Human Rights, OHCHR leads international efforts to uphold the Universal Declaration of Human Rights and other international human rights instruments. Headquartered in Geneva, OHCHR monitors human rights situations, provides technical assistance to states, supports human rights mechanisms such as the Human Rights Council and treaty bodies, and advocates for accountability, equality, and the rule of law."""
 
     elif comitet == "WHO":
         size = "Size: 30 delegates"
