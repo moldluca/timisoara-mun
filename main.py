@@ -14,7 +14,8 @@ users = {
     "erol@timisoara-mun.ro": "erolSecretariatMunIntern",
     "secretariat@timisoara-mun.ro": "secretariatSecretariatMunIntern",
     "luca.vasiu@timisoara-mun.ro": "lucaSecretariatMunIntern",
-    "delegate.registration@timisoara-mun.ro": "delegateSecretariatMunIntern"
+    "delegate.registration@timisoara-mun.ro": "delegateSecretariatMunIntern",
+    "luca.stefan@timisoara-mun.ro:": "lucaSecretariatMunIntern"
 }
 
 
