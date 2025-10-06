@@ -337,11 +337,6 @@ socially sensitive approach."""
         textcomitet = """The Special Committee on Decolonization, also known as C-24, was established in 1961 by the UN General Assembly to monitor the implementation of the 1960 Declaration on the Granting of Independence to Colonial Countries and Peoples. It is responsible for supporting the self-determination and independence of Non-Self-Governing Territories (NSGTs). C-24 examines political, social, and economic developments in these territories, encourages dialogue with administering powers, and promotes decolonization in accordance with international law.
 """
     
-    elif comitet == "Military Tribunal":
-        size = "Size: 20 delegates"
-        poza = url_for('static', filename='img/MC.png')
-        comitet_name = "Military Tribunal"
-        textcomitet = """The Military Tribunal on the Dakota Trials is a specialized judicial body simulating the aftermath of the United States-Dakota War of 1862, focusing on the controversial military commission that sentenced over 300 Dakota men to death, most being later pardoned by President Abraham Lincoln. This tribunal explores topics such as ethics in war, indigenous rights and accountability. Delegates, simulating judges, prosecutors and generals in this war tribunal will analyze evidence, cross examine witnesses, and apply the law of that time. This committee provides an important perspective on the justice and moral conflict of this case."""
 
     elif comitet == "UNODC":
         size = "Size: 25 delegates"
