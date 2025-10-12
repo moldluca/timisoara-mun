@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners & Sponsors - TimișoaraMUN</title>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .main-content {
+            margin-top: 120px;
+            padding-bottom: 3rem;
+        }
+        
+        .partners-sponsors-section {
+            margin-bottom: 5rem;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+            justify-items: center;
+        }
+        
+        .partner-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            text-align: center;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .partner-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: var(--transition);
+        }
+        
+        .partner-card:hover::before {
+            left: 100%;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
+        }
+        
+        .partner-logo {
+            width: 280px;
+            height: 160px;
+            object-fit: contain;
+            object-position: center;
+            margin: 1rem auto;
+            transition: var(--transition);
+            filter: grayscale(20%);
+            padding: 5px;
+        }
+        
+        .partner-card:hover .partner-logo {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+        
+        .partner-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1.4;
+        }
+        
+        .sponsors-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sponsors-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .sponsors-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .sponsors-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sponsors-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .sponsor-cta {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        
+        .sponsor-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .sponsor-email {
+            display: inline-flex;
+            align-items: center;
+            background: var(--accent);
+            color: var(--text-light);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sponsor-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            background: #2F033F;
+        }
+        
+        .sponsor-email i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .available-spaces {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .space-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .space-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .space-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .space-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .space-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) rotate(0deg); }
+            50% { transform: translate(-50%, -50%) rotate(180deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in-up:nth-child(5) { animation-delay: 0.5s; }
+        
+        @media (max-width: 768px) {
+            .partners-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .partner-logo {
+                width: 240px;
+                height: 140px;
+            }
+            
+            .sponsors-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .sponsors-title {
+                font-size: 2rem;
+            }
+            
+            .sponsors-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .available-spaces {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .partner-card {
+                padding: 1.5rem;
+            }
+            
+            .partner-logo {
+                width: 200px;
+                height: 120px;
+            }
+            
+            .sponsor-email {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Include -->
+    {% include 'components/navbar.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<section class="sponsors-section">
+                <div class="sponsors-content">
+                    <h2 class="sponsors-title">Become Our Sponsor</h2>
+                    <p class="sponsors-subtitle">Join us in shaping the future of young diplomats</p>
+                    
+                    <div class="sponsor-cta">
+                        <p>We are looking for visionary partners who share our commitment to education, diplomacy, and youth development. By sponsoring TimișoaraMUN, you'll be supporting the next generation of global leaders while gaining valuable exposure to an international audience.</p>
+                        
+                        <a href="mailto:sponsorships@timisoara-mun.ro" class="sponsor-email">
+                            <i class="fas fa-envelope"></i>
+                            sponsorships@timisoara-mun.ro
+                        </a>
+                    </div>
+                    
+                    <div class="available-spaces">
+                        <div class="space-card">
+                            <div class="space-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h4 class="space-title">Title Sponsor</h4>
+                            <p class="space-description">Premium branding and maximum visibility</p>
+                        </div>
+                        
+                        <div class="space-card">
+                            <div class="space-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <h4 class="space-title">Gold Sponsor</h4>
+                            <p class="space-description">Prominent logo placement and recognition</p>
+                        </div>
+                        
+                        <div class="space-card">
+                            <div class="space-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <h4 class="space-title">Silver Sponsor</h4>
+                            <p class="space-description">Logo display and event mentions</p>
+                        </div>
+                        
+                        <div class="space-card">
+                            <div class="space-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 class="space-title">Supporting Partner</h4>
+                            <p class="space-description">Community recognition and networking</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+     <!-- Footer Include -->
+    {% include 'components/footer.html' %}
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe partner cards for staggered animation
+        document.querySelectorAll('.fade-in-up').forEach((card, index) => {
+            observer.observe(card);
+        });
+
+        // Add hover sound effect simulation (visual feedback)
+        document.querySelectorAll('.partner-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Email click tracking
+        document.querySelector('.sponsor-email').addEventListener('click', function() {
+            // Add analytics tracking here if needed
+            console.log('Sponsor email clicked');
+        });
+    </script>
+
+</html>
