@@ -404,6 +404,12 @@
             color: #666;
         }
 
+        .committee-placeholder {
+            font-size: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
         .committee-info-list {
             list-style: none;
         }
@@ -668,24 +674,7 @@
                 <div class="committee-sidebar">
                     <div class="sidebar-section">
                         <h3>Committee Chairs</h3>
-                        <div class="chair-info">
-                            <div class="chair-image">
-                                <img src="img/chairs/chair1.jpg" alt="Chair Name">
-                            </div>
-                            <div class="chair-details">
-                                <h4>Chair Name</h4>
-                                <p>Chair Position</p>
-                            </div>
-                        </div>
-                        <div class="chair-info">
-                            <div class="chair-image">
-                                <img src="img/chairs/chair2.jpg" alt="Chair Name">
-                            </div>
-                            <div class="chair-details">
-                                <h4>Chair Name</h4>
-                                <p>Chair Position</p>
-                            </div>
-                        </div>
+                        <p class="committee-placeholder">Presiding officers will be announced soon.</p>
                     </div>
 
                     <div class="sidebar-section">
@@ -693,11 +682,11 @@
                         <ul class="committee-info-list">
                             <li>
                                 <i class="fas fa-users"></i>
-                                <span>{{size}}</span>
+                                <span>{{ spots }} delegate spots</span>
                             </li>
                             <li>
                                 <i class="fas fa-graduation-cap"></i>
-                                <span>Difficulty: Advanced</span>
+                                <span>Difficulty: {{ difficulty }}</span>
                             </li>
                             <li>
                                 <i class="fas fa-language"></i>
@@ -712,26 +701,7 @@
 
                     <div class="sidebar-section">
                         <h3>Resources</h3>
-                        <ul class="resources-list">
-                            <li>
-                                <a href="resources/study-guide.pdf" target="_blank">
-                                    <i class="fas fa-file-pdf"></i>
-                                    Study Guide
-                                </a>
-                            </li>
-                            <li>
-                                <a href="resources/rules-of-procedure.pdf" target="_blank">
-                                    <i class="fas fa-file-pdf"></i>
-                                    Rules of Procedure
-                                </a>
-                            </li>
-                            <li>
-                                <a href="resources/position-paper-template.docx" target="_blank">
-                                    <i class="fas fa-file-word"></i>
-                                    Position Paper Template
-                                </a>
-                            </li>
-                        </ul>
+                        <p class="committee-placeholder">Study guides and position paper templates will be published shortly.</p>
                     </div>
 
                     

@@ -47,13 +47,22 @@ app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL', 'False') == 'True'
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'True') == 'True'
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER') or app.config['MAIL_USERNAME']
 
-# Configurare baza de date pentru producție
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///instance/tm_mun.db')
+
+# Configurare baza de date pentru producție cu cale absolută
+basedir = os.path.abspath(os.path.dirname(__file__))
+db_path = os.path.join(basedir, 'instance', 'tm_mun.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', f"sqlite:///{db_path}")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 mail = Mail(app)
 db.init_app(app)
+
+
+def _parse_recipients(value, fallback):
+    raw = value or fallback or ""
+    return [email.strip() for email in raw.split(',') if email and email.strip()]
 
 def login_required(f):
     @wraps(f)
@@ -65,18 +74,127 @@ def login_required(f):
     return decorated_function
 
 committees = {
-    'unsc': {'name': 'United Nations Security Council', 'abbreviation': 'UNSC'},
-    'unhrc': {'name': 'United Nations Human Rights Council', 'abbreviation': 'UNHRC'},
-    'ecofin': {'name': 'Economic and Financial Committee', 'abbreviation': 'ECOFIN'},
-    'sochum': {'name': 'Social, Humanitarian & Cultural Committee', 'abbreviation': 'SOCHUM'},
-    'crisis': {'name': 'Crisis Committee', 'abbreviation': 'CRISIS'},
-    'c24': {'name': 'Committee of 24', 'abbreviation': 'C-24'},
-    'unodc': {'name': 'United Nations Office on Drugs and Crime', 'abbreviation': 'UNODC'},
-    'ohchr': {'name': 'Office of the High Commissioner for Human Rights', 'abbreviation': 'OHCHR'},
-    'who': {'name': 'World Health Organization', 'abbreviation': 'WHO'},
-    'icj': {'name': 'International Court of Justice', 'abbreviation': 'ICJ'},
-    'unicef': {'name': 'United Nations Children\'s Fund', 'abbreviation': 'UNICEF'},
-    'disec': {'name': 'Disarmament and International Security Committee', 'abbreviation': 'DISEC'}
+    'crisis': {
+        'name': 'CRISIS Committee',
+        'abbreviation': 'CRISIS',
+        'spots': 15,
+        'difficulty': 'Intermediate',
+        'image': 'img/COMITETE/CRISIS.webp',
+        'description': (
+            'The Crisis Committee immerses delegates in a fast-paced simulation where decisions reverberate '
+            'immediately across cabinets, alliances, and the press. Participants represent key actors with '
+            'distinct objectives, crafting directives and personal actions as scenarios evolve in real time. '
+            'It rewards creativity, strategic thinking, and the ability to keep calm when the situation changes minute by minute.'
+        )
+    },
+    'c24': {
+        'name': 'The Special Committee on Decolonization (C-24)',
+        'abbreviation': 'C-24',
+        'spots': 25,
+        'difficulty': 'Intermediate',
+        'image': 'img/COMITETE/The Special Committee on Decolonization (C-24).webp',
+        'description': (
+            'C-24 examines the unfinished agenda of decolonization and the lived realities of Non-Self-Governing Territories. '
+            'Delegates evaluate self-determination claims, economic transitions, and the responsibilities of administering powers. '
+            'Expect nuanced negotiations that balance historical justice with practical governance and regional stability.'
+        )
+    },
+    'disec': {
+        'name': 'Disarmament and International Security Committee (DISEC)',
+        'abbreviation': 'DISEC',
+        'spots': 25,
+        'difficulty': 'Beginner',
+        'image': 'img/COMITETE/Disarmament and International Security Committee.webp',
+        'description': (
+            'DISEC tackles questions of global peace and collective security, from conventional arms control to emerging cyber threats. '
+            'Delegates build consensus-driven resolutions that reduce escalation risks while respecting national priorities. '
+            'It is an ideal arena for new delegates to learn procedure while discussing timely security concerns.'
+        )
+    },
+    'unodc': {
+        'name': 'United Nations Office on Drugs and Crime (UNODC)',
+        'abbreviation': 'UNODC',
+        'spots': 25,
+        'difficulty': 'Intermediate',
+        'image': 'img/COMITETE/United Nations Office on Drugs and Crime.webp',
+        'description': (
+            'UNODC unites states in combating illicit trafficking, corruption, and transnational organized crime. '
+            'Delegates weigh questions of law enforcement capacity, human rights safeguards, and international cooperation. '
+            'Sessions focus on pragmatic frameworks that help states dismantle criminal networks while supporting vulnerable communities.'
+        )
+    },
+    'unsc': {
+        'name': 'United Nations Security Council (UNSC)',
+        'abbreviation': 'UNSC',
+        'spots': 15,
+        'difficulty': 'Expert',
+        'image': 'img/COMITETE/United Nations Security Council.webp',
+        'description': (
+            'The Security Council bears primary responsibility for maintaining international peace and security. '
+            'Delegates navigate high-stakes crises, balance national interests, and manage the dynamics of the veto power. '
+            'Success requires rapid negotiation, sharp diplomacy, and a firm grasp of international law and precedent.'
+        )
+    },
+    'sochum': {
+        'name': 'Social, Humanitarian and Cultural Committee (SOCHUM)',
+        'abbreviation': 'SOCHUM',
+        'spots': 30,
+        'difficulty': 'Beginner',
+        'image': 'img/COMITETE/Social, Humanitarian and Cultural Committee.webp',
+        'description': (
+            'SOCHUM addresses the human dimension of international affairs, from protecting minorities to supporting refugees and youth. '
+            'Delegates craft people-centred responses that blend empathy with actionable policy. '
+            'The committee welcomes first-time delegates ready to advocate for dignity, inclusion, and social justice.'
+        )
+    },
+    'who': {
+        'name': 'World Health Organization (WHO)',
+        'abbreviation': 'WHO',
+        'spots': 25,
+        'difficulty': 'Intermediate',
+        'image': 'img/COMITETE/World Health Organization.webp',
+        'description': (
+            'The WHO coordinates the global response to health emergencies and long-term public health challenges. '
+            'Delegates debate equitable access to care, resilient health systems, and the ethics of international cooperation. '
+            'Technical evidence meets humanitarian priorities as teams design responses that save lives.'
+        )
+    },
+    'icj': {
+        'name': 'International Court of Justice (ICJ)',
+        'abbreviation': 'ICJ',
+        'spots': 15,
+        'difficulty': 'Beginner',
+        'image': 'img/COMITETE/International Court of Justice.webp',
+        'description': (
+            'The ICJ places delegates on the bench as judges or advocates resolving disputes between states. '
+            'Cases test research skills, legal reasoning, and the ability to build persuasive written and oral arguments. '
+            'Participants collaborate to deliver balanced judgments rooted firmly in international law.'
+        )
+    },
+    'ecofin': {
+        'name': 'Economic and Financial Affairs Committee (ECOFIN)',
+        'abbreviation': 'ECOFIN',
+        'spots': 30,
+        'difficulty': 'Beginner',
+        'image': 'img/COMITETE/Economic and Financial Affairs Committee.webp',
+        'description': (
+            'ECOFIN examines the global economy through the lens of sustainable growth, trade, and financial stability. '
+            'Delegates explore policies that tackle inequality while fostering innovation and resilience. '
+            'It is a welcoming forum for delegates eager to pair economic analysis with creative diplomacy.'
+        )
+    },
+    'unhrc': {
+        'name': 'Human Rights Council (UNHRC)',
+        'abbreviation': 'UNHRC',
+        'spots': 25,
+        'difficulty': 'Beginner',
+        'image': 'img/COMITETE/Human Rights Council.webp',
+        'description': (
+            'The Human Rights Council evaluates urgent rights concerns, from freedom of expression to the protection of civilians in conflict. '
+            'Delegates investigate country situations, elevate the voices of affected communities, and develop principled recommendations. '
+            'The committee emphasises respectful debate, coalition building, and concrete action for universal rights.'
+        )
+    }
 }
 
 @app.route('/')
@@ -95,6 +213,12 @@ def advisors():
 def chairmen():
     return render_template('chairmen.html')
 
+
+@app.route('/chairperson-registration')
+def chairperson():
+    """Mirror the chairperson registration endpoint used in templates."""
+    return render_template('chairmen.html')
+
 @app.route('/staff')
 def staff():
     return render_template('staff.html')
@@ -111,6 +235,10 @@ def org():
 def parteneri():
     return render_template('parteneri.html')
 
+@app.route('/sponsors')
+def sponsors():
+    return render_template('sponsors.html')
+
 @app.route('/events')
 def events():
     return render_template('events.html')
@@ -124,7 +252,16 @@ def committee(committee_id):
     committee_info = committees.get(committee_id)
     if not committee_info:
         return render_template('error.html'), 404
-    return render_template('zaltapagina.html', committee=committee_info)
+    image_url = url_for('static', filename=committee_info['image'])
+    return render_template(
+        'comitete.html',
+        comitet=committee_info['abbreviation'],
+        comitet_name=committee_info['name'],
+        textcomitet=committee_info['description'],
+        poza=image_url,
+        spots=committee_info['spots'],
+        difficulty=committee_info['difficulty']
+    )
 
 @app.route('/faq')
 def faq():
@@ -138,8 +275,49 @@ def policies():
 def privacy_terms():
     return render_template('privacy-terms.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        name = (request.form.get('name') or '').strip()
+        email = (request.form.get('email') or '').strip()
+        subject = (request.form.get('subject') or '').strip()
+        message = (request.form.get('message') or '').strip()
+
+        if not name or not email or not message:
+            flash('Please fill in your name, email, and message before submitting.', 'error')
+            return redirect(url_for('contact'))
+
+        recipients = _parse_recipients(
+            os.environ.get('CONTACT_RECIPIENTS'),
+            'contact@timisoara-mun.ro'
+        )
+
+        if not recipients:
+            app.logger.error('Contact form submission failed: no recipients configured')
+            flash('We could not deliver your message because no recipients are configured yet. Please try again later.', 'error')
+            return redirect(url_for('contact'))
+
+        subject_line = f"[Contact Form] {subject}" if subject else '[Contact Form] Message'
+        sender = app.config.get('MAIL_DEFAULT_SENDER') or app.config.get('MAIL_USERNAME')
+
+        try:
+            msg = Message(subject_line, sender=sender, recipients=recipients)
+            msg.body = (
+                f"New contact form submission\n\n"
+                f"Name: {name}\n"
+                f"Email: {email}\n"
+                f"Subject: {subject if subject else 'No subject provided'}\n\n"
+                f"Message:\n{message}\n"
+            )
+            msg.reply_to = email
+            mail.send(msg)
+            flash('Your message has been sent! We will get back to you soon.', 'success')
+        except Exception as exc:  # pragma: no cover - network dependent
+            app.logger.exception('Failed to send contact form email: %s', exc)
+            flash('Something went wrong while sending your message. Please try again later.', 'error')
+
+        return redirect(url_for('contact'))
+
     return render_template('contact.html')
 
 @app.route('/delegates-registration', methods=['GET', 'POST'])
@@ -182,6 +360,12 @@ def delegates_registration():
             flash(f'An error occurred: {str(e)}', 'error')
     
     return render_template('delegates-registration.html')
+
+
+@app.route('/delegates')
+def delegates_redirect():
+    """Backward-compatible route forwarded to the delegates registration page."""
+    return redirect(url_for('delegates_registration'))
 
 def send_registration_email(registration_data):
     try:

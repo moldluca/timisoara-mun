@@ -448,7 +448,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <a href="{{url_for('home')}}">
+                    <a href="{{url_for('index')}}">
                         <div class="logo-img">
                             <img src="/static/img/logoV.png" alt="MUN Timișoara Logo">
                         </div>
@@ -461,22 +461,16 @@
                 
                 <nav id="nav">
                     <ul>
-                        <li><a href="{{url_for('home')}}">Home</a></li>
+                        <li><a href="{{url_for('index')}}">Home</a></li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">About Us</a>
                             <ul class="dropdown">
-                              <li><a href="{{url_for('we')}}">Who Are We</a></li>
+                              <li><a href="{{url_for('whowe')}}">Who Are We</a></li>
                               <li><a href="{{url_for('org')}}">Organizing Team</a></li>
-                              <li><a href="{{url_for('chair')}}">Chairpersons</a></li>
                               <li><a href="{{url_for('advisors')}}">Advisors</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="javascript:void(0)" class="dropdown-toggle">Events</a>
-                            <ul class="dropdown">
-                                <li><a href="{{url_for('events')}}">Conference</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{url_for('events')}}">Events</a></li>
                         <li><a href="{{url_for('faq')}}">FAQ</a></li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Resources</a>
@@ -490,24 +484,22 @@
                             <a href="javascript:void(0)" class="dropdown-toggle">Supporters</a>
                             <ul class="dropdown">
                                 <li><a href="{{url_for('parteneri')}}">Partners</a></li>
-                                <li><a href="{{url_for('parteneri')}}">Sponsors</a></li>
-                                <li><a href="{{url_for('parteneri')}}">Supporters</a></li>
+                                <li><a href="{{url_for('sponsors')}}">Sponsors</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="javascript:void(0)" class="dropdown-toggle">Committees</a>
                             <ul class="dropdown">
-                                <li><a href="/committees/UNSC">UNSC</a></li>
-                                <li><a href="/committees/CRISIS">CRISIS</a></li>
-                                <li><a href="/committees/C-24">C-24</a></li>
-                                <!-- <li><a href="/committees/UNSC">UNSC</a></li> -->
-                                <li><a href="/committees/DISEC">DISEC</a></li>
-                                <li><a href="/committees/SOCHUM">SOCHUM</a></li>
-                                <li><a href="/committees/ECOFIN">ECOFIN</a></li>
-                                <li><a href="/committees/WHO">WHO</a></li>
-                                <li><a href="/committees/ICJ">ICJ</a></li>
-                                <li><a href="/committees/UNODC">UNODC</a></li>
-                                <li><a href="/committees/OHCHR">OHCHR</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='crisis') }}">CRISIS</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='c24') }}">C-24</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='disec') }}">DISEC</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='unodc') }}">UNODC</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='unsc') }}">UNSC</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='sochum') }}">SOCHUM</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='ecofin') }}">ECOFIN</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='who') }}">WHO</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='icj') }}">ICJ</a></li>
+                                <li><a href="{{ url_for('committee', committee_id='unhrc') }}">UNHRC</a></li>
                             </ul>
                         </li>
                         <li><a href="{{url_for('contact')}}">Contact</a></li>
@@ -515,14 +507,14 @@
                     
                     <!-- Mobile buttons -->
                     <div class="mobile-buttons">
-                        <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
-                        <a href="{{url_for('loginstaff')}}" class="btn-admin">Internal Platform</a>
+                        {# <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a> #}
+                        <a href="{{url_for('login')}}" class="btn-admin">Internal Platform</a>
                     </div>
                 </nav>
                 
                 <div class="header-buttons">
-                    <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a>
-                    <a href="{{url_for('loginstaff')}}" class="btn-admin">Internal Platform</a>
+                    {# <a href="{{url_for('chairperson')}}" class="btn">Register now as a chairman</a> #}
+                    <a href="{{url_for('login')}}" class="btn-admin">Internal Platform</a>
                 </div>
             </div>
         </div>

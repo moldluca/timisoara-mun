@@ -225,6 +225,31 @@
             color: #555;
         }
 
+        .video-embed {
+            max-width: 900px;
+            margin: 2rem auto 0;
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #000;
+            box-shadow: 0 20px 35px rgba(2, 24, 89, 0.15);
+        }
+
+        .video-embed::before {
+            content: "";
+            display: block;
+            padding-top: 56.25%;
+        }
+
+        .video-embed video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         /* ===== CITY SECTION ===== */
         .city-section {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -436,6 +461,10 @@
                 max-width: 300px;
                 justify-content: center;
             }
+
+            .video-embed {
+                border-radius: 14px;
+            }
         }
 
         @media (max-width: 576px) {
@@ -487,7 +516,7 @@
                 <h2>Built by Youth, for Youth</h2>
                 <p>Organized for the first time by a dedicated team of high school students, our mission is to empower young voices through diplomacy, debate, and international cooperation.</p>
                 <p>TimișoaraMUN is designed to provide a realistic simulation of the United Nations, where high school and university students from Romania and abroad come together to discuss global issues, negotiate resolutions, and develop essential skills.</p>
-                <a href="/organizing-team.html" class="btn">Meet Our Team</a>
+                <a href="/org.html" class="btn">Meet Our Team</a>
             </div>
         </div>
     </section>
@@ -499,7 +528,22 @@
                 <h2>Essential Skills Development</h2>
                 <p>Through our conference, participants develop essential skills like public speaking, critical thinking, teamwork, and leadership. These skills are not just valuable for academic success, but for life.</p>
                 <p>Our delegates learn to think critically about global issues, articulate their thoughts clearly, and work collaboratively to find solutions to complex problems.</p>
-                <a href="/delegate-registration.html" class="btn btn-accent">Join as Delegate</a>
+                <a href="https://mymun.com/conferences/timisoaramun-2025/apply" class="btn btn-accent">Join as Delegate</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="content-block">
+                <h2>Special message from United Nations Secretary-General</h2>
+                <p>Hear directly from our Secretary-General about the spirit of Model United Nations and what makes the TimișoaraMUN experience unique.</p>
+                <div class="video-embed">
+                    <video controls preload="metadata" poster="{{ url_for('static', filename='img/Flag_of_the_United_Nations.svg') }}">
+                        <source src="{{ url_for('static', filename='vid/MSG+SG+MODEL+UN+2025+EN.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
         </div>
     </section>

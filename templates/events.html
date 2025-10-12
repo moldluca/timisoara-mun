@@ -113,6 +113,97 @@
             padding: 5rem 0;
         }
 
+        /* ===== HOST SECTION ===== */
+        .host-section {
+            background: white;
+            padding: 5rem 0;
+        }
+
+        .host-wrapper {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .host-details {
+            background: var(--bg-light);
+            padding: 2.5rem;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(2, 24, 89, 0.15);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .host-details.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .host-details h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .host-details p {
+            font-size: 1.05rem;
+            color: #555;
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .host-address {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .host-address i {
+            margin-top: 0.2rem;
+        }
+
+        .host-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .host-gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+            transition: var(--transition);
+            opacity: 0;
+            transform: scale(0.95);
+        }
+
+        .host-gallery-item.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .host-gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .host-gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+        }
+
+        .host-gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
         /* ===== HERO SECTION ===== */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
@@ -524,6 +615,18 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+
+            .host-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .host-details {
+                padding: 2rem;
+            }
+
+            .host-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
         }
 
         @media (max-width: 576px) {
@@ -546,6 +649,14 @@
             .timeline-content h3 {
                 font-size: 1.3rem;
             }
+
+            .host-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .host-gallery-item img {
+                height: 160px;
+            }
         }
     </style>
 </head>
@@ -558,7 +669,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1><span class="emoji">🎉</span>Events</h1>
+                <h1>Events</h1>
                 <p>Join us for an unforgettable experience of diplomacy, learning, and international collaboration at TimișoaraMUN 2025.</p>
                 <div class="hero-buttons">
                     <a href="#conference" class="btn">Conference Details</a>
@@ -583,6 +694,75 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Host Section -->
+    <section class="host-section" id="host">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Hosts</h2>
+                <p>From the state-of-the-art classrooms of the British International School of Timișoara to the creative energy of Zbor Hub Timișoara, our venues offer inspiring spaces for every moment of the conference.</p>
+            </div>
+            <div class="host-wrapper">
+                <div class="host-details">
+                    <h3>British International School of Timișoara</h3>
+                    <p>Set in a contemporary campus bathed in natural light, the British International School of Timișoara offers flexible learning spaces, high-tech classrooms, and welcoming common areas that reflect the spirit of our conference.</p>
+                    <p>Delegates will enjoy an environment that combines academic excellence with a vibrant international community dedicated to innovation and leadership.</p>
+                    <div class="host-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Strada Aurora 8</span><br>
+                            <span>Timișoara 300254, Romania</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="host-gallery">
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of C_DSC_4129-HDR.jpg') }}" alt="British International School of Timișoara campus exterior">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of Cantina_DSC_5025-HDR.jpg') }}" alt="Modern dining hall at the British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of Library_DSC_5399-HDR.jpg') }}" alt="Library space at the British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of E_DSC_5664.jpg') }}" alt="Outside of British International School of Timișoara">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="host-wrapper">
+                <div class="host-details">
+                    <h3>Zbor Hub Timișoara</h3>
+                    <p>Hosted inside a vibrant co-working and cultural hub, Zbor Hub Timișoara brings together entrepreneurs, artists, and changemakers in a space purpose-built for collaboration.</p>
+                    <p>Its industrial-chic halls, flexible meeting rooms, and community-driven atmosphere create the perfect backdrop for workshops, networking, and creative problem-solving during the conference.</p>
+                    <div class="host-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Zbor Hub Timișoara</span><br>
+                            <span>Strada Vasile Alecsandri 1, Timișoara</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="host-gallery">
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/zbor/IMG_2760.jpeg') }}" alt="Open collaboration area inside Zbor Hub Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/zbor/IMG_2761.jpeg') }}" alt="Natural light flooding Zbor Hub Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/zbor/IMG_2762.jpeg') }}" alt="Meeting space at Zbor Hub Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/zbor/IMG_2763.jpeg') }}" alt="Creative corner inside Zbor Hub Timișoara">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        
     </section>
 
     <!-- Timeline Section -->
@@ -732,7 +912,7 @@ participants
         }, observerOptions);
 
         // Observe all animatable elements
-        document.querySelectorAll('.conference-overview, .timeline-item, .gallery-item').forEach(el => {
+        document.querySelectorAll('.conference-overview, .timeline-item, .gallery-item, .host-details, .host-gallery-item').forEach(el => {
             observer.observe(el);
         });
 
@@ -763,6 +943,10 @@ participants
             item.style.transitionDelay = `${index * 0.1}s`;
         });
 
+        document.querySelectorAll('.host-gallery-item').forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.15}s`;
+        });
+
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
@@ -776,7 +960,7 @@ participants
 
 
         // Add click effect to gallery items
-        document.querySelectorAll('.gallery-item').forEach(item => {
+        document.querySelectorAll('.gallery-item, .host-gallery-item').forEach(item => {
             item.addEventListener('click', function() {
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {

@@ -241,6 +241,32 @@
             background-color: var(--accent);
         }
 
+        .flash-messages {
+            margin-bottom: 1.5rem;
+        }
+
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            border: 1px solid transparent;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        .alert-success {
+            background-color: rgba(40, 167, 69, 0.12);
+            border-color: rgba(40, 167, 69, 0.4);
+            color: #1e7a34;
+        }
+
+        .alert-error {
+            background-color: rgba(220, 53, 69, 0.12);
+            border-color: rgba(220, 53, 69, 0.4);
+            color: #8f1a24;
+        }
+
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -538,22 +564,6 @@
             }
         }
 
-        /* Form success message */
-        .form-success {
-            display: none;
-            background-color: #d4edda;
-            color: #155724;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
     </style>
 </head>
 <body>
@@ -584,10 +594,16 @@
         <div class="contact-content">
             <div class="contact-form">
                 <h3>Send Us a Message</h3>
-                <div class="form-success" id="formSuccess">
-                    <i class="fas fa-check-circle"></i> Your message has been sent successfully! We'll get back to you soon.
-                </div>
-                <form id="contactForm" action="/send_contact_mail" method="POST">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages %}
+                        <div class="flash-messages">
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <form id="contactForm" action="{{ url_for('contact') }}" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" class="form-control" placeholder="Your name" required>

@@ -35,28 +35,11 @@
         <i class="fas fa-bullhorn"></i>
       </div>
       <div class="announcement-text">
-        <h3>Chairman Applications Now Open!</h3>
-        <p>Join our team of chairs and help shape the TimișoaraMUN experience. Applications are open!</p>
+        <h3>Applications Are Now Open!</h3>
+        <p>Secure your spot at TimișoaraMUN 2025 by completing your submission on MyMUN.</p>
       </div>
       <div class="announcement-action">
-        <a href="{{ url_for('chairperson') }}" class="btn btn-accent">Apply Now</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="announcement-banner">
-  <div class="container">
-    <div class="announcement-content">
-      <div class="announcement-icon">
-        <i class="fas fa-user-graduate"></i>
-      </div>
-      <div class="announcement-text">
-        <h3>Delegate Applications Now Open!</h3>
-        <p>Be part of the debate and represent a country at TimișoaraMUN 2025. Applications are open!</p>
-      </div>
-      <div class="announcement-action">
-        <a href="{{ url_for('delegates') }}" class="btn btn-accent">Apply Now</a>
+        <a href="https://mymun.com/conferences/timisoaramun-2025/apply" class="btn btn-accent" target="_blank" rel="noopener">Apply on MyMUN</a>
       </div>
     </div>
   </div>
@@ -82,6 +65,22 @@
             </div>
         </div>
     </div>
+</section>
+
+<!-- United Nations Video Section -->
+<section class="video-feature" id="un-video">
+  <div class="container">
+    <div class="section-title">
+      <h2>What is the United Nations?</h2>
+      <p>Watch this short explainer to discover the mission, structure, and impact of the United Nations.</p>
+    </div>
+    <div class="video-wrapper fade-in">
+      <video controls preload="metadata" poster="{{ url_for('static', filename='img/Flag_of_the_United_Nations.svg') }}">
+        <source src="{{ url_for('static', filename='vid/whatisun.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 </section>
 
 <!-- Mission & Vision Section -->
@@ -172,6 +171,7 @@
 </section>
 
 <!-- Media Collage Section -->
+ <!--
 <section class="media-collage">
     <div class="container">
         <div class="section-title">
@@ -228,6 +228,7 @@
         </div>
     </div>
 </section>
+-->
 
  <!-- Services/Committees Section -->
  <section class="services" id="services">
@@ -236,91 +237,77 @@
             <h2>Our Committees</h2>
             <p>Explore the committees available at TimișoaraMUN and choose the one that interests you</p>
         </div>
-        <div class="committees-grid">
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/unsc.png" alt="United Nations Security Council">
+    <div class="committees-grid">
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='unsc') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/United Nations Security Council.webp") }}" alt="United Nations Security Council">
                 </div>
                 <h3>UNSC</h3>
                 <p>United Nations Security Council</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/unhrc.png" alt="United Nations Human Rights Council">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='unhrc') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/Human Rights Council.webp") }}" alt="United Nations Human Rights Council">
                 </div>
                 <h3>UNHRC</h3>
                 <p>UN Human Rights Council</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/ecofin.png" alt="Economic and Financial Committee">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='ecofin') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/Economic and Financial Affairs Committee.webp") }}" alt="Economic and Financial Committee">
                 </div>
                 <h3>ECOFIN</h3>
                 <p>Economic and Financial Committee</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/sochum.png" alt="Social, Humanitarian and Cultural Committee">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='sochum') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/Social, Humanitarian and Cultural Committee.webp") }}" alt="Social, Humanitarian and Cultural Committee">
                 </div>
                 <h3>SOCHUM</h3>
                 <p>Social, Humanitarian & Cultural Committee</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/CRISIS.png" alt="Crisis Committee">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='crisis') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/CRISIS.webp") }}" alt="Crisis Committee">
                 </div>
                 <h3>CRISIS</h3>
                 <p>Crisis Committee</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/C24.png" alt="Committee on Decolonization">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='c24') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/The Special Committee on Decolonization (C-24).webp") }}" alt="Committee on Decolonization">
                 </div>
                 <h3>C-24</h3>
                 <p>Special Committee on Decolonization</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/UNODC.png" alt="UN Office on Drugs and Crime">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='unodc') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/United Nations Office on Drugs and Crime.webp") }}" alt="UN Office on Drugs and Crime">
                 </div>
                 <h3>UNODC</h3>
                 <p>UN Office on Drugs and Crime</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/OHCHR.png" alt="Office of the High Commissioner for Human Rights">
-                </div>
-                <h3>OHCHR</h3>
-                <p>Office of the High Commissioner for Human Rights</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/who.png" alt="World Health Organization">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='who') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/World Health Organization.webp") }}" alt="World Health Organization">
                 </div>
                 <h3>WHO</h3>
                 <p>World Health Organization</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/icj.png" alt="International Court of Justice">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='icj') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/International Court of Justice.webp") }}" alt="International Court of Justice">
                 </div>
                 <h3>ICJ</h3>
                 <p>International Court of Justice</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/unicef.png" alt="UNICEF">
-                </div>
-                <h3>UNICEF</h3>
-                <p>United Nations Children's Fund</p>
-            </div>
-            <div class="committee-card fade-in">
-                <div class="committee-logo">
-                    <img src="static/img/dg.png" alt="DISEC">
+      </a>
+      <a class="committee-card fade-in" href="{{ url_for('committee', committee_id='disec') }}">
+        <div class="committee-logo">
+          <img src="{{ url_for('static', filename="img/COMITETE/Disarmament and International Security Committee.webp") }}" alt="DISEC">
                 </div>
                 <h3>DISEC</h3>
                 <p>Disarmament & International Security Committee</p>
-            </div>
+      </a>
         </div>
     </div>
 </section>

@@ -217,6 +217,11 @@ def parteneri():
     return render_template('parteneri.html')
 
 
+@app.route('/sponsors')
+def sponsors():
+    return render_template('sponsors.html')
+
+
 @app.route("/committees/<comitet>")
 def comitete(comitet):
     if comitet == "ICJ":
