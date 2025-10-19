@@ -1,0 +1,2 @@
+static/vid/british-campus.mov filter=lfs diff=lfs merge=lfs -text
+static/vid/*.mov filter=lfs diff=lfs merge=lfs -text
