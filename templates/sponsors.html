@@ -275,6 +275,8 @@
     </style>
 </head>
 <body>
+    <!-- Added space before navbar -->
+    <div style="height: 50px;"></div>
     <!-- Navbar Include -->
     {% include 'components/navbar.html' %}
 <head>
@@ -282,58 +284,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsors</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-<section class="sponsors-section">
-                <div class="sponsors-content">
-                    <h2 class="sponsors-title">Become Our Sponsor</h2>
-                    <p class="sponsors-subtitle">Join us in shaping the future of young diplomats</p>
-                    
-                    <div class="sponsor-cta">
-                        <p>We are looking for visionary partners who share our commitment to education, diplomacy, and youth development. By sponsoring TimișoaraMUN, you'll be supporting the next generation of global leaders while gaining valuable exposure to an international audience.</p>
-                        
-                        <a href="mailto:sponsorships@timisoara-mun.ro" class="sponsor-email">
-                            <i class="fas fa-envelope"></i>
-                            sponsorships@timisoara-mun.ro
-                        </a>
+<div class="card" style="background-color: #fff; padding: 2rem; border-radius: 10px; margin: 2rem 20px; width: calc(100% - 40px); box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    <section class="sponsors-section">
+        <div class="sponsors-content">
+            <h2 class="sponsors-title">Become Our Sponsor</h2>
+            <p class="sponsors-subtitle">Join us in shaping the future of young diplomats</p>
+            
+            <div class="sponsor-cta">
+                <p>We are looking for visionary partners who share our commitment to education, diplomacy, and youth development. By sponsoring TimișoaraMUN, you'll be supporting the next generation of global leaders while gaining valuable exposure to an international audience.</p>
+                
+                <a href="mailto:sponsorships@timisoara-mun.ro" class="sponsor-email">
+                    <i class="fas fa-envelope"></i>
+                    sponsorships@timisoara-mun.ro
+                </a>
+            </div>
+            
+            <div class="available-spaces">
+                <div class="space-card">
+                    <div class="space-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    
-                    <div class="available-spaces">
-                        <div class="space-card">
-                            <div class="space-icon">
-                                <i class="fas fa-trophy"></i>
-                            </div>
-                            <h4 class="space-title">Title Sponsor</h4>
-                            <p class="space-description">Premium branding and maximum visibility</p>
-                        </div>
-                        
-                        <div class="space-card">
-                            <div class="space-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <h4 class="space-title">Gold Sponsor</h4>
-                            <p class="space-description">Prominent logo placement and recognition</p>
-                        </div>
-                        
-                        <div class="space-card">
-                            <div class="space-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <h4 class="space-title">Silver Sponsor</h4>
-                            <p class="space-description">Logo display and event mentions</p>
-                        </div>
-                        
-                        <div class="space-card">
-                            <div class="space-icon">
-                                <i class="fas fa-handshake"></i>
-                            </div>
-                            <h4 class="space-title">Supporting Partner</h4>
-                            <p class="space-description">Community recognition and networking</p>
-                        </div>
-                    </div>
+                    <h4 class="space-title">Title Sponsor</h4>
+                    <p class="space-description">Premium branding and maximum visibility</p>
                 </div>
-            </section>
-
+                
+                <div class="space-card">
+                    <div class="space-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h4 class="space-title">Gold Sponsor</h4>
+                    <p class="space-description">Prominent logo placement and recognition</p>
+                </div>
+                
+                <div class="space-card">
+                    <div class="space-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4 class="space-title">Silver Sponsor</h4>
+                    <p class="space-description">Logo display and event mentions</p>
+                </div>
+                
+                <div class="space-card">
+                    <div class="space-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="space-title">Supporting Partner</h4>
+                    <p class="space-description">Community recognition and networking</p>
+                </div>
+            </div>
         </div>
-    </div>
+    </section>
+</div>
 
      <!-- Footer Include -->
     {% include 'components/footer.html' %}

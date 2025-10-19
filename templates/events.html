@@ -126,6 +126,10 @@
             align-items: center;
         }
 
+        .host-wrapper + .host-wrapper {
+            margin-top: 3rem;
+        }
+
         .host-details {
             background: var(--bg-light);
             padding: 2.5rem;
@@ -188,11 +192,13 @@
             transform: scale(1);
         }
 
-        .host-gallery-item img {
+        .host-gallery-item img,
+        .host-gallery-item video {
             width: 100%;
             height: 180px;
             object-fit: cover;
             transition: var(--transition);
+            display: block;
         }
 
         .host-gallery-item:hover {
@@ -200,7 +206,8 @@
             box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
         }
 
-        .host-gallery-item:hover img {
+        .host-gallery-item:hover img,
+        .host-gallery-item:hover video {
             transform: scale(1.08);
         }
 
@@ -701,36 +708,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Hosts</h2>
-                <p>From the state-of-the-art classrooms of the British International School of Timișoara to the creative energy of Zbor Hub Timișoara, our venues offer inspiring spaces for every moment of the conference.</p>
-            </div>
-            <div class="host-wrapper">
-                <div class="host-details">
-                    <h3>British International School of Timișoara</h3>
-                    <p>Set in a contemporary campus bathed in natural light, the British International School of Timișoara offers flexible learning spaces, high-tech classrooms, and welcoming common areas that reflect the spirit of our conference.</p>
-                    <p>Delegates will enjoy an environment that combines academic excellence with a vibrant international community dedicated to innovation and leadership.</p>
-                    <div class="host-address">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <span>Strada Aurora 8</span><br>
-                            <span>Timișoara 300254, Romania</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="host-gallery">
-                    <div class="host-gallery-item">
-                        <img src="{{ url_for('static', filename='img/british/Copy of C_DSC_4129-HDR.jpg') }}" alt="British International School of Timișoara campus exterior">
-                    </div>
-                    <div class="host-gallery-item">
-                        <img src="{{ url_for('static', filename='img/british/Copy of Cantina_DSC_5025-HDR.jpg') }}" alt="Modern dining hall at the British International School of Timișoara">
-                    </div>
-                    <div class="host-gallery-item">
-                        <img src="{{ url_for('static', filename='img/british/Copy of Library_DSC_5399-HDR.jpg') }}" alt="Library space at the British International School of Timișoara">
-                    </div>
-                    <div class="host-gallery-item">
-                        <img src="{{ url_for('static', filename='img/british/Copy of E_DSC_5664.jpg') }}" alt="Outside of British International School of Timișoara">
-                    </div>
-                </div>
-                
+                <p>From the creative energy of Zbor Hub Timișoara to the state-of-the-art classrooms of the British International School of Timișoara, our venues offer inspiring spaces for every moment of the conference.</p>
             </div>
             <div class="host-wrapper">
                 <div class="host-details">
@@ -757,6 +735,46 @@
                     </div>
                     <div class="host-gallery-item">
                         <img src="{{ url_for('static', filename='img/zbor/IMG_2763.jpeg') }}" alt="Creative corner inside Zbor Hub Timișoara">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="host-wrapper">
+                <div class="host-details">
+                    <h3>British International School of Timișoara</h3>
+                    <p>Set in a contemporary campus bathed in natural light, the British International School of Timișoara offers flexible learning spaces, high-tech classrooms, and welcoming common areas that reflect the spirit of our conference.</p>
+                    <p>Delegates will enjoy an environment that combines academic excellence with a vibrant international community dedicated to innovation and leadership.</p>
+                    <div class="host-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <span>Strada Aurora 8</span><br>
+                            <span>Timișoara 300254, Romania</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="host-gallery">
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of C_DSC_4129-HDR.jpg') }}" alt="British International School of Timișoara campus exterior">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of Cantina_DSC_5025-HDR.jpg') }}" alt="Modern dining hall at the British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of Library_DSC_5399-HDR.jpg') }}" alt="Library space at the British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of Clasa_DSC_5368-HDR.jpg') }}" alt="Classroom interior at the British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <img src="{{ url_for('static', filename='img/british/Copy of C_DSC_4953-HDR.jpg') }}" alt="Outside of British International School of Timișoara">
+                    </div>
+                    <div class="host-gallery-item">
+                        <!-- Updated video section for British content -->
+<video controls>
+    <source src="/static/vid/british-campus.mov" type="video/quicktime">
+    Your browser does not support the video tag.
+</video>
+<!-- End updated video section -->
                     </div>
                 </div>
             

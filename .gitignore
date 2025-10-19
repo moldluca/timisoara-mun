@@ -2,3 +2,4 @@
 __pycache__/
 instance/*.db
 static/vid/raw/
+static/vid/*.mov

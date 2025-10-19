@@ -21,6 +21,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+CONTACT_EMAIL = os.getenv('CONTACT_EMAIL', 'contact@timisoara-mun.ro')
+
 users = {
     "dragos@timisoara-mun.ro": "dragosSecretariatMunIntern",
     "cristiana@timisoara-mun.ro": "cristianaSecretariatMunIntern",
@@ -47,7 +49,11 @@ app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL', 'False') == 'True'
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', 'True') == 'True'
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER') or app.config['MAIL_USERNAME']
+app.config['MAIL_DEFAULT_SENDER'] = (
+    os.environ.get('MAIL_DEFAULT_SENDER')
+    or app.config.get('MAIL_USERNAME')
+    or CONTACT_EMAIL
+)
 
 
 # Configurare baza de date pentru producție cu cale absolută
@@ -289,8 +295,11 @@ def contact():
 
         recipients = _parse_recipients(
             os.environ.get('CONTACT_RECIPIENTS'),
-            'contact@timisoara-mun.ro'
+            CONTACT_EMAIL
         )
+
+        if CONTACT_EMAIL not in recipients:
+            recipients.append(CONTACT_EMAIL)
 
         if not recipients:
             app.logger.error('Contact form submission failed: no recipients configured')
