@@ -231,45 +231,56 @@
         
         @media (max-width: 768px) {
             .partners-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-            
-            .partner-logo {
-                width: 240px;
-                height: 140px;
-            }
-            
-            .sponsors-section {
-                padding: 2rem 1.5rem;
-            }
-            
-            .sponsors-title {
-                font-size: 2rem;
-            }
-            
-            .sponsors-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .available-spaces {
                 grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .partner-card {
+                padding: 1rem;
+                min-height: 200px;
+            }
+            .partner-logo {
+                width: 160px;
+                height: 90px;
+            }
+            .sponsors-section {
+                padding: 1rem 0.5rem;
+            }
+            .sponsors-title {
+                font-size: 1.3rem;
+            }
+            .sponsors-subtitle {
+                font-size: 1rem;
             }
         }
         
         @media (max-width: 480px) {
+            .partners-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem;
+            }
             .partner-card {
-                padding: 1.5rem;
+                padding: 0.7rem;
+                min-height: 120px;
             }
-            
             .partner-logo {
-                width: 200px;
-                height: 120px;
+                width: 110px;
+                height: 60px;
             }
-            
-            .sponsor-email {
-                padding: 0.8rem 1.5rem;
+            .sponsors-title {
+                font-size: 1.1rem;
+            }
+            .sponsors-subtitle {
+                font-size: 0.95rem;
+            }
+            .sponsors-section {
+                padding: 0.5rem 0.2rem;
+            }
+            .partner-name {
                 font-size: 1rem;
+            }
+            .sponsor-email {
+                padding: 0.6rem 1rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -287,50 +298,14 @@
 <div class="card" style="background-color: #fff; padding: 2rem; border-radius: 10px; margin: 2rem 20px; width: calc(100% - 40px); box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
     <section class="sponsors-section">
         <div class="sponsors-content">
-            <h2 class="sponsors-title">Become Our Sponsor</h2>
-            <p class="sponsors-subtitle">Join us in shaping the future of young diplomats</p>
-            
-            <div class="sponsor-cta">
-                <p>We are looking for visionary partners who share our commitment to education, diplomacy, and youth development. By sponsoring TimișoaraMUN, you'll be supporting the next generation of global leaders while gaining valuable exposure to an international audience.</p>
-                
-                <a href="mailto:sponsorships@timisoara-mun.ro" class="sponsor-email">
-                    <i class="fas fa-envelope"></i>
-                    sponsorships@timisoara-mun.ro
+            <h2 class="sponsors-title">Our Sponsors</h2>
+            <p class="sponsors-subtitle">We thank our sponsors for their generous support</p>
+            <div class="partners-grid">
+                <a href="https://bulldogburger.ro/" target="_blank" rel="noopener" class="partner-card fade-in-up" style="text-decoration: none; color: inherit;">
+                    <img src="static/img/bulldog-burger.png" alt="Bulldog Burger" class="partner-logo">
+                    <h3 class="partner-name">Bulldog Burger</h3>
                 </a>
-            </div>
-            
-            <div class="available-spaces">
-                <div class="space-card">
-                    <div class="space-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h4 class="space-title">Title Sponsor</h4>
-                    <p class="space-description">Premium branding and maximum visibility</p>
-                </div>
-                
-                <div class="space-card">
-                    <div class="space-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4 class="space-title">Gold Sponsor</h4>
-                    <p class="space-description">Prominent logo placement and recognition</p>
-                </div>
-                
-                <div class="space-card">
-                    <div class="space-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h4 class="space-title">Silver Sponsor</h4>
-                    <p class="space-description">Logo display and event mentions</p>
-                </div>
-                
-                <div class="space-card">
-                    <div class="space-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h4 class="space-title">Supporting Partner</h4>
-                    <p class="space-description">Community recognition and networking</p>
-                </div>
+                <!-- Add more sponsors here as needed -->
             </div>
         </div>
     </section>
