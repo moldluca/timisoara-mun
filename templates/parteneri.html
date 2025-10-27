@@ -121,14 +121,11 @@
         .sponsors-subtitle {
             font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0.9;
-        }
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            /* Remove animation-delay from CSS, will be handled by JS */
         
-        .sponsor-cta {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
+
             backdrop-filter: blur(10px);
             margin: 2rem auto;
             max-width: 600px;
@@ -319,6 +316,10 @@
                         <img src="static/img/zbor.png" alt="Zbor" class="partner-logo">
                         <h3 class="partner-name">Zbor Hub Timișoara</h3>
                     </div>
+                    <div class="partner-card fade-in-up">
+                        <img src="static/img/bulldog-burger.png" alt="Bulldog Burger" class="partner-logo">
+                        <h3 class="partner-name">Bulldog Burger</h3>
+                    </div>
                 </div>
             </section>
 
@@ -326,30 +327,36 @@
             
 
             <!-- Sponsors Section -->
-            
+
+            <section class="sponsors-section">
+                <div class="sponsors-content">
+                    <h2 class="sponsors-title">Our Sponsors</h2>
+                    <p class="sponsors-subtitle">We thank our sponsors for their generous support</p>
+                    <div class="partners-grid">
+                        <!-- Add sponsors here as needed -->
+                    </div>
+                </div>
+            </section>
 
     <!-- Footer Include -->
     {% include 'components/footer.html' %}
 
     <script>
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        // Sequential animation for partner cards
+        function animateCardsSequentially() {
+            const cards = document.querySelectorAll('.partners-grid .fade-in-up');
+            let i = 0;
+            function showNext() {
+                if (i < cards.length) {
+                    cards[i].classList.add('active');
+                    i++;
+                    setTimeout(showNext, 250); // Adjust delay for smoothness
                 }
-            });
-        }, observerOptions);
-
-        // Observe partner cards for staggered animation
-        document.querySelectorAll('.fade-in-up').forEach((card, index) => {
-            observer.observe(card);
-        });
+            }
+            showNext();
+        }
+        window.addEventListener('DOMContentLoaded', animateCardsSequentially);
 
         // Add hover sound effect simulation (visual feedback)
         document.querySelectorAll('.partner-card').forEach(card => {
