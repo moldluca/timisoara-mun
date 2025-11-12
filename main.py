@@ -7,6 +7,7 @@ from functools import wraps
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import requests
 
 users = {
     "dragos@timisoara-mun.ro": "dragosSecretariatMunIntern",
@@ -21,6 +22,7 @@ users = {
 
 app = Flask(__name__)
 load_dotenv()
+CONTACT_EMAIL = os.getenv('CONTACT_EMAIL', 'contact@timisoara-mun.ro')
 app.secret_key = os.getenv("SECRET_KEY")
 app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
 app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
@@ -37,6 +39,83 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 db.init_app(app) 
 
 
+def _parse_recipients(value, fallback):
+    raw = value or fallback or ""
+    return [email.strip() for email in raw.split(',') if email and email.strip()]
+
+
+def _submit_contact_form():
+    name = (request.form.get('name') or '').strip()
+    email = (request.form.get('email') or '').strip()
+    subject = (request.form.get('subject') or '').strip()
+    message = (request.form.get('message') or '').strip()
+
+    if not name or not email or not message:
+        flash('Please fill in your name, email, and message before submitting.', 'error')
+        return redirect(url_for('contact'))
+
+    recipients = _parse_recipients(
+        os.environ.get('CONTACT_RECIPIENTS'),
+        CONTACT_EMAIL
+    )
+
+    if CONTACT_EMAIL not in recipients:
+        recipients.append(CONTACT_EMAIL)
+
+    if not recipients:
+        app.logger.error('Contact form submission failed: no recipients configured')
+        flash('We could not deliver your message because no recipients are configured yet. Please try again later.', 'error')
+        return redirect(url_for('contact'))
+
+    mailersend_api_key = os.getenv('MAILERSEND_API_KEY')
+    if not mailersend_api_key:
+        app.logger.error('Contact form submission failed: MAILERSEND_API_KEY missing')
+        flash('There was an error sending your message. Please try again later.', 'error')
+        return redirect(url_for('contact'))
+
+    sender_email = os.getenv('MAIL_DEFAULT_SENDER_EMAIL', 'noreply@timisoara-mun.ro')
+    sender_name = os.getenv('MAIL_DEFAULT_SENDER_NAME', 'TimisoaraMUN Contact Form')
+    subject_final = f"[Contact Form] {subject if subject else 'No Subject'}"
+    html_body = f"""
+    <p>New message received from contact form:</p>
+    <p><strong>Name:</strong> {name}</p>
+    <p><strong>Email:</strong> {email}</p>
+    <p><strong>Subject:</strong> {subject if subject else 'No Subject'}</p>
+    <p><strong>Message:</strong><br>{message}</p>
+    """
+
+    data = {
+        "from": {
+            "email": sender_email,
+            "name": sender_name
+        },
+        "to": [{"email": recipient, "name": "TimisoaraMUN Team"} for recipient in recipients],
+        "subject": subject_final,
+        "html": html_body,
+        "reply_to": [{"email": email, "name": name}]
+    }
+
+    headers = {
+        "Authorization": f"Bearer {mailersend_api_key}",
+        "Content-Type": "application/json"
+    }
+
+    try:
+        response = requests.post("https://api.mailersend.com/v1/email", json=data, headers=headers, timeout=15)
+    except requests.RequestException as exc:
+        app.logger.exception('MailerSend request failed: %s', exc)
+        flash('There was an error sending your message. Please try again later.', 'error')
+        return redirect(url_for('contact'))
+
+    if response.status_code == 202:
+        flash('Your message has been successfully sent!', 'success')
+    else:
+        app.logger.error('MailerSend error %s: %s', response.status_code, response.text)
+        flash('There was an error sending your message. Please try again later.', 'error')
+
+    return redirect(url_for('contact'))
+
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -50,9 +129,6 @@ def home():
     return render_template('index.html')
 
 # ---------------------------------------- MAIL INSCRIERI ----------------------------------------
-
-import requests
-import os
 
 @app.route('/send_mail', methods=['POST'])
 def send_mail():
@@ -135,66 +211,16 @@ Secretary General – TimișoaraMUN<br>
 
 @app.route('/send_contact_mail', methods=['POST'])
 def send_contact_mail():
-    print(">>> AM INTRAT ÎN FUNCTIA /send_contact_mail <<<")
-    
-    name = request.form.get('name')
-    email = request.form.get('email')
-    subject = request.form.get('subject')
-    message = request.form.get('message')
-
-    print(f"Received data: {name}, {email}, {subject}, {message}")
-
-    subject_final = f"[Contact Form] {subject if subject else 'No Subject'}"
-    
-    html_body = f"""
-    <p>New message received from contact form:</p>
-    <p><strong>Name:</strong> {name}</p>
-    <p><strong>Email:</strong> {email}</p>
-    <p><strong>Subject:</strong> {subject}</p>
-    <p><strong>Message:</strong><br>{message}</p>
-    """
-
-    MAILERSEND_API_KEY = os.getenv('MAILERSEND_API_KEY')  # sau cheia ta direct pt test
-
-    headers = {
-        "Authorization": f"Bearer {MAILERSEND_API_KEY}",
-        "Content-Type": "application/json"
-    }
-
-    data = {
-        "from": {
-            "email": "noreply@timisoara-mun.ro",
-            "name": "TimisoaraMUN Contact Form"
-        },
-        "to": [
-            {
-                "email": "chairperson.registration@timisoara-mun.ro@gmail.com",
-                "name": "TimisoaraMUN Team"
-            }
-        ],
-        "subject": subject_final,
-        "html": html_body
-    }
-
-    response = requests.post("https://api.mailersend.com/v1/email", json=data, headers=headers)
-
-    print(response.status_code)
-    print(response.text)
-
-    if response.status_code == 202:
-        flash('Your message has been successfully sent!', 'success')
-        print('merge')
-    else:
-        flash('There was an error sending your message. Please try again later.', 'error')
-
-    return redirect(url_for('contact'))
+    return _submit_contact_form()
 
 
 
 
  
-@app.route("/contact")
+@app.route("/contact", methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        return _submit_contact_form()
     return render_template('contact.html')
 
 
