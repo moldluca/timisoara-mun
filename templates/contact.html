@@ -1,44 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - TimișoaraMUN</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="static/styles.css">
-
-    <style>
-        /* ===== RESET & BASE STYLES ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #021859;
-            --primary-dark: #0077b3;
-            --secondary: #00c6ff;
-            --accent: #2F033F !important;
-            --text-dark: #333;
-            --text-light: #fff;
-            --bg-light: #f0f4f8;
-            --bg-dark: #333;
-            --transition: all 0.3s ease;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            color: var(--text-dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-            background-color: var(--bg-light);
-        }
-
         a {
             text-decoration: none;
             color: inherit;
@@ -416,65 +377,6 @@
     background-color: #005885;
 }
 
-        /* ===== MAP SECTION ===== */
-        .map-section {
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: var(--transition);
-        }
-
-        .map-section.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .map-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .map-header::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .map-header h2 {
-            position: relative;
-            z-index: 2;
-            font-size: 2.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .map-header p {
-            position: relative;
-            z-index: 2;
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .map-container {
-            height: 500px;
-            width: 100%;
-            border: none;
-        }
-
         /* ===== ANIMATIONS ===== */
         @keyframes fadeInUp {
             from {
@@ -521,14 +423,10 @@
                 padding: 2rem;
             }
 
-            .contact-header h2,
-            .map-header h2 {
+            .contact-header h2 {
                 font-size: 1.8rem;
             }
 
-            .map-container {
-                height: 350px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -540,13 +438,11 @@
                 padding: 1.5rem;
             }
 
-            .contact-header,
-            .map-header {
+            .contact-header {
                 padding: 1.5rem;
             }
 
-            .contact-header h2,
-            .map-header h2 {
+            .contact-header h2 {
                 font-size: 1.6rem;
             }
 
@@ -559,9 +455,6 @@
                 padding: 0.75rem;
             }
 
-            .map-container {
-                height: 300px;
-            }
         }
 
     </style>
@@ -579,7 +472,6 @@
                 <p>Have questions about TimișoaraMUN? Get in touch with our team and we'll be happy to help.</p>
                 <div class="hero-buttons">
                     <a href="#contact-form" class="btn">Send a Message</a>
-                    <a href="#map" class="btn btn-outline">Find Us</a>
                 </div>
             </div>
         </div>
@@ -660,21 +552,6 @@
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="map-section" id="map">
-        <div class="map-header">
-            <h2>Find Us in Timișoara</h2>
-            <p>Timișoara, European Capital of Culture 2023</p>
-        </div>
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44793.22085267324!2d21.19945395!3d45.7488716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47455d84610655bf%3A0xfd8e43db49b10a10!2zVGltaciZb2FyYQ!5e0!3m2!1sen!2sro!4v1654321234567!5m2!1sen!2sro" 
-            class="map-container" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-    </section>
-
     <!-- Footer -->
     {% include 'components/footer.html' %}
 
@@ -694,7 +571,7 @@
         }, observerOptions);
 
         // Observe all animatable elements
-        document.querySelectorAll('.contact-section, .map-section').forEach(el => {
+        document.querySelectorAll('.contact-section').forEach(el => {
             observer.observe(el);
         });
 

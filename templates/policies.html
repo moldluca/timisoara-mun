@@ -305,13 +305,6 @@
                             <p>+40 724 994 673</p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Adresă</h3>
-                            <p>Universitatea de Vest, Bd. Vasile Pârvan 4, Timișoara, România</p>
-                        </div>
-                    </div>
                 </div>
                 <div class="contact-form fade-in">
                     <form id="contactForm">
@@ -345,14 +338,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fade in animation for elements
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(
-        (entries) => {
+        (entries, obs) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting || entry.intersectionRatio > 0) {
                     entry.target.classList.add("active");
+                    obs.unobserve(entry.target);
                 }
             });
         },
-        { threshold: 0.1 }
+        { threshold: 0.01, rootMargin: "0px 0px -40px 0px" }
     );
 
     fadeElements.forEach((element) => {
