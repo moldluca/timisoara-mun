@@ -247,8 +247,21 @@ def sponsors():
     return render_template('sponsors.html')
 
 
-@app.route("/committees/<comitet>")
-def comitete(comitet):
+@app.route("/committees/<committee_id>", endpoint='committee')
+def comitete(committee_id):
+    committee_map = {
+        "unsc": "UNSC",
+        "unhrc": "UNHRC",
+        "ecofin": "ECOFIN",
+        "sochum": "SOCHUM",
+        "crisis": "CRISIS",
+        "c24": "C-24",
+        "unodc": "UNODC",
+        "who": "WHO",
+        "icj": "ICJ",
+        "disec": "DISEC"
+    }
+    comitet = committee_map.get(committee_id.lower(), committee_id.upper())
     if comitet == "ICJ":
         size = "Size: 20 delegates"
         poza = url_for('static', filename='img/icj.png')
