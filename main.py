@@ -522,7 +522,7 @@ def logout():
     session.pop('user', None)
     return redirect(url_for('loginstaff'))
 
-@app.route('/loginstaffmuntm', methods=['GET', 'POST'])
+@app.route('/loginstaffmuntm', methods=['GET', 'POST'], endpoint='login')
 def loginstaff():
     if request.method == 'POST':
         email = request.form.get('email')
