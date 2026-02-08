@@ -458,7 +458,7 @@ def error():
 def page_not_found(e):
     return render_template('error.html'), 404
 
-@app.route('/whoarewe')
+@app.route('/whoarewe', endpoint='whowe')
 def we():
     return render_template('whowe.html')
 
