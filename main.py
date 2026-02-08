@@ -123,7 +123,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route('/')
+@app.route('/', endpoint='index')
 def home():
     return render_template('index.html')
 
